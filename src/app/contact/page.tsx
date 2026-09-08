@@ -6,9 +6,30 @@ import { classNamesImages } from "@/data/content";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    model: "",
+    notes: "",
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const text = `Hello RoadCrafters Garage! 🛠️
+I have a technical inquiry from your website:
+
+• Name: ${formData.name}
+• Email: ${formData.email}
+• Phone: ${formData.phone || "N/A"}
+• Motorcycle Make & Model: ${formData.model || "N/A"}
+• Inquiry Details: ${formData.notes}
+
+Please get back to me. Thank you!`;
+
+    const waUrl = `https://wa.me/918668412375?text=${encodeURIComponent(text)}`;
+    window.open(waUrl, "_blank");
     setSubmitted(true);
   };
 
@@ -60,6 +81,8 @@ export default function ContactPage() {
                     type="text"
                     required
                     placeholder="John Smith"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-4 py-2.5 bg-white border border-[#E2DDD5] text-sm text-[#202522] focus:outline-none focus:border-[#B47A4A]"
                   />
                 </div>
@@ -71,6 +94,8 @@ export default function ContactPage() {
                     type="email"
                     required
                     placeholder="john@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-4 py-2.5 bg-white border border-[#E2DDD5] text-sm text-[#202522] focus:outline-none focus:border-[#B47A4A]"
                   />
                 </div>
@@ -84,6 +109,8 @@ export default function ContactPage() {
                   <input
                     type="tel"
                     placeholder="+91 86684 12375"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-4 py-2.5 bg-white border border-[#E2DDD5] text-sm text-[#202522] focus:outline-none focus:border-[#B47A4A]"
                   />
                 </div>
@@ -94,6 +121,8 @@ export default function ContactPage() {
                   <input
                     type="text"
                     placeholder="e.g. Royal Enfield Interceptor 650"
+                    value={formData.model}
+                    onChange={(e) => setFormData({ ...formData, model: e.target.value })}
                     className="w-full px-4 py-2.5 bg-white border border-[#E2DDD5] text-sm text-[#202522] focus:outline-none focus:border-[#B47A4A]"
                   />
                 </div>
@@ -107,6 +136,8 @@ export default function ContactPage() {
                   rows={4}
                   required
                   placeholder="Describe your inquiry, motorcycle issue, or service request..."
+                  value={formData.notes}
+                  onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                   className="w-full px-4 py-2.5 bg-white border border-[#E2DDD5] text-sm text-[#202522] focus:outline-none focus:border-[#B47A4A]"
                 />
               </div>
@@ -115,7 +146,7 @@ export default function ContactPage() {
                 type="submit"
                 className="w-full py-3.5 bg-[#18352D] hover:bg-[#2B463D] text-white text-xs font-semibold uppercase tracking-widest transition-colors flex items-center justify-center space-x-2"
               >
-                <span>Submit Technical Inquiry</span>
+                <span>Submit Technical Inquiry via WhatsApp</span>
                 <Send className="w-3.5 h-3.5 text-[#B47A4A]" />
               </button>
             </form>

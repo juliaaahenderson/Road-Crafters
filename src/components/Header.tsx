@@ -21,12 +21,7 @@ export default function Header() {
       {/* Top micro bar */}
       <div className="bg-[#17352D] text-[#FAF8F2] text-xs py-1.5 px-4 sm:px-8 flex justify-between items-center tracking-wider font-medium">
         <div className="flex items-center space-x-6">
-          <span className="flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#A96F43]" />
-            12-MONTH / 10,000 KM MOTORCYCLE WARRANTY
-          </span>
-          <span className="hidden md:inline text-stone-500">|</span>
-          <span className="hidden md:inline text-stone-300">
+          <span className="text-stone-300">
             OFFICIAL MOTORCYCLE DIAGNOSTIC & SERVICE CENTRE
           </span>
         </div>

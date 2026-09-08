@@ -28,6 +28,24 @@ export default function BookingForm({ initialServiceSlug }: BookingFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const text = `Hello RoadCrafters Garage! 🛠️
+I would like to book a motorcycle service appointment:
+
+• Name: ${formData.name}
+• Phone: ${formData.phone}
+• Email: ${formData.email || "N/A"}
+• Category: ${formData.bikeCategory}
+• Motorcycle: ${formData.brand} ${formData.model} ${formData.regNumber ? `(${formData.regNumber})` : ""}
+• Service Requested: ${formData.serviceId}
+• Preferred Date: ${formData.preferredDate || "Earliest available"} (${formData.preferredTime})
+• Transport Pickup: ${formData.pickupDrop}
+${formData.notes ? `• Notes: ${formData.notes}` : ""}
+
+Please confirm my lift bay allocation. Thank you!`;
+
+    const waUrl = `https://wa.me/918668412375?text=${encodeURIComponent(text)}`;
+    window.open(waUrl, "_blank");
     setSubmitted(true);
   };
 
@@ -274,7 +292,7 @@ export default function BookingForm({ initialServiceSlug }: BookingFormProps) {
         type="submit"
         className="w-full py-3.5 bg-[#17352D] hover:bg-[#23443A] text-white font-semibold text-xs uppercase tracking-widest border border-[#17352D] transition-all flex items-center justify-center space-x-2 group"
       >
-        <span>Request Motorcycle Service Appointment</span>
+        <span>Request Appointment via WhatsApp</span>
         <ArrowRight className="w-4 h-4 text-[#A96F43] group-hover:translate-x-1 transition-transform" />
       </button>
     </form>
