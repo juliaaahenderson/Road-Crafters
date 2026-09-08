@@ -5,6 +5,12 @@ import { ArrowRight, Check, Clock, ShieldCheck, Wrench } from "lucide-react";
 import { SERVICES_DATA } from "@/data/content";
 import SectionHeading from "@/components/SectionHeading";
 
+export async function generateStaticParams() {
+  return SERVICES_DATA.map((service) => ({
+    slug: service.slug,
+  }));
+}
+
 export async function generateMetadata({
   params,
 }: {

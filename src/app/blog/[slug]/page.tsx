@@ -5,6 +5,12 @@ import { Clock, ArrowRight } from "lucide-react";
 import { BLOG_POSTS } from "@/data/content";
 import BlogCard from "@/components/BlogCard";
 
+export async function generateStaticParams() {
+  return BLOG_POSTS.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
 export async function generateMetadata({
   params,
 }: {
