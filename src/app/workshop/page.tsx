@@ -4,9 +4,9 @@ import SectionHeading from "@/components/SectionHeading";
 import { WORKSHOP_FEATURES, classNamesImages } from "@/data/content";
 
 export const metadata = {
-  title: "Inside Our Workshop | MOTIVE & CO.",
+  title: "Inside Our Workshop | RoadCrafters Garage (रोडक्राफ्टर्स गैरेज)",
   description:
-    "Explore our state-of-the-art automobile facility featuring flush in-ground lifts, factory diagnostic rigs, 3D laser alignment, and clean-room detailing bays.",
+    "Explore our state-of-the-art motorcycle facility in Porvorim, Goa featuring hydraulic lifts, factory diagnostic rigs, laser chain alignment, and detailing bays.",
 };
 
 export default function WorkshopPage() {
@@ -52,8 +52,8 @@ export default function WorkshopPage() {
       <div className="bg-[#18352D] text-white p-8 md:p-12 border border-[#2B463D]">
         <SectionHeading
           eyebrow="FULL WORKSHOP TOUR"
-          title="Designed for Luxury & Performance Vehicles"
-          subtitle="Every bay is calibrated to support precise torque tolerances, low clearance sports cars, and heavy luxury SUVs."
+          title="Designed for Performance Motorcycles & Two-Wheelers"
+          subtitle="Every bay is calibrated to support precise torque tolerances, street bikes, sportbikes, cruisers, and adventure tourers."
           dark
         />
 

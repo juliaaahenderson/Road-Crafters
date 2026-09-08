@@ -4,9 +4,9 @@ import SectionHeading from "@/components/SectionHeading";
 import { classNamesImages } from "@/data/content";
 
 export const metadata = {
-  title: "About Us | MOTIVE & CO.",
+  title: "About Us | RoadCrafters Garage (रोडक्राफ्टर्स गैरेज)",
   description:
-    "Learn about our heritage, philosophy, factory certifications, and master technicians built on craftsmanship and driven by trust.",
+    "Learn about our heritage, philosophy, factory certifications, and master technicians at RoadCrafters Garage (रोडक्राफ्टर्स गैरेज) in Porvorim, Goa.",
 };
 
 export default function AboutPage() {
@@ -18,7 +18,7 @@ export default function AboutPage() {
           Built on Craftsmanship. Driven by Trust.
         </h1>
         <p className="mt-6 text-lg text-[#6E706B] max-w-3xl leading-relaxed">
-          Established as a rider-first alternative to main dealer workshops, Road Crafters Garage was built with a clear mandate: deliver uncompromising mechanical craftsmanship, factory-grade motorcycle OBD diagnostics, and transparent pricing without corporate inflation.
+          Established as a rider-first alternative to main dealer workshops, RoadCrafters Garage (रोडक्राफ्टर्स गैरेज) was built with a clear mandate: deliver uncompromising mechanical craftsmanship, factory-grade motorcycle OBD diagnostics, and transparent pricing without corporate inflation.
         </p>
       </div>
 
@@ -30,10 +30,10 @@ export default function AboutPage() {
             title="No Shortcuts. No Guesswork."
           />
           <p className="text-sm text-[#6E706B] leading-relaxed">
-            Modern automobiles are complex integrations of mechanical, hydraulic, and software systems. We believe that proper automotive care requires both traditional mechanical empathy and cutting-edge electronic diagnosis.
+            Modern motorcycles are complex integrations of mechanical, hydraulic, and software systems. We believe that proper motorcycle care requires both traditional mechanical empathy and cutting-edge electronic diagnosis.
           </p>
           <p className="text-sm text-[#6E706B] leading-relaxed">
-            Every technician in our workshop undergoes continuous training on factory service bulletins, electrical architecture, and precision tool calibration. When you trust us with your car, you receive clear communication, photographic evidence of all findings, and fixed quotes.
+            Every technician in our workshop undergoes continuous training on factory service bulletins, electrical architecture, and precision tool calibration. When you trust us with your motorcycle, you receive clear communication, photographic evidence of all findings, and fixed quotes.
           </p>
 
           <div className="pt-4 grid grid-cols-2 gap-6 border-t border-[#E2DDD5]">
@@ -52,7 +52,7 @@ export default function AboutPage() {
           <div className="border border-[#E2DDD5] bg-white p-2">
             <img
               src={classNamesImages.electrical}
-              alt="Master Technician at Road Crafters Garage"
+              alt="Master Technician at RoadCrafters Garage"
               className="w-full h-[450px] object-cover"
             />
           </div>
@@ -63,8 +63,8 @@ export default function AboutPage() {
       <div className="bg-[#FAF8F3] border border-[#E2DDD5] p-8 md:p-12">
         <SectionHeading
           eyebrow="MILESTONES"
-          title="Fifteen Years of Automotive Excellence"
-          subtitle="Our journey from a single-bay specialist shop to a multi-location luxury automotive facility."
+          title="Dedicated Motorcycle Service Excellence"
+          subtitle="Our journey building a rider-first motorcycle service center in Porvorim, Goa."
         />
 
         <div className="mt-12 space-y-8 relative before:absolute before:inset-0 before:left-3 md:before:left-1/2 before:w-0.5 before:bg-[#E2DDD5]">
@@ -72,27 +72,27 @@ export default function AboutPage() {
             {
               year: "2010",
               title: "Garage Founded",
-              desc: "Established in London as a specialist BMW & Porsche independent workshop with two hydraulic lifts."
+              desc: "Established as a specialist motorcycle independent workshop with dedicated hydraulic lifts."
             },
             {
               year: "2014",
               title: "Workshop Facility Expansion",
-              desc: "Added 3D laser alignment bays, flush sports car lifts, and clean-room detailing suite."
+              desc: "Added laser alignment bays, motorcycle lifts, and clean detailing suite."
             },
             {
               year: "2018",
               title: "Factory Diagnostic Suite Integrated",
-              desc: "Invested in official dealer software interfaces for all major European luxury brands."
+              desc: "Invested in official dealer software interfaces for major motorcycle brands."
             },
             {
               year: "2022",
-              title: "Digital Ledger & Valet Launch",
-              desc: "Introduced digital service records and complimentary valet pickup within 15 km."
+              title: "Digital Ledger & Transport Launch",
+              desc: "Introduced digital service records and motorcycle transport pickup services."
             },
             {
               year: "2026",
-              title: "Multi-Location Network",
-              desc: "Expanded flagship workshops to London, Mumbai, and Dubai Performance Centre."
+              title: "Flagship Goa Workshop",
+              desc: "Operating full-scope motorcycle repair and diagnostic facility at Shop - 9, Alcon Regency, Porvorim, Goa."
             }
           ].map((item, idx) => (
             <div

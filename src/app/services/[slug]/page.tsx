@@ -20,7 +20,7 @@ export async function generateMetadata({
   const service = SERVICES_DATA.find((s) => s.slug === slug);
   if (!service) return { title: "Service Not Found" };
   return {
-    title: `${service.title} | MOTIVE & CO.`,
+    title: `${service.title} | RoadCrafters Garage (रोडक्राफ्टर्स गैरेज)`,
     description: service.shortDesc,
   };
 }
@@ -99,7 +99,7 @@ export default async function ServiceDetailPage({
           <div className="mt-4 bg-[#18352D] text-white p-6 space-y-2">
             <div className="flex items-center space-x-2 text-xs text-[#B47A4A] font-semibold uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4" />
-              <span>MOTIVE & CO. GUARANTEE</span>
+              <span>ROADCRAFTERS GARAGE GUARANTEE</span>
             </div>
             <p className="text-xs text-stone-300 leading-relaxed">
               12-Month or 15,000 km full warranty on all replaced parts and technical labor associated with this service.

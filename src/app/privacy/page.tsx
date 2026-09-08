@@ -111,9 +111,9 @@ export default function PrivacyPolicyPage() {
               If you have any questions regarding this Privacy Policy or your bike data records, contact our privacy desk at:
             </p>
             <div className="text-xs bg-[#F3EFE6] p-4 border border-[#D8D1C5] space-y-1 font-mono text-[#17352D]">
-              <p>Road Crafters Garage Ltd – Legal & Compliance</p>
-              <p>14 Apex Industrial Estate, Park Royal, London NW10 77AQ</p>
-              <p>Email: privacy@roadcraftersgarage.com | Phone: +44 20 7946 0912</p>
+              <p>RoadCrafters Garage (रोडक्राफ्टर्स गैरेज) – Legal & Compliance</p>
+              <p>Shop - 9, Alcon Regency, Village Panchayat, near Nexa Showroom, Defence Colony, Aradi Socorro, Porvorim, Goa 403521, India</p>
+              <p>Email: contact@roadcraftersgarage.com | Phone: +91 86684 12375</p>
             </div>
           </section>
         </div>

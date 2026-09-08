@@ -21,10 +21,10 @@ export default function LocationCard({ location }: { location: LocationItem }) {
             <MapPin className="w-4 h-4 text-[#B47A4A] flex-shrink-0 mt-0.5" />
             <span>{location.address}</span>
           </p>
-          <p className="flex items-center gap-2">
+          <a href={`tel:${location.phone.replace(/\s+/g, "")}`} className="flex items-center gap-2 hover:text-[#18352D]">
             <Phone className="w-4 h-4 text-[#B47A4A] flex-shrink-0" />
             <span>{location.phone}</span>
-          </p>
+          </a>
           <p className="flex items-center gap-2">
             <Mail className="w-4 h-4 text-[#B47A4A] flex-shrink-0" />
             <span>{location.email}</span>

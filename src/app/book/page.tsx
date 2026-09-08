@@ -4,9 +4,9 @@ import SectionHeading from "@/components/SectionHeading";
 import { ShieldCheck, Phone, Clock, FileCheck } from "lucide-react";
 
 export const metadata = {
-  title: "Book a Service | MOTIVE & CO.",
+  title: "Book a Motorcycle Service Appointment | RoadCrafters Garage (रोडक्राफ्टर्स गैरेज)",
   description:
-    "Request a prioritized service appointment or diagnostic bay reservation for your vehicle.",
+    "Reserve a motorcycle service appointment at RoadCrafters Garage (रोडक्राफ्टर्स गैरेज) in Porvorim, Goa. Call +91 86684 12375.",
 };
 
 export default function BookPage() {
@@ -18,7 +18,7 @@ export default function BookPage() {
           Book a Motorcycle Service Appointment
         </h1>
         <p className="mt-3 text-base text-[#6E706B] max-w-2xl">
-          Reserve your motorcycle check-in date. A dedicated Road Crafters Technical Advisor will review your requirements and confirm your lift bay allocation.
+          Reserve your motorcycle check-in date. A dedicated RoadCrafters Technical Advisor will review your requirements and confirm your lift bay allocation.
         </p>
       </div>
 
@@ -93,15 +93,26 @@ export default function BookPage() {
               Prefer to speak to an Advisor immediately?
             </h3>
             <p className="text-xs text-[#6E706B]">
-              Our workshop hotline is available Monday through Saturday.
+              Our workshop line is open daily (Closes at 10:00 PM).
             </p>
-            <a
-              href="tel:+442079460912"
-              className="inline-flex items-center text-xs font-bold text-[#18352D] hover:text-[#B47A4A] space-x-2 pt-2"
-            >
-              <Phone className="w-4 h-4 text-[#B47A4A]" />
-              <span>+44 20 7946 0912</span>
-            </a>
+            <div className="flex flex-col space-y-2 pt-1">
+              <a
+                href="tel:+918668412375"
+                className="inline-flex items-center text-xs font-bold text-[#18352D] hover:text-[#B47A4A] space-x-2"
+              >
+                <Phone className="w-4 h-4 text-[#B47A4A]" />
+                <span>Call +91 86684 12375</span>
+              </a>
+              <a
+                href="https://wa.me/918668412375"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-xs font-bold text-emerald-600 hover:text-emerald-700 space-x-2"
+              >
+                <span className="w-4 h-4 text-center font-bold text-[10px] bg-emerald-500 text-white rounded-full flex items-center justify-center">W</span>
+                <span>WhatsApp +91 86684 12375</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

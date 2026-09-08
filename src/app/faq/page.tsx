@@ -4,9 +4,9 @@ import SectionHeading from "@/components/SectionHeading";
 import { FAQ_DATA } from "@/data/content";
 
 export const metadata = {
-  title: "Frequently Asked Questions | MOTIVE & CO.",
+  title: "Frequently Asked Questions | RoadCrafters Garage (रोडक्राफ्टर्स गैरेज)",
   description:
-    "Find answers to common questions regarding vehicle servicing, appointments, warranty coverage, parts policy, and diagnostic costs.",
+    "Find answers to common questions regarding motorcycle servicing, appointments, warranty coverage, parts policy, and diagnostic costs.",
 };
 
 export default function FAQPage() {

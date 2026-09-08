@@ -5,9 +5,9 @@ import ServiceCard from "@/components/ServiceCard";
 import { SERVICES_DATA } from "@/data/content";
 
 export const metadata = {
-  title: "Automotive Services | MOTIVE & CO.",
+  title: "Motorcycle Services | RoadCrafters Garage (रोडक्राफ्टर्स गैरेज)",
   description:
-    "Explore our complete range of specialized automobile care including engine diagnostics, periodic servicing, brake machining, 3D laser alignment, and detailing.",
+    "Explore our complete range of specialized motorcycle care including engine OBD diagnostics, periodic servicing, brake caliper overhaul, chain alignment, and detailing.",
 };
 
 export default function ServicesPage() {
@@ -37,7 +37,7 @@ export default function ServicesPage() {
             Require a custom mechanical diagnostic or restoration quote?
           </h3>
           <p className="text-sm text-[#6E706B] mt-2">
-            Our technical masters handle classic car mechanical refreshes and custom track prep.
+            Our technical masters handle motorcycle mechanical refreshes, engine diagnostics, and custom setup.
           </p>
         </div>
         <Link

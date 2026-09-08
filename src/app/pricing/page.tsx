@@ -5,9 +5,9 @@ import SectionHeading from "@/components/SectionHeading";
 import { PACKAGES_DATA } from "@/data/content";
 
 export const metadata = {
-  title: "Pricing & Service Packages | MOTIVE & CO.",
+  title: "Pricing & Service Packages | RoadCrafters Garage (रोडक्राफ्टर्स गैरेज)",
   description:
-    "Transparent fixed-cost service packages for automobiles. No hidden labor charges or surprise line items.",
+    "Transparent fixed-cost service packages for motorcycles. No hidden labor charges or surprise line items.",
 };
 
 export default function PricingPage() {
@@ -80,8 +80,8 @@ export default function PricingPage() {
 
       <div className="bg-[#FAF8F3] border border-[#E2DDD5] p-6 text-xs text-[#6E706B] space-y-2">
         <p className="font-semibold text-[#18352D]">Important Pricing & Inclusions Notes:</p>
-        <p>• Prices include standard synthetic oil volumes up to limits stated. Additional oil required for V8/V12 engines charged per liter at standard rack rates.</p>
-        <p>• All replacement filters installed are genuine OEM (Original Equipment Manufacturer) or direct factory equivalents (Mahle, Mann, Bosch, Hengst).</p>
+        <p>• Prices include standard synthetic oil volumes up to limits stated. Additional oil required for multi-cylinder engines charged per liter at standard rack rates.</p>
+        <p>• All replacement filters installed are genuine OEM (Original Equipment Manufacturer) or direct factory equivalents (Mahle, Mann, Bosch, K&N).</p>
         <p>• Digital inspection reports provided before any non-package work is undertaken.</p>
       </div>
     </div>

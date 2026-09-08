@@ -372,34 +372,21 @@ export const WORKSHOP_FEATURES: WorkshopFeature[] = [
 
 export const LOCATIONS_DATA: LocationItem[] = [
   {
-    id: "london-parkroyal",
-    name: "Road Crafters Central Workshop",
-    city: "London, UK",
-    address: "14 Apex Industrial Estate, Park Royal, London NW10 77AQ",
-    phone: "+44 20 7946 0912",
-    email: "london@roadcraftersgarage.com",
-    hours: "Mon – Fri: 08:00 - 18:00 | Sat: 09:00 - 15:00",
-    facilities: ["Motorcycle Hydraulic Lifts", "Laser Alignment", "Ceramic Bay", "Riders Lounge & Coffee"]
-  },
-  {
-    id: "mumbai-andheri",
-    name: "Road Crafters Flagship Workshop",
-    city: "Mumbai, India",
-    address: "Plot 42, Marol Cooperative Industrial Estate, Andheri East, Mumbai 400059",
-    phone: "+91 22 6123 8800",
-    email: "mumbai@roadcraftersgarage.com",
-    hours: "Mon – Sat: 09:00 - 19:00 | Sun: By Appointment",
-    facilities: ["Dyno Tuning", "Full Mechanical Bay", "Motorcycle Towing Van", "Spare Parts Depot"]
-  },
-  {
-    id: "dubai-alquoz",
-    name: "Road Crafters Performance Centre",
-    city: "Dubai, UAE",
-    address: "Street 8, Al Quoz Industrial Area 3, Dubai, UAE",
-    phone: "+971 4 388 9012",
-    email: "dubai@roadcraftersgarage.com",
-    hours: "Sat – Thu: 08:30 - 19:30 | Fri: Closed",
-    facilities: ["Superbike Tuning", "Climate Controlled Bay", "Fork Service Rig", "VIP Lounge"]
+    id: "porvorim-goa",
+    name: "RoadCrafters Garage (रोडक्राफ्टर्स गैरेज)",
+    city: "Porvorim, Goa",
+    address: "Shop - 9, Alcon Regency, Village Panchayat, near Nexa Showroom, Defence Colony, Aradi Socorro, Porvorim, Goa 403521, India",
+    phone: "+91 86684 12375",
+    email: "contact@roadcraftersgarage.com",
+    hours: "Open — Closes at 10:00 PM",
+    facilities: [
+      "Motorcycle Repair Shop",
+      "OBD Diagnostic Scans",
+      "LGBTQ+ friendly",
+      "Hydraulic Lifts & Tuning",
+      "OEM Parts & Synthetic Fluids",
+      "Doorstep Pickup & Drop"
+    ]
   }
 ];
 
@@ -505,5 +492,103 @@ export const FAQ_DATA: FAQItem[] = [
     question: "Do you handle custom motorcycle work or fork rebuilding?",
     answer: "Yes. Our workshop features specialized fork seal driver kits, rear shock linkage press tools, and motorcycle diagnostic rigs for deep mechanical overhauls.",
     category: "Specialist"
+  }
+];
+
+export interface ReviewItem {
+  id: string;
+  author: string;
+  badge?: string;
+  date: string;
+  rating: number;
+  comment: string;
+  ownerResponse?: string;
+}
+
+export const REVIEWS_DATA: ReviewItem[] = [
+  {
+    id: "rev-1",
+    author: "Langston Dsouza",
+    badge: "6 reviews",
+    date: "a month ago",
+    rating: 5,
+    comment: "I have been looking for a good servicing centre for my Xpulse 200 4v as the Hero service centre are not that good. I gave my bike at RoadCrafters garage and they fixed it and now it's running better then ever. Highly recommended",
+    ownerResponse: "Thank You Sir"
+  },
+  {
+    id: "rev-2",
+    author: "Nedan Heredia",
+    badge: "1 review",
+    date: "3 months ago",
+    rating: 5,
+    comment: "Really good servicing done for my vespa vx. Had my odometer fixed and ordered the cable, also fixed my front brake. Would recommend others to try"
+  },
+  {
+    id: "rev-3",
+    author: "Khemchand Singh",
+    badge: "Blinkit Rider • 2 reviews",
+    date: "a month ago",
+    rating: 5,
+    comment: "I'm working in blinkit. 1st time I found best service garage in two wheeler. I suggest all of you please try once this garage service best and genuine rate.",
+    ownerResponse: "Thank You"
+  },
+  {
+    id: "rev-4",
+    author: "Meraj Ahmad",
+    badge: "4 reviews • 1 photo",
+    date: "a month ago",
+    rating: 5,
+    comment: "Best two wheeler shop in Porvorim, I'm satisfied with your service mechanic and owner very good nature and price is perfect for any product and service,",
+    ownerResponse: "Thank You"
+  },
+  {
+    id: "rev-5",
+    author: "Santosh L",
+    badge: "1 review",
+    date: "a month ago",
+    rating: 5,
+    comment: "Excellent service and owner is help full person even pick up bike and do servicing 24×7 service available",
+    ownerResponse: "Thank You Sir"
+  },
+  {
+    id: "rev-6",
+    author: "Neha Shetty",
+    badge: "3 reviews",
+    date: "a month ago",
+    rating: 5,
+    comment: "Best service provider and genuine parts genuine charge road crafter garage is best",
+    ownerResponse: "Thank You"
+  },
+  {
+    id: "rev-7",
+    author: "Sunil Kumar",
+    badge: "1 review",
+    date: "2 months ago",
+    rating: 5,
+    comment: "Best two wheeler repair shop in porvorim good and clean work"
+  },
+  {
+    id: "rev-8",
+    author: "Iswar Gavandar",
+    badge: "1 review",
+    date: "3 months ago",
+    rating: 5,
+    comment: "Good service and clean work staff also very friendly nice garage visit again 👍💯"
+  },
+  {
+    id: "rev-9",
+    author: "Verified Porvorim Rider",
+    badge: "Activa Owner",
+    date: "a month ago",
+    rating: 5,
+    comment: "Best garage in porvorim after service my scooty activa running smoothly thanks roadcrafters garage"
+  },
+  {
+    id: "rev-10",
+    author: "Bolo G",
+    badge: "1 review",
+    date: "4 months ago",
+    rating: 5,
+    comment: "This two wheeler service center is Very good. And employee behavior is also good"
   }
 ];

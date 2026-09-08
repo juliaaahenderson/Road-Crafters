@@ -4,9 +4,9 @@ import SectionHeading from "@/components/SectionHeading";
 import { BLOG_POSTS } from "@/data/content";
 
 export const metadata = {
-  title: "Automotive Guides & Technical Journal | MOTIVE & CO.",
+  title: "Rider Guides & Technical Journal | RoadCrafters Garage (रोडक्राफ्टर्स गैरेज)",
   description:
-    "In-depth automotive maintenance guides, brake mechanics analysis, fluid dynamics, and suspension geometry explained by master engineers.",
+    "In-depth motorcycle maintenance guides, brake mechanics analysis, fluid dynamics, and suspension geometry explained by master technicians.",
 };
 
 export default function BlogPage() {

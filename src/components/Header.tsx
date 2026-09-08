@@ -32,11 +32,11 @@ export default function Header() {
         </div>
         <div className="flex items-center space-x-4">
           <a
-            href="tel:+442079460912"
+            href="tel:+918668412375"
             className="hover:text-[#A96F43] transition-colors flex items-center gap-1"
           >
             <Phone className="w-3 h-3 text-[#A96F43]" />
-            <span>+44 20 7946 0912</span>
+            <span>+91 86684 12375</span>
           </a>
         </div>
       </div>

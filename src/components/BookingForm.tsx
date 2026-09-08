@@ -237,7 +237,7 @@ export default function BookingForm({ initialServiceSlug }: BookingFormProps) {
             <input
               type="tel"
               required
-              placeholder="+44 7700 900077"
+              placeholder="+91 86684 12375"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               className="w-full px-4 py-2.5 bg-white border border-[#D8D1C5] text-sm text-[#202321] focus:outline-none focus:border-[#A96F43]"

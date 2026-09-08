@@ -33,19 +33,40 @@ export default function Footer() {
             <p className="text-sm text-stone-300 max-w-md leading-relaxed">
               Independent motorcycle service and diagnostic workshop dedicated to meticulous mechanical craftsmanship, OBD diagnostics, chain sync, and transparent pricing for riders.
             </p>
-            <div className="pt-2 text-xs text-stone-400 space-y-1">
+            <div className="pt-2 text-xs text-stone-400 space-y-2">
+              <a
+                href={`https://maps.google.com/?q=${encodeURIComponent("RoadCrafters Garage, Shop - 9, Alcon Regency, Village Panchayat, near Nexa Showroom, Defence Colony, Aradi Socorro, Porvorim, Goa 403521, India")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 hover:text-[#A96F43] transition-colors"
+              >
+                <MapPin className="w-3.5 h-3.5 text-[#A96F43] flex-shrink-0 mt-0.5" />
+                <span>Shop - 9, Alcon Regency, Village Panchayat, near Nexa Showroom, Defence Colony, Aradi Socorro, Porvorim, Goa 403521, India</span>
+              </a>
+              <a
+                href="tel:+918668412375"
+                className="flex items-center gap-2 hover:text-[#A96F43] transition-colors"
+              >
+                <Phone className="w-3.5 h-3.5 text-[#A96F43] flex-shrink-0" />
+                <span>+91 86684 12375</span>
+              </a>
+              <a
+                href="https://wa.me/918668412375"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors font-medium"
+              >
+                <span className="w-3.5 h-3.5 text-center font-bold text-[10px] bg-emerald-500 text-black rounded-full flex items-center justify-center">W</span>
+                <span>WhatsApp: +91 86684 12375</span>
+              </a>
               <p className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#A96F43]" />
-                14 Apex Industrial Estate, Park Royal, London NW10 77AQ
+                <Mail className="w-3.5 h-3.5 text-[#A96F43] flex-shrink-0" />
+                contact@roadcraftersgarage.com
               </p>
-              <p className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#A96F43]" />
-                +44 20 7946 0912
-              </p>
-              <p className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#A96F43]" />
-                service@roadcraftersgarage.com
-              </p>
+              <div className="pt-1 flex items-center gap-3 text-[11px] text-stone-300">
+                <span className="bg-[#23443A] px-2 py-0.5 text-[#A96F43] font-semibold">★ 5.0 (55 reviews)</span>
+                <span className="bg-[#23443A] px-2 py-0.5 text-stone-200">LGBTQ+ friendly</span>
+              </div>
             </div>
           </div>
 
@@ -139,10 +160,9 @@ export default function Footer() {
             </h4>
             <div className="text-xs text-stone-300 space-y-3">
               <div>
-                <p className="font-semibold text-white">Workshop Operating Hours:</p>
-                <p>Monday – Friday: 08:00 – 18:00</p>
-                <p>Saturday: 09:00 – 15:00</p>
-                <p className="text-stone-400">Sunday: Closed (Towing Active)</p>
+                <p className="font-semibold text-white">Motorcycle Repair Shop</p>
+                <p className="text-[#A96F43] font-semibold mt-1">Open — Closes at 10:00 PM</p>
+                <p className="text-stone-400 mt-1">Mon – Sun: 08:00 AM – 10:00 PM</p>
               </div>
               <div className="pt-2">
                 <Link
@@ -159,7 +179,7 @@ export default function Footer() {
 
         {/* Bottom copyright */}
         <div className="mt-12 pt-8 border-t border-[#23443A] flex flex-col md:flex-row justify-between items-center text-xs text-stone-400 gap-4">
-          <p>© {new Date().getFullYear()} ROAD CRAFTERS GARAGE Ltd. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} RoadCrafters Garage (रोडक्राफ्टर्स गैरेज). All rights reserved.</p>
           <div className="flex space-x-6">
             <Link href="/faq" className="hover:text-stone-200">
               FAQ

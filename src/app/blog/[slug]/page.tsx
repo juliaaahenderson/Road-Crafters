@@ -20,7 +20,7 @@ export async function generateMetadata({
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) return { title: "Article Not Found" };
   return {
-    title: `${post.title} | MOTIVE & CO. Journal`,
+    title: `${post.title} | RoadCrafters Garage Journal`,
     description: post.excerpt,
   };
 }

@@ -36,7 +36,7 @@ export default function ContactPage() {
                 Message Sent Successfully
               </h3>
               <p className="text-xs text-[#6E706B] max-w-md mx-auto">
-                Thank you for contacting Motive & Co. A technical advisor will respond to your inquiry within two business hours.
+                Thank you for contacting RoadCrafters Garage (रोडक्राफ्टर्स गैरेज). A technical advisor will respond to your inquiry within two business hours.
               </p>
               <button
                 onClick={() => setSubmitted(false)}
@@ -83,17 +83,17 @@ export default function ContactPage() {
                   </label>
                   <input
                     type="tel"
-                    placeholder="+44 7700 900000"
+                    placeholder="+91 86684 12375"
                     className="w-full px-4 py-2.5 bg-white border border-[#E2DDD5] text-sm text-[#202522] focus:outline-none focus:border-[#B47A4A]"
                   />
                 </div>
                 <div>
                   <label className="block text-xs uppercase tracking-wider font-semibold text-[#18352D] mb-1">
-                    Vehicle Make & Year
+                    Motorcycle Make & Model
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. 2021 Porsche Macan"
+                    placeholder="e.g. Royal Enfield Interceptor 650"
                     className="w-full px-4 py-2.5 bg-white border border-[#E2DDD5] text-sm text-[#202522] focus:outline-none focus:border-[#B47A4A]"
                   />
                 </div>
@@ -106,7 +106,7 @@ export default function ContactPage() {
                 <textarea
                   rows={4}
                   required
-                  placeholder="Describe your inquiry, vehicle issue, or service request..."
+                  placeholder="Describe your inquiry, motorcycle issue, or service request..."
                   className="w-full px-4 py-2.5 bg-white border border-[#E2DDD5] text-sm text-[#202522] focus:outline-none focus:border-[#B47A4A]"
                 />
               </div>
@@ -133,16 +133,33 @@ export default function ContactPage() {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-[#B47A4A] flex-shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-semibold text-white block">Headquarters Workshop</span>
-                  <p>14 Apex Industrial Estate, Park Royal, London NW10 77AQ</p>
+                  <span className="font-semibold text-white block">RoadCrafters Garage (रोडक्राफ्टर्स गैरेज)</span>
+                  <p>Shop - 9, Alcon Regency, Village Panchayat, near Nexa Showroom, Defence Colony, Aradi Socorro, Porvorim, Goa 403521, India</p>
+                  <p className="text-[#B47A4A] text-[11px] mt-1 font-mono">Plus Code: GRQF+35 Aradi Socorro, Goa, India</p>
+                  <a
+                    href={`https://maps.google.com/?q=${encodeURIComponent("RoadCrafters Garage, Shop - 9, Alcon Regency, Village Panchayat, near Nexa Showroom, Defence Colony, Aradi Socorro, Porvorim, Goa 403521, India")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block mt-2 text-xs font-semibold text-[#B47A4A] hover:underline"
+                  >
+                    Open in Google Maps →
+                  </a>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3">
                 <Phone className="w-4 h-4 text-[#B47A4A] flex-shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-semibold text-white block">Hotline & Valet Support</span>
-                  <p>+44 20 7946 0912</p>
+                  <span className="font-semibold text-white block">Phone Hotline</span>
+                  <a href="tel:+918668412375" className="hover:text-[#B47A4A] font-semibold text-stone-200">+91 86684 12375</a>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3">
+                <span className="w-4 h-4 text-center font-bold text-[10px] bg-emerald-500 text-black rounded-full flex items-center justify-center mt-0.5">W</span>
+                <div>
+                  <span className="font-semibold text-white block">WhatsApp Contact</span>
+                  <a href="https://wa.me/918668412375" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline font-semibold">+91 86684 12375</a>
                 </div>
               </div>
 
@@ -150,8 +167,15 @@ export default function ContactPage() {
                 <Mail className="w-4 h-4 text-[#B47A4A] flex-shrink-0 mt-0.5" />
                 <div>
                   <span className="font-semibold text-white block">Service Desk Email</span>
-                  <p>service@motiveco.com</p>
+                  <p>contact@roadcraftersgarage.com</p>
                 </div>
+              </div>
+
+              <div className="pt-4 border-t border-[#2B463D] space-y-2 text-xs">
+                <p><strong className="text-white">Business Category:</strong> Motorcycle Repair Shop</p>
+                <p><strong className="text-white">Rating:</strong> <span className="text-[#B47A4A] font-bold">5.0 ★</span> (55 reviews)</p>
+                <p><strong className="text-white">Business Hours:</strong> <span className="text-emerald-400">Open — Closes at 10:00 PM</span></p>
+                <p><strong className="text-white">Features:</strong> LGBTQ+ friendly</p>
               </div>
             </div>
           </div>
@@ -159,7 +183,7 @@ export default function ContactPage() {
           <div className="border border-[#E2DDD5] bg-white p-2">
             <img
               src={classNamesImages.exteriorFront}
-              alt="Motive & Co. Facility Exterior"
+              alt="RoadCrafters Garage Facility Exterior"
               className="w-full h-56 object-cover"
             />
           </div>

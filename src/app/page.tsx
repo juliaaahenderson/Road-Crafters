@@ -4,6 +4,7 @@ import { ArrowRight, Shield, Award, Wrench, Clock, Check } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import FAQAccordion from "@/components/FAQAccordion";
+import ReviewsSection from "@/components/ReviewsSection";
 import { SERVICES_DATA, PACKAGES_DATA, FAQ_DATA, classNamesImages } from "@/data/content";
 
 export default function HomePage() {
@@ -89,24 +90,24 @@ export default function HomePage() {
         {/* Subtle Trust Bar */}
         <div className="mt-16 bg-[#FAF8F2] border border-[#D8D1C5] py-6 px-6 sm:px-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-[#D8D1C5]">
           <div className="flex flex-col items-center justify-center p-2">
+            <Award className="w-5 h-5 text-[#A96F43] mb-1" />
+            <span className="font-semibold text-xs text-[#17352D]">5.0 ★ Rated Garage</span>
+            <span className="text-[11px] text-[#6E706B]">55 Verified Reviews</span>
+          </div>
+          <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
             <Shield className="w-5 h-5 text-[#A96F43] mb-1" />
             <span className="font-semibold text-xs text-[#17352D]">12-Month Warranty</span>
             <span className="text-[11px] text-[#6E706B]">Parts & Labor Guarantee</span>
           </div>
           <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
-            <Award className="w-5 h-5 text-[#A96F43] mb-1" />
-            <span className="font-semibold text-xs text-[#17352D]">Master Technicians</span>
-            <span className="text-[11px] text-[#6E706B]">Factory Trained</span>
-          </div>
-          <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
             <Wrench className="w-5 h-5 text-[#A96F43] mb-1" />
-            <span className="font-semibold text-xs text-[#17352D]">Motorcycle Diagnostics</span>
-            <span className="text-[11px] text-[#6E706B]">Factory Scanner Suite</span>
+            <span className="font-semibold text-xs text-[#17352D]">LGBTQ+ Friendly</span>
+            <span className="text-[11px] text-[#6E706B]">Inclusive Rider Community</span>
           </div>
           <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
             <Clock className="w-5 h-5 text-[#A96F43] mb-1" />
-            <span className="font-semibold text-xs text-[#17352D]">Transparent Quotes</span>
-            <span className="text-[11px] text-[#6E706B]">Zero Surprise Bills</span>
+            <span className="font-semibold text-xs text-[#17352D]">Open — Closes 10:00 PM</span>
+            <span className="text-[11px] text-[#6E706B]">Daily Operations</span>
           </div>
         </div>
       </section>
@@ -405,7 +406,10 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* 8. FAQ PREVIEW */}
+      {/* 8. CUSTOMER REVIEWS */}
+      <ReviewsSection />
+
+      {/* 9. FAQ PREVIEW */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="RIDER QUESTIONS"
@@ -443,10 +447,10 @@ export default function HomePage() {
               Book Service Online
             </Link>
             <a
-              href="tel:+442079460912"
+              href="tel:+918668412375"
               className="px-8 py-4 bg-transparent border border-stone-400 hover:border-white text-white text-xs font-semibold uppercase tracking-widest text-center transition-colors"
             >
-              Call +44 20 7946 0912
+              Call +91 86684 12375
             </a>
           </div>
         </div>
