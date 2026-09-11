@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Newsreader } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ConvexClientProvider from "@/components/ConvexClientProvider";
 
 const sansFont = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -99,9 +100,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-[#F3EFE6] text-[#202321] selection:bg-[#A96F43] selection:text-white relative">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ConvexClientProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </ConvexClientProvider>
 
         {/* Floating WhatsApp Contact Button */}
         <a

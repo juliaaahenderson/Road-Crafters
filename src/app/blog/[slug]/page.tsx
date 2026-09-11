@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Clock, ArrowRight } from "lucide-react";
+import { Clock } from "lucide-react";
 import { BLOG_POSTS } from "@/data/content";
 import BlogCard from "@/components/BlogCard";
 
@@ -18,7 +18,7 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const post = BLOG_POSTS.find((p) => p.slug === slug);
-  if (!post) return { title: "Article Not Found" };
+  if (!post) return { title: "Article | RoadCrafters Garage Journal" };
   return {
     title: `${post.title} | RoadCrafters Garage Journal`,
     description: post.excerpt,
@@ -38,6 +38,10 @@ export default async function BlogDetailPage({
   }
 
   const related = BLOG_POSTS.filter((p) => p.slug !== slug);
+
+  const contentParagraphs = Array.isArray(post.content)
+    ? post.content
+    : [post.content];
 
   return (
     <article className="py-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
@@ -88,7 +92,7 @@ export default async function BlogDetailPage({
 
       {/* Content paragraphs */}
       <div className="prose max-w-none text-[#202522] space-y-6 text-base leading-relaxed font-sans">
-        {post.content.map((paragraph, idx) => (
+        {contentParagraphs.map((paragraph, idx) => (
           <p key={idx}>{paragraph}</p>
         ))}
       </div>
