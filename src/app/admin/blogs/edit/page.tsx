@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { ArrowLeft, Save, Eye, Code, Search } from "lucide-react";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../../../../convex/_generated/api";
+import { BLOG_POSTS } from "@/data/content";
 
 function EditBlogPostForm() {
   const searchParams = useSearchParams();
