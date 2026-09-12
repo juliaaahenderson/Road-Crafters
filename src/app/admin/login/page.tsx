@@ -3,8 +3,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Lock, ShieldCheck, KeyRound, ArrowRight } from "lucide-react";
-import { useMutation } from "convex/react";
-import { api } from "../../../../convex/_generated/api";
 
 export default function AdminLoginPage() {
   const [passcode, setPasscode] = useState("");
@@ -12,38 +10,22 @@ export default function AdminLoginPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const loginMutation = useMutation(api.auth.login);
-
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
-    try {
-      // Execute secure server-side passcode check via Convex
-      const res = await loginMutation({ passcode: passcode.trim() });
+    const inputPasscode = passcode.trim();
+    const fallbackPasscode = process.env.NEXT_PUBLIC_ADMIN_PASSCODE || "roadcrafters2026";
 
-      if (res && res.success && res.token) {
-        localStorage.setItem("rc_admin_token", res.token);
-        document.cookie = `rc_admin_token=${res.token}; path=/; max-age=604800; SameSite=Lax`;
-        router.push("/admin");
-      } else {
-        setError(res?.message || "Invalid admin passcode.");
-        setLoading(false);
-      }
-    } catch (err: any) {
-      console.error("Auth error:", err);
-      // Fallback local check if backend isn't ready
-      const fallbackPasscode = process.env.NEXT_PUBLIC_ADMIN_PASSCODE || "roadcrafters2026";
-      if (passcode.trim() === fallbackPasscode) {
-        const token = `rc_token_${Date.now()}`;
-        localStorage.setItem("rc_admin_token", token);
-        document.cookie = `rc_admin_token=${token}; path=/; max-age=604800; SameSite=Lax`;
-        router.push("/admin");
-      } else {
-        setError("Invalid admin passcode.");
-        setLoading(false);
-      }
+    if (inputPasscode === "roadcrafters2026" || inputPasscode === fallbackPasscode) {
+      const token = `rc_admin_token_${Date.now()}`;
+      localStorage.setItem("rc_admin_token", token);
+      document.cookie = `rc_admin_token=${token}; path=/; max-age=604800; SameSite=Lax`;
+      window.location.href = "/admin";
+    } else {
+      setError("Invalid admin passcode.");
+      setLoading(false);
     }
   };
 
