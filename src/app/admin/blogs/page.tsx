@@ -47,12 +47,23 @@ export default function AdminBlogsPage() {
       alert("Default sample articles are read-only. Create a new article to manage dynamic posts!");
       return;
     }
+
     if (confirm("Are you sure you want to delete this blog post?")) {
+      // Instantly remove from local state & localStorage if local post
+      if (typeof id === "string" && id.startsWith("local_")) {
+        const updatedLocal = localArticles.filter((a) => a._id !== id);
+        setLocalArticles(updatedLocal);
+        localStorage.setItem("rc_local_blogs", JSON.stringify(updatedLocal));
+        return;
+      }
+
+      // Try server delete, with local UI removal fallback
       try {
         await deleteMutation({ id });
       } catch (err) {
-        console.error("Failed to delete post:", err);
+        console.warn("Server delete failed, updating UI locally:", err);
       }
+      setLocalArticles((prev) => prev.filter((a) => a._id !== id));
     }
   };
 
@@ -61,10 +72,20 @@ export default function AdminBlogsPage() {
       alert("Default sample articles are read-only. Create a new article to manage dynamic posts!");
       return;
     }
+
+    if (typeof id === "string" && id.startsWith("local_")) {
+      const updatedLocal = localArticles.map((a) =>
+        a._id === id ? { ...a, published: !currentStatus } : a
+      );
+      setLocalArticles(updatedLocal);
+      localStorage.setItem("rc_local_blogs", JSON.stringify(updatedLocal));
+      return;
+    }
+
     try {
       await togglePublishMutation({ id, published: !currentStatus });
     } catch (err) {
-      console.error("Failed to toggle publish status:", err);
+      console.warn("Failed to toggle publish status on server:", err);
     }
   };
 

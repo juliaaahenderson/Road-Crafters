@@ -11,7 +11,7 @@ function EditBlogPostForm() {
   const router = useRouter();
   const id = searchParams.get("id");
 
-  const blogPost = useQuery(api.blogs.getById, { id: (id as any) || ("" as any) });
+  const blogPostQuery = useQuery(api.blogs.getById, { id: (id as any) || ("" as any) });
   const updateBlogMutation = useMutation(api.blogs.update);
   const generateUploadUrlMutation = useMutation(api.files.generateUploadUrl);
 
@@ -30,6 +30,37 @@ function EditBlogPostForm() {
     metaDescription: "",
     keywords: "",
   });
+
+  const [blogPost, setBlogPost] = useState<any>(null);
+
+  useEffect(() => {
+    if (blogPostQuery) {
+      setBlogPost(blogPostQuery);
+    } else if (id && id.startsWith("local_")) {
+      try {
+        const saved = localStorage.getItem("rc_local_blogs");
+        if (saved) {
+          const list = JSON.parse(saved);
+          const found = list.find((b: any) => b._id === id);
+          if (found) setBlogPost(found);
+        }
+      } catch (e) {}
+    } else if (id && id.startsWith("default_")) {
+      const idx = parseInt(id.replace("default_", ""), 10);
+      const b = BLOG_POSTS[idx];
+      if (b) {
+        setBlogPost({
+          _id: id,
+          title: b.title,
+          slug: b.slug,
+          excerpt: b.excerpt,
+          author: b.author?.name || "Master Technician",
+          content: Array.isArray(b.content) ? b.content.join("\n\n") : b.content,
+          published: true,
+        });
+      }
+    }
+  }, [blogPostQuery, id]);
 
   useEffect(() => {
     if (blogPost) {
@@ -52,20 +83,44 @@ function EditBlogPostForm() {
     if (!id) return;
     setSubmitting(true);
 
-    try {
-      let storageId: any = blogPost?.coverImageStorageId;
+    let coverImageUrl = blogPost?.coverImageUrl || "";
 
-      if (selectedFile) {
-        const postUrl = await generateUploadUrlMutation();
-        const uploadResult = await fetch(postUrl, {
-          method: "POST",
-          headers: { "Content-Type": selectedFile.type },
-          body: selectedFile,
+    if (selectedFile) {
+      try {
+        coverImageUrl = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result as string);
+          reader.readAsDataURL(selectedFile);
         });
-        const { storageId: uploadedId } = await uploadResult.json();
-        storageId = uploadedId;
-      }
+      } catch (e) {}
+    }
 
+    const updatedPost = {
+      _id: id,
+      title: form.title,
+      slug: form.slug,
+      excerpt: form.excerpt,
+      content: form.content,
+      author: form.author,
+      published: form.published,
+      publishedAt: blogPost?.publishedAt || Date.now(),
+      coverImageUrl: coverImageUrl || undefined,
+      metaTitle: form.metaTitle,
+      metaDescription: form.metaDescription,
+      keywords: form.keywords,
+    };
+
+    if (id.startsWith("local_")) {
+      try {
+        const saved = JSON.parse(localStorage.getItem("rc_local_blogs") || "[]");
+        const newSaved = saved.map((b: any) => (b._id === id ? updatedPost : b));
+        localStorage.setItem("rc_local_blogs", JSON.stringify(newSaved));
+      } catch (e) {}
+      window.location.href = "/admin/blogs";
+      return;
+    }
+
+    try {
       await updateBlogMutation({
         id: id as any,
         title: form.title,
@@ -74,18 +129,20 @@ function EditBlogPostForm() {
         content: form.content,
         author: form.author,
         published: form.published,
-        coverImageStorageId: storageId,
-        coverImageUrl: blogPost?.coverImageUrl,
+        coverImageUrl: coverImageUrl || blogPost?.coverImageUrl,
         metaTitle: form.metaTitle,
         metaDescription: form.metaDescription,
         keywords: form.keywords,
       });
-
-      router.push("/admin/blogs");
+      window.location.href = "/admin/blogs";
     } catch (err) {
-      console.error("Error updating blog post:", err);
-      alert("Failed to update post.");
-      setSubmitting(false);
+      console.warn("Failed to update on server, saving locally:", err);
+      try {
+        const saved = JSON.parse(localStorage.getItem("rc_local_blogs") || "[]");
+        const newSaved = [updatedPost, ...saved.filter((b: any) => b._id !== id)];
+        localStorage.setItem("rc_local_blogs", JSON.stringify(newSaved));
+      } catch (e) {}
+      window.location.href = "/admin/blogs";
     }
   };
 

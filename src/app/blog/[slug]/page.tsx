@@ -1,40 +1,57 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { useParams, notFound } from "next/navigation";
 import { Clock } from "lucide-react";
 import { BLOG_POSTS } from "@/data/content";
 import BlogCard from "@/components/BlogCard";
+import { useQuery } from "convex/react";
+import { api } from "../../../../convex/_generated/api";
 
-export async function generateStaticParams() {
-  return BLOG_POSTS.map((post) => ({
-    slug: post.slug,
-  }));
-}
+export default function BlogDetailPage() {
+  const params = useParams();
+  const slug = params?.slug as string;
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-  const post = BLOG_POSTS.find((p) => p.slug === slug);
-  if (!post) return { title: "Article | RoadCrafters Garage Journal" };
-  return {
-    title: `${post.title} | RoadCrafters Garage Journal`,
-    description: post.excerpt,
-  };
-}
+  const convexPost = useQuery(api.blogs.getBySlug, { slug: slug || "" });
+  const [localPost, setLocalPost] = useState<any>(null);
 
-export default async function BlogDetailPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-  const post = BLOG_POSTS.find((p) => p.slug === slug);
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("rc_local_blogs");
+      if (saved) {
+        const blogs = JSON.parse(saved);
+        const found = blogs.find((b: any) => b.slug === slug);
+        if (found) setLocalPost(found);
+      }
+    } catch (e) {}
+  }, [slug]);
+
+  const defaultPost = BLOG_POSTS.find((p) => p.slug === slug);
+
+  const post = localPost || (convexPost ? {
+    id: convexPost._id,
+    slug: convexPost.slug,
+    title: convexPost.title,
+    excerpt: convexPost.excerpt,
+    category: "Technical Guide",
+    publishedAt: new Date(convexPost.publishedAt).toLocaleDateString(),
+    readTime: `${Math.max(3, Math.ceil(convexPost.content.length / 500))} min read`,
+    heroImage: convexPost.coverImageUrl || "/hero_bike_workshop.png",
+    author: {
+      name: convexPost.author || "RoadCrafters Master Technician",
+      role: "Technical Advisor",
+      avatar: "/media__1788797887061.png",
+    },
+    content: convexPost.content,
+  } : defaultPost);
 
   if (!post) {
-    notFound();
+    return (
+      <div className="py-20 text-center text-stone-500 font-mono text-sm">
+        Article not found. <Link href="/blog" className="underline text-[#17352D]">Back to Guides</Link>
+      </div>
+    );
   }
 
   const related = BLOG_POSTS.filter((p) => p.slug !== slug);
@@ -64,31 +81,33 @@ export default async function BlogDetailPage({
         </h1>
         <div className="flex items-center space-x-4 text-xs text-[#6E706B] pt-2 border-y border-[#E2DDD5] py-3">
           <div className="flex items-center space-x-2">
-            <img
-              src={post.author.avatar}
-              alt={post.author.name}
-              className="w-7 h-7 rounded-full object-cover"
-            />
-            <span className="font-semibold text-[#18352D]">{post.author.name} ({post.author.role})</span>
+            <div className="w-7 h-7 rounded-full bg-[#17352D] text-white flex items-center justify-center text-xs font-bold">
+              {typeof post.author === "string" ? post.author.charAt(0) : post.author?.name?.charAt(0) || "R"}
+            </div>
+            <span className="font-semibold text-[#18352D]">
+              {typeof post.author === "string" ? post.author : post.author?.name}
+            </span>
           </div>
           <span>•</span>
-          <span>{post.publishedAt}</span>
+          <span>{post.publishedAt || "Recently"}</span>
           <span>•</span>
           <span className="flex items-center gap-1">
             <Clock className="w-3.5 h-3.5 text-[#B47A4A]" />
-            {post.readTime}
+            {post.readTime || "5 min read"}
           </span>
         </div>
       </header>
 
       {/* Hero image */}
-      <div className="border border-[#E2DDD5] bg-white p-2">
-        <img
-          src={post.heroImage}
-          alt={post.title}
-          className="w-full h-[400px] object-cover"
-        />
-      </div>
+      {post.heroImage || post.coverImageUrl ? (
+        <div className="border border-[#E2DDD5] bg-white p-2">
+          <img
+            src={post.heroImage || post.coverImageUrl}
+            alt={post.title}
+            className="w-full h-[400px] object-cover"
+          />
+        </div>
+      ) : null}
 
       {/* Content paragraphs */}
       <div className="prose max-w-none text-[#202522] space-y-4 text-base leading-relaxed font-sans">
