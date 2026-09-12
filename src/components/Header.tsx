@@ -4,10 +4,25 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Phone, ArrowRight, Menu, X, ShieldCheck } from "lucide-react";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  const dbBusiness = useQuery(api.content.getByKey, { key: "businessDetails" });
+  let phoneDisplay = "+91 86684 12375";
+  let phoneTel = "tel:+918668412375";
+  if (dbBusiness?.value) {
+    try {
+      const parsed = JSON.parse(dbBusiness.value);
+      if (parsed.phone) {
+        phoneDisplay = parsed.phone;
+        phoneTel = `tel:${parsed.phone.replace(/[^0-[#A96F43]]/g, "")}`;
+      }
+    } catch (e) {}
+  }
 
   const navLinks = [
     { name: "Services", href: "/services" },
@@ -27,11 +42,11 @@ export default function Header() {
         </div>
         <div className="flex items-center space-x-4">
           <a
-            href="tel:+918668412375"
+            href={phoneTel}
             className="hover:text-[#A96F43] transition-colors flex items-center gap-1"
           >
             <Phone className="w-3 h-3 text-[#A96F43]" />
-            <span>+91 86684 12375</span>
+            <span>{phoneDisplay}</span>
           </a>
         </div>
       </div>

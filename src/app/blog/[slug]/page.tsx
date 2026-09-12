@@ -91,10 +91,25 @@ export default async function BlogDetailPage({
       </div>
 
       {/* Content paragraphs */}
-      <div className="prose max-w-none text-[#202522] space-y-6 text-base leading-relaxed font-sans">
-        {contentParagraphs.map((paragraph, idx) => (
-          <p key={idx}>{paragraph}</p>
-        ))}
+      <div className="prose max-w-none text-[#202522] space-y-4 text-base leading-relaxed font-sans">
+        {contentParagraphs.map((paragraph, idx) => {
+          if (paragraph.startsWith("# ")) {
+            return <h1 key={idx} className="font-serif text-3xl font-bold text-[#18352D] mt-8 mb-3">{paragraph.slice(2)}</h1>;
+          }
+          if (paragraph.startsWith("## ")) {
+            return <h2 key={idx} className="font-serif text-2xl font-semibold text-[#18352D] mt-6 mb-3">{paragraph.slice(3)}</h2>;
+          }
+          if (paragraph.startsWith("### ")) {
+            return <h3 key={idx} className="font-serif text-xl font-semibold text-[#18352D] mt-4 mb-2">{paragraph.slice(4)}</h3>;
+          }
+          if (paragraph.startsWith("> ")) {
+            return <blockquote key={idx} className="border-l-4 border-[#A96F43] pl-4 py-2 italic text-stone-600 bg-stone-50 my-4">{paragraph.slice(2)}</blockquote>;
+          }
+          if (paragraph.startsWith("- ")) {
+            return <li key={idx} className="ml-6 list-disc text-stone-700 font-sans my-1">{paragraph.slice(2)}</li>;
+          }
+          return <p key={idx} className="text-[#202522] leading-relaxed text-base">{paragraph}</p>;
+        })}
       </div>
 
       {/* Related articles */}
