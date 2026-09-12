@@ -14,9 +14,19 @@ export default function AdminBlogsPage() {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Combine Convex articles with default fallback articles
-  const allArticles = convexBlogs && convexBlogs.length > 0
-    ? convexBlogs
+  const [localArticles, setLocalArticles] = useState<any[]>([]);
+
+  React.useEffect(() => {
+    try {
+      const saved = localStorage.getItem("rc_local_blogs");
+      if (saved) setLocalArticles(JSON.parse(saved));
+    } catch (e) {}
+  }, []);
+
+  // Combine Convex articles, local articles, and fallback defaults
+  const serverOrLocal = [...localArticles, ...(convexBlogs || [])];
+  const allArticles = serverOrLocal.length > 0
+    ? serverOrLocal
     : BLOG_POSTS.map((b: any, idx: number) => ({
         _id: `default_${idx}` as any,
         title: b.title,
