@@ -14,9 +14,19 @@ export default function AdminBlogsPage() {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Combine Convex articles with default fallback articles
-  const allArticles = convexBlogs && convexBlogs.length > 0
-    ? convexBlogs
+  const [localArticles, setLocalArticles] = useState<any[]>([]);
+
+  React.useEffect(() => {
+    try {
+      const saved = localStorage.getItem("rc_local_blogs");
+      if (saved) setLocalArticles(JSON.parse(saved));
+    } catch (e) {}
+  }, []);
+
+  // Combine Convex articles, local articles, and fallback defaults
+  const serverOrLocal = [...localArticles, ...(convexBlogs || [])];
+  const allArticles = serverOrLocal.length > 0
+    ? serverOrLocal
     : BLOG_POSTS.map((b: any, idx: number) => ({
         _id: `default_${idx}` as any,
         title: b.title,
@@ -37,12 +47,23 @@ export default function AdminBlogsPage() {
       alert("Default sample articles are read-only. Create a new article to manage dynamic posts!");
       return;
     }
+
     if (confirm("Are you sure you want to delete this blog post?")) {
+      // Instantly remove from local state & localStorage if local post
+      if (typeof id === "string" && id.startsWith("local_")) {
+        const updatedLocal = localArticles.filter((a) => a._id !== id);
+        setLocalArticles(updatedLocal);
+        localStorage.setItem("rc_local_blogs", JSON.stringify(updatedLocal));
+        return;
+      }
+
+      // Try server delete, with local UI removal fallback
       try {
         await deleteMutation({ id });
       } catch (err) {
-        console.error("Failed to delete post:", err);
+        console.warn("Server delete failed, updating UI locally:", err);
       }
+      setLocalArticles((prev) => prev.filter((a) => a._id !== id));
     }
   };
 
@@ -51,10 +72,20 @@ export default function AdminBlogsPage() {
       alert("Default sample articles are read-only. Create a new article to manage dynamic posts!");
       return;
     }
+
+    if (typeof id === "string" && id.startsWith("local_")) {
+      const updatedLocal = localArticles.map((a) =>
+        a._id === id ? { ...a, published: !currentStatus } : a
+      );
+      setLocalArticles(updatedLocal);
+      localStorage.setItem("rc_local_blogs", JSON.stringify(updatedLocal));
+      return;
+    }
+
     try {
       await togglePublishMutation({ id, published: !currentStatus });
     } catch (err) {
-      console.error("Failed to toggle publish status:", err);
+      console.warn("Failed to toggle publish status on server:", err);
     }
   };
 
