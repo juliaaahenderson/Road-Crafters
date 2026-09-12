@@ -1,0 +1,69 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import { ArrowRight, BookOpen } from "lucide-react";
+import SectionHeading from "@/components/SectionHeading";
+import BlogCard from "@/components/BlogCard";
+import { BLOG_POSTS } from "@/data/content";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
+
+export default function LatestArticlesSection() {
+  const convexBlogs = useQuery(api.blogs.listPublished);
+
+  // Map Convex posts
+  const dynamicConvexPosts = (convexBlogs || []).map((post: any) => {
+    const cleanSlug = (post.slug || "").replace(/^\/blog\//, "").replace(/^\/+/, "");
+    return {
+      id: post._id,
+      slug: cleanSlug,
+      title: post.title,
+      excerpt: post.excerpt,
+      category: post.keywords?.split(",")[0]?.trim() || "Technical Guide",
+      publishedAt: new Date(post.publishedAt).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      }),
+      readTime: `${Math.max(3, Math.ceil((post.content || "").length / 500))} min read`,
+      heroImage: post.coverImageUrl || "/hero_bike_workshop.png",
+      author: {
+        name: post.author || "RoadCrafters Master Technician",
+        role: "Technical Advisor",
+        avatar: "/media__1788797887061.png",
+      },
+      content: post.content,
+    };
+  });
+
+  const convexSlugs = new Set(dynamicConvexPosts.map((p) => p.slug));
+  const fallbackPosts = BLOG_POSTS.filter((p) => !convexSlugs.has(p.slug));
+  const displayArticles = [...dynamicConvexPosts, ...fallbackPosts].slice(0, 3);
+
+  return (
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="TECHNICAL JOURNAL & GUIDES"
+        title="Rider Maintenance & Diagnostic Articles."
+        subtitle="Insights from our master mechanics on synthetic oils, OBD diagnostics, chain synchronization, and suspension care."
+      />
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {displayArticles.map((post: any) => (
+          <BlogCard key={post.id || post.slug} post={post as any} />
+        ))}
+      </div>
+
+      <div className="mt-10 text-center">
+        <Link
+          href="/blog"
+          className="inline-flex items-center text-xs font-semibold uppercase tracking-widest text-[#17352D] hover:text-[#A96F43] border-b border-[#17352D] pb-1 transition-colors"
+        >
+          <span>Explore All Motorcycle Technical Guides</span>
+          <ArrowRight className="w-4 h-4 ml-2 text-[#A96F43]" />
+        </Link>
+      </div>
+    </section>
+  );
+}

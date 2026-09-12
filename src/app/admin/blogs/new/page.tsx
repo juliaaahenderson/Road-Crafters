@@ -61,9 +61,16 @@ export default function NewBlogPostPage() {
         storageId = uploadedId;
       }
 
+      const cleanSlug = (form.slug || "article-" + Date.now())
+        .replace(/^\/blog\//, "")
+        .replace(/^\/+/, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9-]+/g, "-")
+        .replace(/(^-|-$)/g, "");
+
       await createBlogMutation({
         title: form.title,
-        slug: form.slug || "article-" + Date.now(),
+        slug: cleanSlug,
         excerpt: form.excerpt,
         content: form.content,
         author: form.author,

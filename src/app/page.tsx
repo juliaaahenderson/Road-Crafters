@@ -5,6 +5,7 @@ import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import FAQAccordion from "@/components/FAQAccordion";
 import ReviewsSection from "@/components/ReviewsSection";
+import LatestArticlesSection from "@/components/LatestArticlesSection";
 import { SERVICES_DATA, PACKAGES_DATA, FAQ_DATA, classNamesImages } from "@/data/content";
 
 export default function HomePage() {
@@ -409,7 +410,10 @@ export default function HomePage() {
       {/* 8. CUSTOMER REVIEWS */}
       <ReviewsSection />
 
-      {/* 9. FAQ PREVIEW */}
+      {/* 9. TECHNICAL JOURNAL / BLOG */}
+      <LatestArticlesSection />
+
+      {/* 10. FAQ PREVIEW */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="RIDER QUESTIONS"

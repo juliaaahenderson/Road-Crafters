@@ -66,10 +66,17 @@ function EditBlogPostForm() {
         storageId = uploadedId;
       }
 
+      const cleanSlug = (form.slug || "")
+        .replace(/^\/blog\//, "")
+        .replace(/^\/+/, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9-]+/g, "-")
+        .replace(/(^-|-$)/g, "");
+
       await updateBlogMutation({
         id: id as any,
         title: form.title,
-        slug: form.slug,
+        slug: cleanSlug,
         excerpt: form.excerpt,
         content: form.content,
         author: form.author,

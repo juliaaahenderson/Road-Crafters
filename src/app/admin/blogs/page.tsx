@@ -107,58 +107,60 @@ export default function AdminBlogsPage() {
             </tr>
           </thead>
           <tbody className="divide-y divide-[#E2DDD5]">
-            {filteredArticles.map((article: any) => (
-              <tr key={article._id} className="hover:bg-stone-50 transition-colors">
-                <td className="py-3.5 px-4 font-medium text-[#17352D] max-w-xs truncate">
-                  {article.title}
-                </td>
-                <td className="py-3.5 px-4 text-stone-500 font-mono text-[11px]">
-                  /blog/{article.slug}
-                </td>
-                <td className="py-3.5 px-4 text-stone-600">
-                  {article.author}
-                </td>
-                <td className="py-3.5 px-4">
-                  <button
-                    onClick={() => handleTogglePublish(article._id, article.published)}
-                    className={`inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${
-                      article.published
-                        ? "bg-emerald-100 text-emerald-800"
-                        : "bg-amber-100 text-amber-800"
-                    }`}
-                  >
-                    {article.published ? (
-                      <>
-                        <CheckCircle className="w-3 h-3 text-emerald-600" />
-                        <span>Published</span>
-                      </>
-                    ) : (
-                      <>
-                        <Clock className="w-3 h-3 text-amber-600" />
-                        <span>Draft</span>
-                      </>
-                    )}
-                  </button>
-                </td>
-                <td className="py-3.5 px-4 text-stone-500">
-                  {new Date(article.publishedAt).toLocaleDateString()}
-                </td>
-                <td className="py-3.5 px-4 text-right space-x-2">
-                  <Link
-                    href={`/blog/${article.slug}`}
-                    target="_blank"
-                    className="inline-p-1 text-stone-500 hover:text-[#17352D] transition-colors"
-                    title="View Live"
-                  >
-                    <Eye className="w-4 h-4 inline" />
-                  </Link>
-                  <Link
-                    href={`/admin/blogs/edit?id=${article._id}`}
-                    className="inline-p-1 text-stone-500 hover:text-[#A96F43] transition-colors"
-                    title="Edit Post"
-                  >
-                    <Edit className="w-4 h-4 inline" />
-                  </Link>
+            {filteredArticles.map((article: any) => {
+              const displaySlug = (article.slug || "").replace(/^\/blog\//, "").replace(/^\/+/, "");
+              return (
+                <tr key={article._id} className="hover:bg-stone-50 transition-colors">
+                  <td className="py-3.5 px-4 font-medium text-[#17352D] max-w-xs truncate">
+                    {article.title}
+                  </td>
+                  <td className="py-3.5 px-4 text-stone-500 font-mono text-[11px]">
+                    /blog/{displaySlug}
+                  </td>
+                  <td className="py-3.5 px-4 text-stone-600">
+                    {article.author}
+                  </td>
+                  <td className="py-3.5 px-4">
+                    <button
+                      onClick={() => handleTogglePublish(article._id, article.published)}
+                      className={`inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${
+                        article.published
+                          ? "bg-emerald-100 text-emerald-800"
+                          : "bg-amber-100 text-amber-800"
+                      }`}
+                    >
+                      {article.published ? (
+                        <>
+                          <CheckCircle className="w-3 h-3 text-emerald-600" />
+                          <span>Published</span>
+                        </>
+                      ) : (
+                        <>
+                          <Clock className="w-3 h-3 text-amber-600" />
+                          <span>Draft</span>
+                        </>
+                      )}
+                    </button>
+                  </td>
+                  <td className="py-3.5 px-4 text-stone-500">
+                    {new Date(article.publishedAt).toLocaleDateString()}
+                  </td>
+                  <td className="py-3.5 px-4 text-right space-x-2">
+                    <Link
+                      href={`/blog/${displaySlug}`}
+                      target="_blank"
+                      className="inline-p-1 text-stone-500 hover:text-[#17352D] transition-colors"
+                      title="View Live"
+                    >
+                      <Eye className="w-4 h-4 inline" />
+                    </Link>
+                    <Link
+                      href={`/admin/blogs/edit?id=${article._id}`}
+                      className="inline-p-1 text-stone-500 hover:text-[#A96F43] transition-colors"
+                      title="Edit Post"
+                    >
+                      <Edit className="w-4 h-4 inline" />
+                    </Link>
                   <button
                     onClick={() => handleDelete(article._id)}
                     className="inline-p-1 text-stone-400 hover:text-red-600 transition-colors"
@@ -168,8 +170,9 @@ export default function AdminBlogsPage() {
                   </button>
                 </td>
               </tr>
-            ))}
-          </tbody>
+            );
+          })}
+        </tbody>
         </table>
       </div>
     </div>
