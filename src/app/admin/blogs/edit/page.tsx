@@ -96,19 +96,17 @@ function EditBlogPostForm() {
       } catch (e) {}
     }
 
-<<<<<<< HEAD
-      const cleanSlug = (form.slug || "")
-        .replace(/^\/blog\//, "")
-        .replace(/^\/+/, "")
-        .toLowerCase()
-        .replace(/[^a-z0-9-]+/g, "-")
-        .replace(/(^-|-$)/g, "");
+    const cleanSlug = (form.slug || "")
+      .replace(/^\/blog\//, "")
+      .replace(/^\/+/, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9-]+/g, "-")
+      .replace(/(^-|-$)/g, "");
 
-=======
     const updatedPost = {
       _id: id,
       title: form.title,
-      slug: form.slug,
+      slug: cleanSlug,
       excerpt: form.excerpt,
       content: form.content,
       author: form.author,
@@ -131,7 +129,6 @@ function EditBlogPostForm() {
     }
 
     try {
->>>>>>> 5738d8d35c94b79adb86da2960848ed39f7ddb2d
       await updateBlogMutation({
         id: id as any,
         title: form.title,

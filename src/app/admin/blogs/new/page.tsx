@@ -56,45 +56,20 @@ export default function NewBlogPostPage() {
           reader.onloadend = () => resolve(reader.result as string);
           reader.readAsDataURL(selectedFile);
         });
-<<<<<<< HEAD
-        const { storageId: uploadedId } = await uploadResult.json();
-        storageId = uploadedId;
-      }
-
-      const cleanSlug = (form.slug || "article-" + Date.now())
-        .replace(/^\/blog\//, "")
-        .replace(/^\/+/, "")
-        .toLowerCase()
-        .replace(/[^a-z0-9-]+/g, "-")
-        .replace(/(^-|-$)/g, "");
-
-      await createBlogMutation({
-        title: form.title,
-        slug: cleanSlug,
-        excerpt: form.excerpt,
-        content: form.content,
-        author: form.author,
-        published: form.published,
-        coverImageStorageId: storageId,
-        metaTitle: form.metaTitle || form.title,
-        metaDescription: form.metaDescription || form.excerpt,
-        keywords: form.keywords,
-      });
-
-      router.push("/admin/blogs");
-    } catch (err) {
-      console.error("Error creating blog post:", err);
-      alert("Failed to save post. Please check Convex connection.");
-      setSubmitting(false);
-=======
       } catch (e) {}
->>>>>>> 5738d8d35c94b79adb86da2960848ed39f7ddb2d
     }
+
+    const cleanSlug = (form.slug || "article-" + Date.now())
+      .replace(/^\/blog\//, "")
+      .replace(/^\/+/, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9-]+/g, "-")
+      .replace(/(^-|-$)/g, "");
 
     const localPost = {
       _id: `local_${Date.now()}`,
       title: form.title,
-      slug: form.slug || "article-" + Date.now(),
+      slug: cleanSlug,
       excerpt: form.excerpt,
       content: form.content,
       author: form.author,
@@ -115,7 +90,7 @@ export default function NewBlogPostPage() {
     // Async attempt to sync to Convex in background without blocking UI
     createBlogMutation({
       title: form.title,
-      slug: form.slug || "article-" + Date.now(),
+      slug: cleanSlug,
       excerpt: form.excerpt,
       content: form.content,
       author: form.author,
