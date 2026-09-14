@@ -1,16 +1,31 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import { SERVICES_DATA } from "@/data/content";
-
-export const metadata = {
-  title: "Motorcycle Services | RoadCrafters Garage (रोडक्राफ्टर्स गैरेज)",
-  description:
-    "Explore our complete range of specialized motorcycle care including engine OBD diagnostics, periodic servicing, brake caliper overhaul, chain alignment, and detailing.",
-};
+import { useQuery } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
 export default function ServicesPage() {
+  const dbServices = useQuery(api.content.getByKey, { key: "services" });
+
+  let displayServices = SERVICES_DATA;
+  if (dbServices?.value) {
+    try {
+      const parsed = JSON.parse(dbServices.value);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        displayServices = parsed.map((srv: any, idx: number) => ({
+          ...SERVICES_DATA[idx % SERVICES_DATA.length],
+          ...srv,
+          title: srv.title || srv.name,
+          shortDesc: srv.shortDesc || srv.description || "",
+        }));
+      }
+    } catch (e) {}
+  }
+
   return (
     <div className="py-12 space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
@@ -25,8 +40,8 @@ export default function ServicesPage() {
 
       {/* Services Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {SERVICES_DATA.map((service) => (
-          <ServiceCard key={service.id} service={service} />
+        {displayServices.map((service: any) => (
+          <ServiceCard key={service.id || service.title} service={service} />
         ))}
       </div>
 

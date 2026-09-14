@@ -1,10 +1,6 @@
 import React from "react";
 import { BLOG_POSTS } from "@/data/content";
-<<<<<<< HEAD
 import BlogDetailClient from "@/components/BlogDetailClient";
-=======
-import { BlogDetailContent } from "@/components/BlogDetailContent";
->>>>>>> c438d9477d835e0b3bc5298c36d2e7a688a9ecd2
 
 export async function generateStaticParams() {
   return BLOG_POSTS.map((post) => ({
@@ -40,9 +36,5 @@ export default async function BlogDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-<<<<<<< HEAD
   return <BlogDetailClient slug={slug} />;
-=======
-  return <BlogDetailContent slug={slug} />;
->>>>>>> c438d9477d835e0b3bc5298c36d2e7a688a9ecd2
 }

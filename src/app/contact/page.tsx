@@ -3,8 +3,32 @@
 import React, { useState } from "react";
 import { Phone, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { classNamesImages } from "@/data/content";
+import { useQuery } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
 export default function ContactPage() {
+  const dbBusiness = useQuery(api.content.getByKey, { key: "businessDetails" });
+
+  let name = "RoadCrafters Garage (रोडक्राफ्टर्स गैरेज)";
+  let phone = "+91 86684 12375";
+  let whatsapp = "+918668412375";
+  let hours = "Open — Closes at 10:00 PM";
+  let address = "Shop - 9, Alcon Regency, Village Panchayat, near Nexa Showroom, Defence Colony, Aradi Socorro, Porvorim, Goa 403521, India";
+
+  if (dbBusiness?.value) {
+    try {
+      const parsed = JSON.parse(dbBusiness.value);
+      if (parsed.name) name = parsed.name;
+      if (parsed.phone) phone = parsed.phone;
+      if (parsed.whatsapp) whatsapp = parsed.whatsapp;
+      if (parsed.hours) hours = parsed.hours;
+      if (parsed.address) address = parsed.address;
+    } catch (e) {}
+  }
+
+  const cleanPhone = phone.replace(/[^0-9+]/g, "");
+  const cleanWa = whatsapp.replace(/[^0-9]/g, "");
+
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -17,7 +41,7 @@ export default function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const text = `Hello RoadCrafters Garage! 🛠️
+    const text = `Hello ${name}! 🛠️
 I have a technical inquiry from your website:
 
 • Name: ${formData.name}
@@ -28,7 +52,7 @@ I have a technical inquiry from your website:
 
 Please get back to me. Thank you!`;
 
-    const waUrl = `https://wa.me/918668412375?text=${encodeURIComponent(text)}`;
+    const waUrl = `https://wa.me/${cleanWa}?text=${encodeURIComponent(text)}`;
     window.open(waUrl, "_blank");
     setSubmitted(true);
   };
@@ -57,7 +81,7 @@ Please get back to me. Thank you!`;
                 Message Sent Successfully
               </h3>
               <p className="text-xs text-[#6E706B] max-w-md mx-auto">
-                Thank you for contacting RoadCrafters Garage (रोडक्राफ्टर्स गैरेज). A technical advisor will respond to your inquiry within two business hours.
+                Thank you for contacting {name}. A technical advisor will respond to your inquiry within two business hours.
               </p>
               <button
                 onClick={() => setSubmitted(false)}
@@ -108,7 +132,7 @@ Please get back to me. Thank you!`;
                   </label>
                   <input
                     type="tel"
-                    placeholder="+91 86684 12375"
+                    placeholder={phone}
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-4 py-2.5 bg-white border border-[#E2DDD5] text-sm text-[#202522] focus:outline-none focus:border-[#B47A4A]"
@@ -164,11 +188,10 @@ Please get back to me. Thank you!`;
               <div className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-[#B47A4A] flex-shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-semibold text-white block">RoadCrafters Garage (रोडक्राफ्टर्स गैरेज)</span>
-                  <p>Shop - 9, Alcon Regency, Village Panchayat, near Nexa Showroom, Defence Colony, Aradi Socorro, Porvorim, Goa 403521, India</p>
-                  <p className="text-[#B47A4A] text-[11px] mt-1 font-mono">Plus Code: GRQF+35 Aradi Socorro, Goa, India</p>
+                  <span className="font-semibold text-white block">{name}</span>
+                  <p>{address}</p>
                   <a
-                    href={`https://maps.google.com/?q=${encodeURIComponent("RoadCrafters Garage, Shop - 9, Alcon Regency, Village Panchayat, near Nexa Showroom, Defence Colony, Aradi Socorro, Porvorim, Goa 403521, India")}`}
+                    href={`https://maps.google.com/?q=${encodeURIComponent(address)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block mt-2 text-xs font-semibold text-[#B47A4A] hover:underline"
@@ -182,7 +205,7 @@ Please get back to me. Thank you!`;
                 <Phone className="w-4 h-4 text-[#B47A4A] flex-shrink-0 mt-0.5" />
                 <div>
                   <span className="font-semibold text-white block">Phone Hotline</span>
-                  <a href="tel:+918668412375" className="hover:text-[#B47A4A] font-semibold text-stone-200">+91 86684 12375</a>
+                  <a href={`tel:${cleanPhone}`} className="hover:text-[#B47A4A] font-semibold text-stone-200">{phone}</a>
                 </div>
               </div>
 
@@ -190,7 +213,7 @@ Please get back to me. Thank you!`;
                 <span className="w-4 h-4 text-center font-bold text-[10px] bg-emerald-500 text-black rounded-full flex items-center justify-center mt-0.5">W</span>
                 <div>
                   <span className="font-semibold text-white block">WhatsApp Contact</span>
-                  <a href="https://wa.me/918668412375" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline font-semibold">+91 86684 12375</a>
+                  <a href={`https://wa.me/${cleanWa}`} target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline font-semibold">{phone}</a>
                 </div>
               </div>
 
@@ -205,7 +228,7 @@ Please get back to me. Thank you!`;
               <div className="pt-4 border-t border-[#2B463D] space-y-2 text-xs">
                 <p><strong className="text-white">Business Category:</strong> Motorcycle Repair Shop</p>
                 <p><strong className="text-white">Rating:</strong> <span className="text-[#B47A4A] font-bold">5.0 ★</span> (55 reviews)</p>
-                <p><strong className="text-white">Business Hours:</strong> <span className="text-emerald-400">Open — Closes at 10:00 PM</span></p>
+                <p><strong className="text-white">Business Hours:</strong> <span className="text-emerald-400">{hours}</span></p>
                 <p><strong className="text-white">Features:</strong> LGBTQ+ friendly</p>
               </div>
             </div>
