@@ -1,9 +1,33 @@
+"use client";
+
 import React from "react";
-import { Star, MessageSquareQuote, CheckCircle, MapPin } from "lucide-react";
+import { Star, CheckCircle, MapPin } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import { REVIEWS_DATA } from "@/data/content";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
 
 export default function ReviewsSection() {
+  const dbReviews = useQuery(api.content.getByKey, { key: "reviews" });
+
+  let displayReviews = REVIEWS_DATA;
+  if (dbReviews?.value) {
+    try {
+      const parsed = JSON.parse(dbReviews.value);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        displayReviews = parsed.map((r: any, idx: number) => ({
+          id: r.id || `convex_rev_${idx}`,
+          author: r.author || r.name || "Satisfied Rider",
+          badge: r.badge || r.vehicle || "Verified Review",
+          date: r.date || "Recently",
+          rating: r.rating || 5,
+          comment: r.comment || r.text || "",
+          ownerResponse: r.ownerResponse,
+        }));
+      }
+    } catch (e) {}
+  }
+
   return (
     <section className="bg-[#FAF8F3] border-y border-[#D8D1C5] py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -28,7 +52,7 @@ export default function ReviewsSection() {
               </div>
             </div>
             <div className="border-l border-[#23443A] pl-4 text-xs">
-              <span className="font-semibold text-white block">55+ Google Reviews</span>
+              <span className="font-semibold text-white block">{displayReviews.length}+ Google Reviews</span>
               <span className="text-stone-300 text-[11px]">Top-Rated Repair Shop in Porvorim</span>
             </div>
           </div>
@@ -36,7 +60,7 @@ export default function ReviewsSection() {
 
         {/* Reviews Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {REVIEWS_DATA.map((review) => (
+          {displayReviews.map((review: any) => (
             <div
               key={review.id}
               className="bg-white border border-[#D8D1C5] p-6 flex flex-col justify-between hover:border-[#A96F43] transition-all shadow-sm group"
@@ -58,7 +82,7 @@ export default function ReviewsSection() {
                     </div>
                   </div>
                   <div className="flex items-center text-[#A96F43]">
-                    {[...Array(review.rating)].map((_, i) => (
+                    {[...Array(review.rating || 5)].map((_, i) => (
                       <Star key={i} className="w-3.5 h-3.5 fill-[#A96F43] text-[#A96F43]" />
                     ))}
                   </div>

@@ -3,9 +3,22 @@
 import React, { useState } from "react";
 import { FAQItem } from "@/data/content";
 import { ChevronDown } from "lucide-react";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
 
 export default function FAQAccordion({ items }: { items: FAQItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const dbFaqs = useQuery(api.content.getByKey, { key: "faqs" });
+
+  let displayItems = items;
+  if (dbFaqs?.value) {
+    try {
+      const parsed = JSON.parse(dbFaqs.value);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        displayItems = parsed;
+      }
+    } catch (e) {}
+  }
 
   const toggle = (idx: number) => {
     setOpenIndex(openIndex === idx ? null : idx);
@@ -13,7 +26,7 @@ export default function FAQAccordion({ items }: { items: FAQItem[] }) {
 
   return (
     <div className="space-y-4 max-w-4xl mx-auto">
-      {items.map((item, idx) => {
+      {displayItems.map((item, idx) => {
         const isOpen = openIndex === idx;
         return (
           <div

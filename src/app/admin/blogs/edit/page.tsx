@@ -14,6 +14,7 @@ function EditBlogPostForm() {
 
   const blogPostQuery = useQuery(api.blogs.getById, { id: (id as any) || ("" as any) });
   const updateBlogMutation = useMutation(api.blogs.update);
+  const createBlogMutation = useMutation(api.blogs.create);
   const generateUploadUrlMutation = useMutation(api.files.generateUploadUrl);
 
   const [activeTab, setActiveTab] = useState<"write" | "preview">("write");
@@ -96,19 +97,17 @@ function EditBlogPostForm() {
       } catch (e) {}
     }
 
-<<<<<<< HEAD
-      const cleanSlug = (form.slug || "")
-        .replace(/^\/blog\//, "")
-        .replace(/^\/+/, "")
-        .toLowerCase()
-        .replace(/[^a-z0-9-]+/g, "-")
-        .replace(/(^-|-$)/g, "");
+    const cleanSlug = (form.slug || "")
+      .replace(/^\/blog\//, "")
+      .replace(/^\/+/, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9-]+/g, "-")
+      .replace(/(^-|-$)/g, "");
 
-=======
     const updatedPost = {
       _id: id,
       title: form.title,
-      slug: form.slug,
+      slug: cleanSlug,
       excerpt: form.excerpt,
       content: form.content,
       author: form.author,
@@ -120,18 +119,38 @@ function EditBlogPostForm() {
       keywords: form.keywords,
     };
 
+    if (id.startsWith("default_")) {
+      try {
+        await createBlogMutation({
+          title: form.title,
+          slug: cleanSlug,
+          excerpt: form.excerpt,
+          content: form.content,
+          author: form.author,
+          published: form.published,
+          coverImageUrl: coverImageUrl || undefined,
+          metaTitle: form.metaTitle || form.title,
+          metaDescription: form.metaDescription || form.excerpt,
+          keywords: form.keywords,
+        });
+      } catch (e) {
+        console.error("Failed to save default article as Convex post:", e);
+      }
+      router.push("/admin/blogs");
+      return;
+    }
+
     if (id.startsWith("local_")) {
       try {
         const saved = JSON.parse(localStorage.getItem("rc_local_blogs") || "[]");
         const newSaved = saved.map((b: any) => (b._id === id ? updatedPost : b));
         localStorage.setItem("rc_local_blogs", JSON.stringify(newSaved));
       } catch (e) {}
-      window.location.href = "/admin/blogs";
+      router.push("/admin/blogs");
       return;
     }
 
     try {
->>>>>>> 5738d8d35c94b79adb86da2960848ed39f7ddb2d
       await updateBlogMutation({
         id: id as any,
         title: form.title,
@@ -145,7 +164,7 @@ function EditBlogPostForm() {
         metaDescription: form.metaDescription,
         keywords: form.keywords,
       });
-      window.location.href = "/admin/blogs";
+      router.push("/admin/blogs");
     } catch (err) {
       console.warn("Failed to update on server, saving locally:", err);
       try {
@@ -153,7 +172,7 @@ function EditBlogPostForm() {
         const newSaved = [updatedPost, ...saved.filter((b: any) => b._id !== id)];
         localStorage.setItem("rc_local_blogs", JSON.stringify(newSaved));
       } catch (e) {}
-      window.location.href = "/admin/blogs";
+      router.push("/admin/blogs");
     }
   };
 

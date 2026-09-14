@@ -23,19 +23,25 @@ export default function AdminBlogsPage() {
     } catch (e) {}
   }, []);
 
-  // Combine Convex articles, local articles, and fallback defaults
+  // Combine Convex articles, local articles, and fallback defaults (deduplicated by slug)
   const serverOrLocal = [...localArticles, ...(convexBlogs || [])];
-  const allArticles = serverOrLocal.length > 0
-    ? serverOrLocal
-    : BLOG_POSTS.map((b: any, idx: number) => ({
-        _id: `default_${idx}` as any,
-        title: b.title,
-        slug: b.slug,
-        excerpt: b.excerpt,
-        author: b.author?.name || "Master Technician",
-        published: true,
-        publishedAt: Date.parse(b.publishedAt) || Date.now(),
-      }));
+  const existingSlugs = new Set(serverOrLocal.map((b: any) => (b.slug || "").replace(/^\/blog\//, "").replace(/^\/+/, "")));
+  
+  const defaultArticles = BLOG_POSTS.filter((b: any) => {
+    const cleanS = (b.slug || "").replace(/^\/blog\//, "").replace(/^\/+/, "");
+    return !existingSlugs.has(cleanS);
+  }).map((b: any, idx: number) => ({
+    _id: `default_${idx}` as any,
+    title: b.title,
+    slug: (b.slug || "").replace(/^\/blog\//, "").replace(/^\/+/, ""),
+    excerpt: b.excerpt,
+    author: b.author?.name || "RoadCrafters Master Technician",
+    published: true,
+    publishedAt: Date.parse(b.publishedAt) || Date.now(),
+    isDefault: true,
+  }));
+
+  const allArticles = [...serverOrLocal, ...defaultArticles];
 
   const filteredArticles = allArticles.filter((article: any) =>
     article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

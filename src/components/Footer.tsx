@@ -1,8 +1,34 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
 
 export default function Footer() {
+  const dbBusiness = useQuery(api.content.getByKey, { key: "businessDetails" });
+
+  let name = "ROAD CRAFTERS";
+  let phone = "+91 86684 12375";
+  let whatsapp = "+918668412375";
+  let hours = "Mon – Sun: 08:00 AM – 10:00 PM";
+  let address = "Shop - 9, Alcon Regency, Village Panchayat, near Nexa Showroom, Defence Colony, Aradi Socorro, Porvorim, Goa 403521, India";
+
+  if (dbBusiness?.value) {
+    try {
+      const parsed = JSON.parse(dbBusiness.value);
+      if (parsed.name) name = parsed.name;
+      if (parsed.phone) phone = parsed.phone;
+      if (parsed.whatsapp) whatsapp = parsed.whatsapp;
+      if (parsed.hours) hours = parsed.hours;
+      if (parsed.address) address = parsed.address;
+    } catch (e) {}
+  }
+
+  const cleanPhone = phone.replace(/[^0-9+]/g, "");
+  const cleanWa = whatsapp.replace(/[^0-9]/g, "");
+
   return (
     <footer className="bg-[#17352D] text-[#FAF8F2] border-t border-[#23443A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
@@ -22,8 +48,8 @@ export default function Footer() {
                 <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-[#A96F43] border border-[#FAF8F2]" />
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-2xl font-bold tracking-tight text-white">
-                  ROAD CRAFTERS
+                <span className="font-serif text-2xl font-bold tracking-tight text-white uppercase">
+                  {name}
                 </span>
                 <span className="text-[10px] uppercase tracking-[0.28em] font-medium text-[#A96F43]">
                   MOTORCYCLE GARAGE & DIAGNOSTICS
@@ -35,29 +61,29 @@ export default function Footer() {
             </p>
             <div className="pt-2 text-xs text-stone-400 space-y-2">
               <a
-                href={`https://maps.google.com/?q=${encodeURIComponent("RoadCrafters Garage, Shop - 9, Alcon Regency, Village Panchayat, near Nexa Showroom, Defence Colony, Aradi Socorro, Porvorim, Goa 403521, India")}`}
+                href={`https://maps.google.com/?q=${encodeURIComponent(address)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-2 hover:text-[#A96F43] transition-colors"
               >
                 <MapPin className="w-3.5 h-3.5 text-[#A96F43] flex-shrink-0 mt-0.5" />
-                <span>Shop - 9, Alcon Regency, Village Panchayat, near Nexa Showroom, Defence Colony, Aradi Socorro, Porvorim, Goa 403521, India</span>
+                <span>{address}</span>
               </a>
               <a
-                href="tel:+918668412375"
+                href={`tel:${cleanPhone}`}
                 className="flex items-center gap-2 hover:text-[#A96F43] transition-colors"
               >
                 <Phone className="w-3.5 h-3.5 text-[#A96F43] flex-shrink-0" />
-                <span>+91 86684 12375</span>
+                <span>{phone}</span>
               </a>
               <a
-                href="https://wa.me/918668412375"
+                href={`https://wa.me/${cleanWa}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors font-medium"
               >
                 <span className="w-3.5 h-3.5 text-center font-bold text-[10px] bg-emerald-500 text-black rounded-full flex items-center justify-center">W</span>
-                <span>WhatsApp: +91 86684 12375</span>
+                <span>WhatsApp: {phone}</span>
               </a>
               <p className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#A96F43] flex-shrink-0" />
@@ -162,7 +188,7 @@ export default function Footer() {
               <div>
                 <p className="font-semibold text-white">Motorcycle Repair Shop</p>
                 <p className="text-[#A96F43] font-semibold mt-1">Open — Closes at 10:00 PM</p>
-                <p className="text-stone-400 mt-1">Mon – Sun: 08:00 AM – 10:00 PM</p>
+                <p className="text-stone-400 mt-1">{hours}</p>
               </div>
               <div className="pt-2">
                 <Link

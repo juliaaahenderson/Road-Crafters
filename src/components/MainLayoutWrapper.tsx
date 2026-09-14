@@ -4,6 +4,7 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import DynamicSeoHead from "@/components/DynamicSeoHead";
 
 export default function MainLayoutWrapper({
   children,
@@ -19,6 +20,7 @@ export default function MainLayoutWrapper({
 
   return (
     <>
+      <DynamicSeoHead />
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />

@@ -56,10 +56,7 @@ export default function NewBlogPostPage() {
           reader.onloadend = () => resolve(reader.result as string);
           reader.readAsDataURL(selectedFile);
         });
-<<<<<<< HEAD
-        const { storageId: uploadedId } = await uploadResult.json();
-        storageId = uploadedId;
-      }
+      } catch (e) {}
 
       const cleanSlug = (form.slug || "article-" + Date.now())
         .replace(/^\/blog\//, "")
@@ -68,33 +65,37 @@ export default function NewBlogPostPage() {
         .replace(/[^a-z0-9-]+/g, "-")
         .replace(/(^-|-$)/g, "");
 
-      await createBlogMutation({
-        title: form.title,
-        slug: cleanSlug,
-        excerpt: form.excerpt,
-        content: form.content,
-        author: form.author,
-        published: form.published,
-        coverImageStorageId: storageId,
-        metaTitle: form.metaTitle || form.title,
-        metaDescription: form.metaDescription || form.excerpt,
-        keywords: form.keywords,
-      });
-
-      router.push("/admin/blogs");
-    } catch (err) {
-      console.error("Error creating blog post:", err);
-      alert("Failed to save post. Please check Convex connection.");
-      setSubmitting(false);
-=======
-      } catch (e) {}
->>>>>>> 5738d8d35c94b79adb86da2960848ed39f7ddb2d
+      try {
+        await createBlogMutation({
+          title: form.title,
+          slug: cleanSlug,
+          excerpt: form.excerpt,
+          content: form.content,
+          author: form.author,
+          published: form.published,
+          coverImageUrl: coverImageUrl || undefined,
+          metaTitle: form.metaTitle || form.title,
+          metaDescription: form.metaDescription || form.excerpt,
+          keywords: form.keywords,
+        });
+        router.push("/admin/blogs");
+        return;
+      } catch (err) {
+        console.warn("Failed to create blog on server, saving locally:", err);
+      }
     }
+
+    const cleanSlug = (form.slug || "article-" + Date.now())
+      .replace(/^\/blog\//, "")
+      .replace(/^\/+/, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9-]+/g, "-")
+      .replace(/(^-|-$)/g, "");
 
     const localPost = {
       _id: `local_${Date.now()}`,
       title: form.title,
-      slug: form.slug || "article-" + Date.now(),
+      slug: cleanSlug,
       excerpt: form.excerpt,
       content: form.content,
       author: form.author,
