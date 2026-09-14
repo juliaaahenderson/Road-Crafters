@@ -57,6 +57,7 @@ export default function NewBlogPostPage() {
           reader.readAsDataURL(selectedFile);
         });
       } catch (e) {}
+<<<<<<< HEAD
 
       const cleanSlug = (form.slug || "article-" + Date.now())
         .replace(/^\/blog\//, "")
@@ -83,6 +84,8 @@ export default function NewBlogPostPage() {
       } catch (err) {
         console.warn("Failed to create blog on server, saving locally:", err);
       }
+=======
+>>>>>>> c438d9477d835e0b3bc5298c36d2e7a688a9ecd2
     }
 
     const cleanSlug = (form.slug || "article-" + Date.now())
@@ -116,7 +119,7 @@ export default function NewBlogPostPage() {
     // Async attempt to sync to Convex in background without blocking UI
     createBlogMutation({
       title: form.title,
-      slug: form.slug || "article-" + Date.now(),
+      slug: cleanSlug,
       excerpt: form.excerpt,
       content: form.content,
       author: form.author,
