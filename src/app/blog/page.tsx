@@ -26,17 +26,21 @@ export default function BlogIndexPage() {
   const dynamicConvexPosts = (convexBlogs || []).map((post: any) => {
     // Clean slug: remove any leading '/blog/' or slashes stored in database
     const cleanSlug = (post.slug || "").replace(/^\/blog\//, "").replace(/^\/+/, "");
+    const formattedDate = post.publishedAt
+      ? new Date(post.publishedAt).toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        })
+      : "Recently";
+
     return {
       id: post._id,
       slug: cleanSlug,
-      title: post.title,
-      excerpt: post.excerpt,
+      title: post.title || "Untitled Article",
+      excerpt: post.excerpt || "",
       category: post.keywords?.split(",")[0]?.trim() || "Technical Guide",
-      publishedAt: new Date(post.publishedAt).toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      }),
+      publishedAt: formattedDate,
       readTime: `${Math.max(3, Math.ceil((post.content || "").length / 500))} min read`,
       heroImage: post.coverImageUrl || "/hero_bike_workshop.png",
       author: {
@@ -44,7 +48,7 @@ export default function BlogIndexPage() {
         role: "Technical Advisor",
         avatar: "/media__1788797887061.png",
       },
-      content: post.content,
+      content: post.content || "",
       isConvex: true,
     };
   });
@@ -60,17 +64,22 @@ export default function BlogIndexPage() {
 
   // Filter posts by category & search query
   const filteredPosts = allPosts.filter((post) => {
+    const titleText = (post.title || "").toLowerCase();
+    const excerptText = (post.excerpt || "").toLowerCase();
+    const categoryText = (post.category || "").toLowerCase();
+    const searchLower = searchTerm.toLowerCase();
+
     const matchesSearch =
-      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (post.category && post.category.toLowerCase().includes(searchTerm.toLowerCase()));
+      titleText.includes(searchLower) ||
+      excerptText.includes(searchLower) ||
+      categoryText.includes(searchLower);
 
     const matchesCategory =
       selectedCategory === "All Articles" ||
-      (post.category && post.category.toLowerCase().includes(selectedCategory.toLowerCase())) ||
-      (selectedCategory === "Diagnostics & ECU" && (post.title.toLowerCase().includes("obd") || post.title.toLowerCase().includes("diagnostic"))) ||
-      (selectedCategory === "Engine & Synthetic Oil" && (post.title.toLowerCase().includes("oil") || post.title.toLowerCase().includes("engine"))) ||
-      (selectedCategory === "Chain & Suspension" && (post.title.toLowerCase().includes("chain") || post.title.toLowerCase().includes("suspension")));
+      categoryText.includes(selectedCategory.toLowerCase()) ||
+      (selectedCategory === "Diagnostics & ECU" && (titleText.includes("obd") || titleText.includes("diagnostic"))) ||
+      (selectedCategory === "Engine & Synthetic Oil" && (titleText.includes("oil") || titleText.includes("engine"))) ||
+      (selectedCategory === "Chain & Suspension" && (titleText.includes("chain") || titleText.includes("suspension")));
 
     return matchesSearch && matchesCategory;
   });

@@ -14,14 +14,43 @@ export default function AdminBlogsPage() {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  const createBlogMutation = useMutation(api.blogs.create);
   const [localArticles, setLocalArticles] = useState<any[]>([]);
 
   React.useEffect(() => {
     try {
       const saved = localStorage.getItem("rc_local_blogs");
-      if (saved) setLocalArticles(JSON.parse(saved));
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        setLocalArticles(parsed);
+
+        // Automatically sync unsaved local browser posts up to Convex database
+        if (parsed.length > 0) {
+          (async () => {
+            for (const item of parsed) {
+              const cleanSlug = (item.slug || "").replace(/^\/blog\//, "").replace(/^\/+/, "");
+              try {
+                await createBlogMutation({
+                  title: item.title,
+                  slug: cleanSlug,
+                  excerpt: item.excerpt || item.title || "",
+                  content: item.content || "",
+                  author: item.author || "RoadCrafters Master Technician",
+                  published: item.published ?? true,
+                  coverImageUrl: item.coverImageUrl,
+                  metaTitle: item.metaTitle || item.title,
+                  metaDescription: item.metaDescription || item.excerpt,
+                  keywords: item.keywords,
+                });
+              } catch (e) {}
+            }
+            localStorage.removeItem("rc_local_blogs");
+            setLocalArticles([]);
+          })();
+        }
+      }
     } catch (e) {}
-  }, []);
+  }, [createBlogMutation]);
 
   // Combine Convex articles, local articles, and fallback defaults (deduplicated by slug)
   const serverOrLocal = [...localArticles, ...(convexBlogs || [])];

@@ -48,7 +48,7 @@ export default function NewBlogPostPage() {
 
     let coverImageUrl = "";
 
-    // Convert file to local base64 URL instantly if an image was selected
+    // Convert file to local base64 URL if an image was selected
     if (selectedFile) {
       try {
         coverImageUrl = await new Promise((resolve) => {
@@ -57,31 +57,6 @@ export default function NewBlogPostPage() {
           reader.readAsDataURL(selectedFile);
         });
       } catch (e) {}
-      const cleanSlug = (form.slug || "article-" + Date.now())
-        .replace(/^\/blog\//, "")
-        .replace(/^\/+/, "")
-        .toLowerCase()
-        .replace(/[^a-z0-9-]+/g, "-")
-        .replace(/(^-|-$)/g, "");
-
-      try {
-        await createBlogMutation({
-          title: form.title,
-          slug: cleanSlug,
-          excerpt: form.excerpt,
-          content: form.content,
-          author: form.author,
-          published: form.published,
-          coverImageUrl: coverImageUrl || undefined,
-          metaTitle: form.metaTitle || form.title,
-          metaDescription: form.metaDescription || form.excerpt,
-          keywords: form.keywords,
-        });
-        router.push("/admin/blogs");
-        return;
-      } catch (err) {
-        console.warn("Failed to create blog on server, saving locally:", err);
-      }
     }
 
     const cleanSlug = (form.slug || "article-" + Date.now())
@@ -91,41 +66,34 @@ export default function NewBlogPostPage() {
       .replace(/[^a-z0-9-]+/g, "-")
       .replace(/(^-|-$)/g, "");
 
-    const localPost = {
-      _id: `local_${Date.now()}`,
-      title: form.title,
-      slug: cleanSlug,
-      excerpt: form.excerpt,
-      content: form.content,
-      author: form.author,
-      published: form.published,
-      publishedAt: Date.now(),
-      coverImageUrl: coverImageUrl || undefined,
-      metaTitle: form.metaTitle || form.title,
-      metaDescription: form.metaDescription || form.excerpt,
-      keywords: form.keywords,
-    };
-
-    // Save locally instantly so user navigation is immediate (< 50ms)
     try {
-      const existing = JSON.parse(localStorage.getItem("rc_local_blogs") || "[]");
-      localStorage.setItem("rc_local_blogs", JSON.stringify([localPost, ...existing]));
-    } catch (e) {}
+      await createBlogMutation({
+        title: form.title,
+        slug: cleanSlug,
+        excerpt: form.excerpt,
+        content: form.content,
+        author: form.author || "RoadCrafters Master Technician",
+        published: form.published,
+        coverImageUrl: coverImageUrl || undefined,
+        metaTitle: form.metaTitle || form.title,
+        metaDescription: form.metaDescription || form.excerpt,
+        keywords: form.keywords,
+      });
 
-    // Async attempt to sync to Convex in background without blocking UI
-    createBlogMutation({
-      title: form.title,
-      slug: cleanSlug,
-      excerpt: form.excerpt,
-      content: form.content,
-      author: form.author,
-      published: form.published,
-      metaTitle: form.metaTitle || form.title,
-      metaDescription: form.metaDescription || form.excerpt,
-      keywords: form.keywords,
-    }).catch(() => {});
+      // Clear local backup if present
+      try {
+        const saved = JSON.parse(localStorage.getItem("rc_local_blogs") || "[]");
+        const filtered = saved.filter((b: any) => b.slug !== cleanSlug);
+        localStorage.setItem("rc_local_blogs", JSON.stringify(filtered));
+      } catch (e) {}
 
-    window.location.href = "/admin/blogs";
+      router.push("/admin/blogs");
+    } catch (err) {
+      console.error("Failed to save blog post to Convex:", err);
+      alert("Error saving blog post to database. Please check your internet connection.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (

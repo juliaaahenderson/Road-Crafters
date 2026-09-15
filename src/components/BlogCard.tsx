@@ -4,36 +4,45 @@ import { ArrowRight, Clock } from "lucide-react";
 import { BlogPost } from "@/data/content";
 
 export default function BlogCard({ post }: { post: BlogPost }) {
+  const heroImage = post.heroImage || "/hero_bike_workshop.png";
+  const category = post.category || "Technical Guide";
+  const publishedAt = post.publishedAt || "Recently";
+  const readTime = post.readTime || "3 min read";
+  const title = post.title || "Untitled Article";
+  const excerpt = post.excerpt || "";
+  const authorName = post.author?.name || "RoadCrafters Master Technician";
+  const authorAvatar = post.author?.avatar || "/media__1788797887061.png";
+
   return (
     <article className="bg-[#FAF8F3] border border-[#E2DDD5] group hover:border-[#B47A4A] transition-all flex flex-col justify-between overflow-hidden">
       <div>
         <div className="relative h-52 w-full overflow-hidden bg-stone-200">
           <img
-            src={post.heroImage}
-            alt={post.title}
+            src={heroImage}
+            alt={title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute top-3 left-3 bg-[#18352D] text-[#FAF8F3] text-[10px] uppercase font-semibold tracking-widest px-2.5 py-1">
-            {post.category}
+            {category}
           </div>
         </div>
 
         <div className="p-6">
           <div className="flex items-center text-xs text-[#6E706B] space-x-3 mb-3">
-            <span>{post.publishedAt}</span>
+            <span>{publishedAt}</span>
             <span>•</span>
             <span className="flex items-center gap-1">
               <Clock className="w-3 h-3 text-[#B47A4A]" />
-              {post.readTime}
+              {readTime}
             </span>
           </div>
 
           <h3 className="font-serif text-xl font-semibold text-[#18352D] group-hover:text-[#B47A4A] transition-colors leading-snug mb-3">
-            {post.title}
+            {title}
           </h3>
 
           <p className="text-sm text-[#6E706B] leading-relaxed line-clamp-3 mb-4">
-            {post.excerpt}
+            {excerpt}
           </p>
         </div>
       </div>
@@ -41,11 +50,11 @@ export default function BlogCard({ post }: { post: BlogPost }) {
       <div className="px-6 pb-6 pt-0 border-t border-[#E2DDD5]/50 flex items-center justify-between mt-auto">
         <div className="flex items-center space-x-2">
           <img
-            src={post.author.avatar}
-            alt={post.author.name}
+            src={authorAvatar}
+            alt={authorName}
             className="w-6 h-6 rounded-full object-cover"
           />
-          <span className="text-xs text-[#202522] font-medium">{post.author.name}</span>
+          <span className="text-xs text-[#202522] font-medium">{authorName}</span>
         </div>
         <Link
           href={`/blog/${post.slug}`}
