@@ -90,36 +90,31 @@ export default function BlogIndexPage() {
   return (
     <div className="space-y-16 pb-20">
       {/* 1. HERO HEADER SECTION */}
-      <section className="bg-[#17352D] text-white pt-12 pb-16 px-4 sm:px-6 lg:px-8 border-b border-[#23443A] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto space-y-6 relative z-10">
-          <div className="flex items-center space-x-2 text-[#A96F43] text-xs font-semibold uppercase tracking-widest">
-            <Sparkles className="w-4 h-4" />
-            <span>Motorcycle Technical Journal & Garage News</span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-            <div className="lg:col-span-8 space-y-4">
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white leading-tight">
+      <section className="bg-[#17352D] text-white py-6 sm:py-8 px-4 sm:px-6 lg:px-8 border-b border-[#23443A] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto space-y-4 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
+            <div className="lg:col-span-8 space-y-2">
+              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white leading-tight">
                 Rider Maintenance & Diagnostic Guides
               </h1>
-              <p className="text-stone-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+              <p className="text-stone-300 text-sm sm:text-base max-w-2xl leading-relaxed">
                 In-depth technical articles written by RoadCrafters lead diagnostic engineers. Learn about synthetic oil chemistry, OBD sensor diagnostics, chain synchronization, and rider safety.
               </p>
             </div>
 
             {/* Quick Stats Pill */}
             <div className="lg:col-span-4 flex items-center justify-start lg:justify-end">
-              <div className="bg-[#23443A] border border-[#2B463D] p-4 flex items-center space-x-6">
+              <div className="bg-[#23443A] border border-[#2B463D] p-3 flex items-center space-x-5">
                 <div>
-                  <span className="block font-serif text-2xl font-bold text-white">
+                  <span className="block font-serif text-xl font-bold text-white">
                     {allPosts.length}
                   </span>
                   <span className="text-[10px] uppercase font-semibold text-[#A96F43] tracking-wider">
                     Published Guides
                   </span>
                 </div>
-                <div className="border-l border-[#2B463D] pl-6">
-                  <span className="block font-serif text-2xl font-bold text-white">
+                <div className="border-l border-[#2B463D] pl-5">
+                  <span className="block font-serif text-xl font-bold text-white">
                     100%
                   </span>
                   <span className="text-[10px] uppercase font-semibold text-[#A96F43] tracking-wider">
@@ -131,7 +126,7 @@ export default function BlogIndexPage() {
           </div>
 
           {/* Search Bar & Filter Controls */}
-          <div className="pt-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+          <div className="pt-2 grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
             {/* Search Input */}
             <div className="md:col-span-6 relative">
               <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
