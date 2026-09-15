@@ -2,6 +2,8 @@ import React from "react";
 import { BLOG_POSTS } from "@/data/content";
 import BlogDetailClient from "@/components/BlogDetailClient";
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   return BLOG_POSTS.map((post) => ({
     slug: post.slug.replace(/^\/blog\//, "").replace(/^\/+/, ""),
