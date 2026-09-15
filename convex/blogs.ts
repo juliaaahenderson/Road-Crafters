@@ -25,10 +25,31 @@ export const listPublished = query({
 export const getBySlug = query({
   args: { slug: v.string() },
   handler: async (ctx, args) => {
-    const post = await ctx.db
+    const clean = (args.slug || "").replace(/^\/blog\//, "").replace(/^\/+/, "");
+    
+    // 1. Try clean slug exact match
+    let post = await ctx.db
       .query("blogs")
-      .withIndex("by_slug", (q) => q.eq("slug", args.slug))
+      .withIndex("by_slug", (q) => q.eq("slug", clean))
       .first();
+
+    // 2. Try with /blog/ prefix match
+    if (!post) {
+      post = await ctx.db
+        .query("blogs")
+        .withIndex("by_slug", (q) => q.eq("slug", `/blog/${clean}`))
+        .first();
+    }
+
+    // 3. Fallback: match any blog slug case-insensitively
+    if (!post) {
+      const all = await ctx.db.query("blogs").collect();
+      post = all.find((b) => {
+        const s = (b.slug || "").replace(/^\/blog\//, "").replace(/^\/+/, "").toLowerCase();
+        return s === clean.toLowerCase();
+      }) || null;
+    }
+
     return post;
   },
 });

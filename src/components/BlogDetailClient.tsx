@@ -209,57 +209,63 @@ export default function BlogDetailClient({ slug }: { slug: string }) {
 
       {/* Markdown Body Content Renderer */}
       <div className="prose max-w-none text-[#202522] space-y-6 text-base leading-relaxed font-sans border-b border-[#E2DDD5] pb-12">
-        {contentParagraphs.map((paragraph: string, idx: number) => {
-          const trimmed = paragraph.trim();
+        {contentParagraphs.length === 0 ? (
+          <p className="text-[#202522] text-base leading-relaxed italic border-l-2 border-[#A96F43] pl-4 bg-[#FAF8F2] py-3">
+            {post.excerpt || "This technical article was published with overview details. Check back for full workshop diagnostic notes."}
+          </p>
+        ) : (
+          contentParagraphs.map((paragraph: string, idx: number) => {
+            const trimmed = paragraph.trim();
 
-          if (trimmed.startsWith("# ")) {
-            return (
-              <h1 key={idx} className="font-serif text-3xl font-bold text-[#17352D] pt-6 mb-3 border-b border-[#E2DDD5] pb-2">
-                {trimmed.slice(2)}
-              </h1>
-            );
-          }
-          if (trimmed.startsWith("## ")) {
-            return (
-              <h2 key={idx} className="font-serif text-2xl font-bold text-[#17352D] pt-5 mb-2">
-                {trimmed.slice(3)}
-              </h2>
-            );
-          }
-          if (trimmed.startsWith("### ")) {
-            return (
-              <h3 key={idx} className="font-serif text-xl font-semibold text-[#17352D] pt-4 mb-2">
-                {trimmed.slice(4)}
-              </h3>
-            );
-          }
-          if (trimmed.startsWith("> ")) {
-            return (
-              <blockquote key={idx} className="border-l-4 border-[#A96F43] pl-4 py-3 italic text-stone-700 bg-[#FAF8F2] my-4 text-sm sm:text-base">
-                {trimmed.slice(2)}
-              </blockquote>
-            );
-          }
-          if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
-            const listItems = trimmed.split("\n").map((line) => line.replace(/^[-*]\s+/, ""));
-            return (
-              <ul key={idx} className="space-y-2 my-4 pl-4">
-                {listItems.map((item, i) => (
-                  <li key={i} className="flex items-start text-sm sm:text-base text-stone-800">
-                    <span className="w-2 h-2 rounded-full bg-[#A96F43] mt-2 mr-3 flex-shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            );
-          }
+            if (trimmed.startsWith("# ")) {
+              return (
+                <h1 key={idx} className="font-serif text-3xl font-bold text-[#17352D] pt-6 mb-3 border-b border-[#E2DDD5] pb-2">
+                  {trimmed.slice(2)}
+                </h1>
+              );
+            }
+            if (trimmed.startsWith("## ")) {
+              return (
+                <h2 key={idx} className="font-serif text-2xl font-bold text-[#17352D] pt-5 mb-2">
+                  {trimmed.slice(3)}
+                </h2>
+              );
+            }
+            if (trimmed.startsWith("### ")) {
+              return (
+                <h3 key={idx} className="font-serif text-xl font-semibold text-[#17352D] pt-4 mb-2">
+                  {trimmed.slice(4)}
+                </h3>
+              );
+            }
+            if (trimmed.startsWith("> ")) {
+              return (
+                <blockquote key={idx} className="border-l-4 border-[#A96F43] pl-4 py-3 italic text-stone-700 bg-[#FAF8F2] my-4 text-sm sm:text-base">
+                  {trimmed.slice(2)}
+                </blockquote>
+              );
+            }
+            if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
+              const listItems = trimmed.split("\n").map((line) => line.replace(/^[-*]\s+/, ""));
+              return (
+                <ul key={idx} className="space-y-2 my-4 pl-4">
+                  {listItems.map((item, i) => (
+                    <li key={i} className="flex items-start text-sm sm:text-base text-stone-800">
+                      <span className="w-2 h-2 rounded-full bg-[#A96F43] mt-2 mr-3 flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              );
+            }
 
-          return (
-            <p key={idx} className="text-[#202522] leading-relaxed text-base">
-              {trimmed}
-            </p>
-          );
-        })}
+            return (
+              <p key={idx} className="text-[#202522] leading-relaxed text-base">
+                {trimmed}
+              </p>
+            );
+          })
+        )}
       </div>
 
       {/* Workshop Booking Banner */}

@@ -60,7 +60,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
           href={`/blog?slug=${post.slug}`}
           className="inline-flex items-center text-xs font-semibold uppercase tracking-wider text-[#18352D] group-hover:text-[#B47A4A] transition-colors"
         >
-          Read Guide
+          Read Article
           <ArrowRight className="w-3.5 h-3.5 ml-1.5 text-[#B47A4A] group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>

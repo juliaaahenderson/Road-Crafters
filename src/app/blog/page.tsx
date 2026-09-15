@@ -21,15 +21,28 @@ const CATEGORIES = [
 function BlogIndexContent() {
   const searchParams = useSearchParams();
   const slugParam = searchParams?.get("slug");
+  const [pathSlug, setPathSlug] = useState<string | null>(null);
 
   const [selectedCategory, setSelectedCategory] = useState("All Articles");
   const [searchTerm, setSearchTerm] = useState("");
 
   const convexBlogs = useQuery(api.blogs.listPublished);
 
-  // If a slug query parameter is provided (e.g. /blog?slug=my-post), render article details directly
-  if (slugParam) {
-    return <BlogDetailClient slug={slugParam} />;
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      const p = window.location.pathname;
+      if (p.startsWith("/blog/") && p !== "/blog" && p !== "/blog/") {
+        const extracted = p.replace(/^\/blog\//, "").replace(/\/$/, "");
+        if (extracted) setPathSlug(extracted);
+      }
+    }
+  }, []);
+
+  const activeSlug = slugParam || pathSlug;
+
+  // If a slug query parameter or path slug is present, render article details directly
+  if (activeSlug) {
+    return <BlogDetailClient slug={activeSlug} />;
   }
 
   // Map Convex posts to unified post structure
@@ -200,7 +213,7 @@ function BlogIndexContent() {
                   </div>
 
                   <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#17352D] group-hover:text-[#A96F43] transition-colors leading-snug">
-                    <Link href={`/blog/${featuredPost.slug}`}>
+                    <Link href={`/blog?slug=${featuredPost.slug}`}>
                       {featuredPost.title}
                     </Link>
                   </h2>
@@ -228,7 +241,7 @@ function BlogIndexContent() {
                   </div>
 
                   <Link
-                    href={`/blog/${featuredPost.slug}`}
+                    href={`/blog?slug=${featuredPost.slug}`}
                     className="inline-flex items-center text-xs font-semibold uppercase tracking-wider text-[#17352D] hover:text-[#A96F43] transition-colors gap-1.5"
                   >
                     <span>Read Article</span>
