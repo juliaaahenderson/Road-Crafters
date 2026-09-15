@@ -213,7 +213,7 @@ export default function AdminBlogsPage() {
                   </td>
                   <td className="py-3.5 px-4 text-right space-x-2">
                     <Link
-                      href={`/blog/${displaySlug}`}
+                      href={`/blog?slug=${displaySlug}`}
                       target="_blank"
                       className="inline-p-1 text-stone-500 hover:text-[#17352D] transition-colors"
                       title="View Live"

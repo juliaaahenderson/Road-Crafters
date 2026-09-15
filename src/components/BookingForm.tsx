@@ -3,18 +3,36 @@
 import React, { useState } from "react";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import { SERVICES_DATA } from "@/data/content";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
 
 interface BookingFormProps {
   initialServiceSlug?: string;
 }
 
 export default function BookingForm({ initialServiceSlug }: BookingFormProps) {
+  const dbServices = useQuery(api.content.getByKey, { key: "services" });
+
+  let serviceOptions = SERVICES_DATA.map((s) => ({ slug: s.slug, title: s.title, startingPrice: s.startingPrice }));
+  if (dbServices?.value) {
+    try {
+      const parsed = JSON.parse(dbServices.value);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        serviceOptions = parsed.map((s: any) => ({
+          slug: s.slug || (s.title ? s.title.toLowerCase().replace(/[^a-z0-9]+/g, "-") : "service"),
+          title: s.title || s.name || "Service",
+          startingPrice: s.startingPrice || "₹999",
+        }));
+      }
+    } catch (e) {}
+  }
+
   const [formData, setFormData] = useState({
     bikeCategory: "Street / Naked",
     brand: "",
     model: "",
     regNumber: "",
-    serviceId: initialServiceSlug || SERVICES_DATA[0].slug,
+    serviceId: initialServiceSlug || (serviceOptions[0]?.slug || "periodic-service"),
     preferredDate: "",
     preferredTime: "Morning (08:00 - 11:00)",
     pickupDrop: "No",
@@ -173,7 +191,7 @@ Please confirm my lift bay allocation. Thank you!`;
           onChange={(e) => setFormData({ ...formData, serviceId: e.target.value })}
           className="w-full px-4 py-2.5 bg-white border border-[#D8D1C5] text-sm text-[#202321] focus:outline-none focus:border-[#A96F43]"
         >
-          {SERVICES_DATA.map((srv) => (
+          {serviceOptions.map((srv) => (
             <option key={srv.slug} value={srv.slug}>
               {srv.title} — (From {srv.startingPrice})
             </option>

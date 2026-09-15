@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Shield, Award, Wrench, Clock, Check } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
+import HomeServicesSection from "@/components/HomeServicesSection";
 import FAQAccordion from "@/components/FAQAccordion";
 import ReviewsSection from "@/components/ReviewsSection";
 import LatestArticlesSection from "@/components/LatestArticlesSection";
@@ -114,29 +115,7 @@ export default function HomePage() {
       </section>
 
       {/* 2. SERVICES SECTION */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="MOTORCYCLE SPECIALTIES"
-          title="Bespoke Care. Comprehensive Capability."
-          subtitle="From periodic maintenance to ECU diagnostics, chain sync, and fork servicing, every job is performed to exacting standards."
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {SERVICES_DATA.slice(0, 6).map((service) => (
-            <ServiceCard key={service.id} service={service} />
-          ))}
-        </div>
-
-        <div className="mt-12 text-center">
-          <Link
-            href="/services"
-            className="inline-flex items-center text-xs font-semibold uppercase tracking-widest text-[#17352D] hover:text-[#A96F43] border-b border-[#17352D] pb-1 transition-colors"
-          >
-            View All 8 Specialized Motorcycle Services
-            <ArrowRight className="w-4 h-4 ml-2 text-[#A96F43]" />
-          </Link>
-        </div>
-      </section>
+      <HomeServicesSection />
 
       {/* 3. FEATURED SERVICE - ENGINE DIAGNOSTICS */}
       <section className="bg-[#17352D] text-[#FAF8F2] py-20">

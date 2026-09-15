@@ -57,7 +57,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
           <span className="text-xs text-[#202522] font-medium">{authorName}</span>
         </div>
         <Link
-          href={`/blog/${post.slug}`}
+          href={`/blog?slug=${post.slug}`}
           className="inline-flex items-center text-xs font-semibold uppercase tracking-wider text-[#18352D] group-hover:text-[#B47A4A] transition-colors"
         >
           Read Guide

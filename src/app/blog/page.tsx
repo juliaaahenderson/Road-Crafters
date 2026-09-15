@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Search, Clock, ArrowRight, BookOpen, Filter, Sparkles, User, Tag } from "lucide-react";
 import BlogCard from "@/components/BlogCard";
+import BlogDetailClient from "@/components/BlogDetailClient";
 import { BLOG_POSTS } from "@/data/content";
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
@@ -16,11 +18,19 @@ const CATEGORIES = [
   "Chain & Suspension",
 ];
 
-export default function BlogIndexPage() {
+function BlogIndexContent() {
+  const searchParams = useSearchParams();
+  const slugParam = searchParams?.get("slug");
+
   const [selectedCategory, setSelectedCategory] = useState("All Articles");
   const [searchTerm, setSearchTerm] = useState("");
 
   const convexBlogs = useQuery(api.blogs.listPublished);
+
+  // If a slug query parameter is provided (e.g. /blog?slug=my-post), render article details directly
+  if (slugParam) {
+    return <BlogDetailClient slug={slugParam} />;
+  }
 
   // Map Convex posts to unified post structure
   const dynamicConvexPosts = (convexBlogs || []).map((post: any) => {
@@ -274,5 +284,13 @@ export default function BlogIndexPage() {
         </section>
       </div>
     </div>
+  );
+}
+
+export default function BlogIndexPage() {
+  return (
+    <Suspense fallback={<div className="py-24 text-center font-mono text-xs text-[#17352D]">Loading journal articles...</div>}>
+      <BlogIndexContent />
+    </Suspense>
   );
 }
