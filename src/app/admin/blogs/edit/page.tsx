@@ -85,16 +85,36 @@ function EditBlogPostForm() {
     if (!id) return;
     setSubmitting(true);
 
-    let coverImageUrl = blogPost?.coverImageUrl || "";
+    let coverImageStorageId: any = undefined;
+    let coverImageUrl: string | undefined = blogPost?.coverImageUrl;
 
     if (selectedFile) {
       try {
-        coverImageUrl = await new Promise((resolve) => {
-          const reader = new FileReader();
-          reader.onloadend = () => resolve(reader.result as string);
-          reader.readAsDataURL(selectedFile);
+        const postUrl = await generateUploadUrlMutation();
+        const uploadResult = await fetch(postUrl, {
+          method: "POST",
+          headers: { "Content-Type": selectedFile.type || "image/png" },
+          body: selectedFile,
         });
-      } catch (e) {}
+
+        if (uploadResult.ok) {
+          const { storageId } = await uploadResult.json();
+          coverImageStorageId = storageId;
+        }
+      } catch (err) {
+        console.warn("Failed to upload image file to Convex storage bucket:", err);
+      }
+
+      // Fallback: If cloud storage upload failed and file is < 500KB, fallback to base64
+      if (!coverImageStorageId && selectedFile.size < 500 * 1024) {
+        try {
+          coverImageUrl = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result as string);
+            reader.readAsDataURL(selectedFile);
+          });
+        } catch (e) {}
+      }
     }
 
     const cleanSlug = (form.slug || "")
@@ -113,6 +133,7 @@ function EditBlogPostForm() {
       author: form.author,
       published: form.published,
       publishedAt: blogPost?.publishedAt || Date.now(),
+      coverImageStorageId: coverImageStorageId || undefined,
       coverImageUrl: coverImageUrl || undefined,
       metaTitle: form.metaTitle,
       metaDescription: form.metaDescription,
@@ -128,6 +149,7 @@ function EditBlogPostForm() {
           content: form.content,
           author: form.author,
           published: form.published,
+          coverImageStorageId: coverImageStorageId || undefined,
           coverImageUrl: coverImageUrl || undefined,
           metaTitle: form.metaTitle || form.title,
           metaDescription: form.metaDescription || form.excerpt,
@@ -159,6 +181,7 @@ function EditBlogPostForm() {
         content: form.content,
         author: form.author,
         published: form.published,
+        coverImageStorageId: coverImageStorageId || undefined,
         coverImageUrl: coverImageUrl || blogPost?.coverImageUrl,
         metaTitle: form.metaTitle,
         metaDescription: form.metaDescription,
