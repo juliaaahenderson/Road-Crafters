@@ -7,6 +7,8 @@ import HomeServicesSection from "@/components/HomeServicesSection";
 import FAQAccordion from "@/components/FAQAccordion";
 import ReviewsSection from "@/components/ReviewsSection";
 import LatestArticlesSection from "@/components/LatestArticlesSection";
+import ConvexClientProvider from "@/components/ConvexClientProvider";
+import PricingClient from "@/components/PricingClient";
 import { SERVICES_DATA, PACKAGES_DATA, FAQ_DATA, classNamesImages } from "@/data/content";
 
 export default function HomePage() {
@@ -331,56 +333,9 @@ export default function HomePage() {
           subtitle="Fixed transparent packages tailored for routine care, street tuning, and superbike upkeep."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {PACKAGES_DATA.map((pkg) => (
-            <div
-              key={pkg.id}
-              className={`bg-[#FAF8F2] border p-8 flex flex-col justify-between relative ${
-                pkg.popular ? "border-[#A96F43] shadow-md" : "border-[#D8D1C5]"
-              }`}
-            >
-              {pkg.popular && (
-                <span className="absolute top-0 right-8 transform -translate-y-1/2 bg-[#A96F43] text-white text-[10px] uppercase font-semibold tracking-widest px-3 py-1">
-                  Most Popular
-                </span>
-              )}
-              <div>
-                <h3 className="font-serif text-2xl font-semibold text-[#17352D]">
-                  {pkg.name}
-                </h3>
-                <div className="mt-4 mb-2 flex items-baseline space-x-2">
-                  <span className="font-serif text-4xl font-bold text-[#17352D]">
-                    {pkg.price}
-                  </span>
-                  <span className="text-xs text-[#6E706B]">/ service</span>
-                </div>
-                <p className="text-xs text-[#6E706B] mb-6 border-b border-[#D8D1C5] pb-4">
-                  {pkg.subtitle}
-                </p>
-
-                <ul className="space-y-3 mb-8">
-                  {pkg.features.map((feat, idx) => (
-                    <li key={idx} className="flex items-start text-xs text-[#202321]">
-                      <Check className="w-3.5 h-3.5 text-[#A96F43] flex-shrink-0 mr-2.5 mt-0.5" />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <Link
-                href={`/book?package=${pkg.id}`}
-                className={`w-full py-3 text-center text-xs font-semibold uppercase tracking-wider transition-colors ${
-                  pkg.popular
-                    ? "bg-[#17352D] text-white hover:bg-[#23443A]"
-                    : "bg-[#F3EFE6] text-[#17352D] hover:bg-[#D8D1C5] border border-[#D8D1C5]"
-                }`}
-              >
-                Select {pkg.name}
-              </Link>
-            </div>
-          ))}
-        </div>
+        <ConvexClientProvider>
+          <PricingClient />
+        </ConvexClientProvider>
         <p className="text-center text-xs text-[#6E706B] mt-6">
           * Prices vary depending on engine displacement (cc) and synthetic oil capacity requirements.
         </p>

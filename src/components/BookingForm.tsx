@@ -12,6 +12,7 @@ interface BookingFormProps {
 
 export default function BookingForm({ initialServiceSlug }: BookingFormProps) {
   const dbServices = useQuery(api.content.getByKey, { key: "services" });
+  const dbPricing = useQuery(api.content.getByKey, { key: "pricingPackages" });
 
   let serviceOptions = SERVICES_DATA.map((s) => ({ slug: s.slug, title: s.title, startingPrice: s.startingPrice }));
   if (dbServices?.value) {
@@ -23,6 +24,21 @@ export default function BookingForm({ initialServiceSlug }: BookingFormProps) {
           title: s.title || s.name || "Service",
           startingPrice: s.startingPrice || "₹999",
         }));
+      }
+    } catch (e) {}
+  }
+
+  // Also append dynamic pricing packages if available
+  if (dbPricing?.value) {
+    try {
+      const parsedPricing = JSON.parse(dbPricing.value);
+      if (Array.isArray(parsedPricing) && parsedPricing.length > 0) {
+        const pkgOptions = parsedPricing.map((p: any) => ({
+          slug: p.id || (p.name ? p.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") : "pkg"),
+          title: `Package: ${p.name}`,
+          startingPrice: p.price || "₹1,800",
+        }));
+        serviceOptions = [...serviceOptions, ...pkgOptions];
       }
     } catch (e) {}
   }
