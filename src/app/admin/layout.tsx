@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { LayoutDashboard, FileText, Search, Settings, LogOut, ExternalLink, ShieldCheck } from "lucide-react";
+import { LayoutDashboard, FileText, Search, Settings, LogOut, ExternalLink, ShieldCheck, Tag } from "lucide-react";
 import ConvexClientProvider from "@/components/ConvexClientProvider";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -48,6 +48,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const navItems = [
     { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
+    { name: "Pricing CMS", href: "/admin/content", icon: Tag },
     { name: "Blog Posts", href: "/admin/blogs", icon: FileText },
     { name: "On-Page SEO", href: "/admin/seo", icon: Search },
     { name: "Site Content", href: "/admin/content", icon: Settings },
