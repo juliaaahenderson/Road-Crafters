@@ -61,9 +61,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div className="flex items-center space-x-6">
               <Link href="/admin" className="flex items-center space-x-2.5">
-                <div className="w-8 h-8 bg-[#17352D] border-2 border-[#A96F43] flex items-center justify-center shadow-md">
-                  <span className="font-serif text-sm font-bold text-[#FAF8F2]">R</span>
-                  <span className="font-serif text-xs font-semibold text-[#A96F43] -ml-0.5">C</span>
+                <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-[#A96F43] shadow-md bg-white flex items-center justify-center">
+                  <img
+                    src="/road-crafters logo.jpg"
+                    alt="Road Crafters Logo"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="flex flex-col">
                   <span className="font-serif text-sm font-bold tracking-tight text-white leading-tight">

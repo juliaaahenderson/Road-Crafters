@@ -32,7 +32,7 @@
   --color-border-subtle: #D8D1C5;
   --color-border-medium: #C0B7A8;
   
-  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-serif: var(--font-plus-jakarta), system-ui, sans-serif;
   --font-sans: var(--font-plus-jakarta), system-ui, sans-serif;
 }
 
@@ -40,6 +40,10 @@ html {
   scroll-behavior: smooth;
   background-color: var(--bg-primary);
   color: var(--text-dark);
+}
+
+body, h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, select {
+  font-family: var(--font-sans), system-ui, sans-serif !important;
 }
 
 body {

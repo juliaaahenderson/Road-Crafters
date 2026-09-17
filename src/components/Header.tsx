@@ -56,18 +56,12 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="group flex items-center space-x-3.5">
-          {/* Custom Luxury RC Monogram Shield Emblem */}
-          <div className="relative w-11 h-11 bg-[#17352D] border-2 border-[#A96F43] flex items-center justify-center shadow-md group-hover:bg-[#23443A] transition-all duration-300">
-            <div className="flex items-center justify-center space-x-[-2px]">
-              <span className="font-serif text-lg font-bold tracking-tighter text-[#FAF8F2] group-hover:text-[#A96F43] transition-colors">
-                R
-              </span>
-              <span className="font-serif text-sm font-semibold tracking-tighter text-[#A96F43] group-hover:text-[#FAF8F2] transition-colors">
-                C
-              </span>
-            </div>
-            {/* Corner metallic accent */}
-            <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-[#A96F43] border border-[#17352D]" />
+          <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#A96F43] shadow-md group-hover:border-[#17352D] transition-all duration-300 bg-white flex items-center justify-center">
+            <img
+              src="/road-crafters logo.jpg"
+              alt="Road Crafters Logo"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
           </div>
           <div className="flex flex-col">
             <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-[#17352D] group-hover:text-[#A96F43] transition-colors leading-tight">

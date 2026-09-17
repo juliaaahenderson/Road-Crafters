@@ -34,9 +34,12 @@ export default function AdminLoginPage() {
       <div className="max-w-md w-full bg-[#1C3E35] border border-[#2B463D] p-8 rounded-none shadow-2xl space-y-6">
         {/* Header Monogram */}
         <div className="flex flex-col items-center justify-center space-y-3">
-          <div className="w-14 h-14 bg-[#17352D] border-2 border-[#A96F43] flex items-center justify-center shadow-lg">
-            <span className="font-serif text-xl font-bold text-[#FAF8F2]">R</span>
-            <span className="font-serif text-base font-semibold text-[#A96F43] -ml-0.5">C</span>
+          <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#A96F43] shadow-lg bg-white flex items-center justify-center">
+            <img
+              src="/road-crafters logo.jpg"
+              alt="Road Crafters Logo"
+              className="w-full h-full object-cover"
+            />
           </div>
           <h1 className="font-serif text-2xl font-bold text-white tracking-wide text-center">
             RoadCrafters Admin Portal

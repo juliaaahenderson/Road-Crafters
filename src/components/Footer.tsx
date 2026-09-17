@@ -36,16 +36,12 @@ export default function Footer() {
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="relative w-11 h-11 bg-[#FAF8F2] border-2 border-[#A96F43] flex items-center justify-center shadow-sm">
-                <div className="flex items-center justify-center space-x-[-2px]">
-                  <span className="font-serif text-lg font-bold tracking-tighter text-[#17352D]">
-                    R
-                  </span>
-                  <span className="font-serif text-sm font-semibold tracking-tighter text-[#A96F43]">
-                    C
-                  </span>
-                </div>
-                <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-[#A96F43] border border-[#FAF8F2]" />
+              <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#A96F43] shadow-md bg-white flex items-center justify-center">
+                <img
+                  src="/road-crafters logo.jpg"
+                  alt="Road Crafters Logo"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="font-serif text-2xl font-bold tracking-tight text-white uppercase">
