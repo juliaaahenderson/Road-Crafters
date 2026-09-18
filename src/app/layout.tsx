@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Newsreader } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -11,14 +11,6 @@ const sansFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
-});
-
-const serifFont = Newsreader({
-  variable: "--font-newsreader",
-  subsets: ["latin"],
-  display: "swap",
-  style: ["normal", "italic"],
-  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -92,7 +84,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sansFont.variable} ${serifFont.variable} h-full antialiased`}
+      className={`${sansFont.variable} h-full antialiased`}
     >
       <head>
         <script
@@ -100,7 +92,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#F3EFE6] text-[#202321] selection:bg-[#A96F43] selection:text-white relative">
+      <body className="min-h-full flex flex-col bg-[#FAF8F5] text-[#1F1E1B] selection:bg-[#C5A059] selection:text-white relative">
         <ConvexClientProvider>
           <MainLayoutWrapper>{children}</MainLayoutWrapper>
         </ConvexClientProvider>

@@ -44,8 +44,8 @@ export function BlogDetailContent({ slug }: { slug: string }) {
 
   if (!post) {
     return (
-      <div className="py-20 text-center text-stone-500 font-mono text-sm">
-        Article not found. <Link href="/blog" className="underline text-[#17352D]">Back to Guides</Link>
+      <div className="py-20 text-center text-[#6E6B65] font-mono text-sm">
+        Article not found. <Link href="/blog" className="underline text-[#1F1B14]">Back to Guides</Link>
       </div>
     );
   }
@@ -59,28 +59,28 @@ export function BlogDetailContent({ slug }: { slug: string }) {
   return (
     <article className="py-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
       {/* Breadcrumb */}
-      <div className="text-xs text-[#6E706B] flex items-center space-x-2">
-        <Link href="/" className="hover:text-[#18352D]">Home</Link>
+      <div className="text-xs text-[#6E6B65] flex items-center space-x-2">
+        <Link href="/" className="hover:text-[#C5A059]">Home</Link>
         <span>/</span>
-        <Link href="/blog" className="hover:text-[#18352D]">Guides</Link>
+        <Link href="/blog" className="hover:text-[#C5A059]">Guides</Link>
         <span>/</span>
-        <span className="text-[#18352D] font-medium">{post.category || "Technical Guide"}</span>
+        <span className="text-[#1F1B14] font-medium">{post.category || "Technical Guide"}</span>
       </div>
 
       {/* Header */}
       <header className="space-y-4">
-        <span className="text-[10px] uppercase font-semibold tracking-widest text-[#B47A4A] bg-[#18352D] px-2.5 py-1 inline-block">
+        <span className="text-[10px] uppercase font-semibold tracking-widest text-[#C5A059] bg-[#1F1B14] px-2.5 py-1 inline-block">
           {post.category || "Technical Guide"}
         </span>
-        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-[#18352D] leading-tight">
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-[#1F1B14] leading-tight">
           {post.title}
         </h1>
-        <div className="flex items-center space-x-4 text-xs text-[#6E706B] pt-2 border-y border-[#E2DDD5] py-3">
+        <div className="flex items-center space-x-4 text-xs text-[#6E6B65] pt-2 border-y border-[#E6D7BC] py-3">
           <div className="flex items-center space-x-2">
-            <div className="w-7 h-7 rounded-full bg-[#17352D] text-white flex items-center justify-center text-xs font-bold">
+            <div className="w-7 h-7 rounded-full bg-[#1F1B14] text-[#FAF8F5] flex items-center justify-center text-xs font-bold border border-[#C5A059]">
               {typeof post.author === "string" ? post.author.charAt(0) : post.author?.name?.charAt(0) || "R"}
             </div>
-            <span className="font-semibold text-[#18352D]">
+            <span className="font-semibold text-[#1F1B14]">
               {typeof post.author === "string" ? post.author : post.author?.name}
             </span>
           </div>
@@ -88,7 +88,7 @@ export function BlogDetailContent({ slug }: { slug: string }) {
           <span>{post.publishedAt || "Recently"}</span>
           <span>•</span>
           <span className="flex items-center gap-1">
-            <Clock className="w-3.5 h-3.5 text-[#B47A4A]" />
+            <Clock className="w-3.5 h-3.5 text-[#C5A059]" />
             {post.readTime || "5 min read"}
           </span>
         </div>
@@ -96,7 +96,7 @@ export function BlogDetailContent({ slug }: { slug: string }) {
 
       {/* Hero image */}
       {post.heroImage || post.coverImageUrl ? (
-        <div className="border border-[#E2DDD5] bg-white p-2">
+        <div className="border border-[#E6D7BC] bg-white p-2">
           <img
             src={post.heroImage || post.coverImageUrl}
             alt={post.title}
@@ -106,31 +106,31 @@ export function BlogDetailContent({ slug }: { slug: string }) {
       ) : null}
 
       {/* Content paragraphs */}
-      <div className="prose max-w-none text-[#202522] space-y-4 text-base leading-relaxed font-sans">
+      <div className="prose max-w-none text-[#1F1B14] space-y-4 text-base leading-relaxed font-sans">
         {contentParagraphs.map((paragraph: string, idx: number) => {
           if (paragraph.startsWith("# ")) {
-            return <h1 key={idx} className="font-serif text-3xl font-bold text-[#18352D] mt-8 mb-3">{paragraph.slice(2)}</h1>;
+            return <h1 key={idx} className="font-serif text-3xl font-bold text-[#1F1B14] mt-8 mb-3">{paragraph.slice(2)}</h1>;
           }
           if (paragraph.startsWith("## ")) {
-            return <h2 key={idx} className="font-serif text-2xl font-semibold text-[#18352D] mt-6 mb-3">{paragraph.slice(3)}</h2>;
+            return <h2 key={idx} className="font-serif text-2xl font-semibold text-[#1F1B14] mt-6 mb-3">{paragraph.slice(3)}</h2>;
           }
           if (paragraph.startsWith("### ")) {
-            return <h3 key={idx} className="font-serif text-xl font-semibold text-[#18352D] mt-4 mb-2">{paragraph.slice(4)}</h3>;
+            return <h3 key={idx} className="font-serif text-xl font-semibold text-[#1F1B14] mt-4 mb-2">{paragraph.slice(4)}</h3>;
           }
           if (paragraph.startsWith("> ")) {
-            return <blockquote key={idx} className="border-l-4 border-[#A96F43] pl-4 py-2 italic text-stone-600 bg-stone-50 my-4">{paragraph.slice(2)}</blockquote>;
+            return <blockquote key={idx} className="border-l-4 border-[#C5A059] pl-4 py-2 italic text-[#6E6B65] bg-[#FAF8F5] my-4">{paragraph.slice(2)}</blockquote>;
           }
           if (paragraph.startsWith("- ")) {
-            return <li key={idx} className="ml-6 list-disc text-stone-700 font-sans my-1">{paragraph.slice(2)}</li>;
+            return <li key={idx} className="ml-6 list-disc text-[#1F1B14] font-sans my-1">{paragraph.slice(2)}</li>;
           }
-          return <p key={idx} className="text-[#202522] leading-relaxed text-base">{paragraph}</p>;
+          return <p key={idx} className="text-[#1F1B14] leading-relaxed text-base">{paragraph}</p>;
         })}
       </div>
 
       {/* Related articles */}
       {related.length > 0 && (
-        <div className="pt-12 border-t border-[#E2DDD5] space-y-6">
-          <h3 className="font-serif text-2xl font-semibold text-[#18352D]">
+        <div className="pt-12 border-t border-[#E6D7BC] space-y-6">
+          <h3 className="font-serif text-2xl font-semibold text-[#1F1B14]">
             Related Technical Guides
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

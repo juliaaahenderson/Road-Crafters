@@ -29,11 +29,11 @@ export default function ServicesPage() {
   return (
     <div className="py-12 space-y-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
-      <div className="border-b border-[#D8D1C5] pb-8">
-        <h1 className="font-serif text-4xl sm:text-5xl font-medium text-[#17352D]">
+      <div className="border-b border-[#E6D7BC] pb-8">
+        <h1 className="font-serif text-4xl sm:text-5xl font-medium text-[#1F1B14]">
           Specialized Motorcycle Services
         </h1>
-        <p className="mt-3 text-base text-[#6E706B] max-w-2xl">
+        <p className="mt-3 text-base text-[#6E6B65] max-w-2xl">
           Factory-scheduled maintenance, motorcycle OBD diagnostics, and precision mechanical overhauls for all bike categories.
         </p>
       </div>
@@ -46,18 +46,18 @@ export default function ServicesPage() {
       </div>
 
       {/* Specialist CTA section */}
-      <div className="bg-[#FAF8F3] border border-[#E2DDD5] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="bg-[#FAF8F5] border border-[#E6D7BC] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
         <div>
-          <h3 className="font-serif text-2xl font-semibold text-[#18352D]">
+          <h3 className="font-serif text-2xl font-semibold text-[#1F1B14]">
             Require a custom mechanical diagnostic or restoration quote?
           </h3>
-          <p className="text-sm text-[#6E706B] mt-2">
+          <p className="text-sm text-[#6E6B65] mt-2">
             Our technical masters handle motorcycle mechanical refreshes, engine diagnostics, and custom setup.
           </p>
         </div>
         <Link
           href="/contact"
-          className="px-6 py-3 bg-[#18352D] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#2B463D] transition-colors whitespace-nowrap"
+          className="px-6 py-3 bg-[#1F1B14] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#2C2316] transition-colors whitespace-nowrap"
         >
           Consult Technical Master
         </Link>

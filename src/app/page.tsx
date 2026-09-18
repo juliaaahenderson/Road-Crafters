@@ -19,48 +19,48 @@ export default function HomePage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column Text */}
           <div className="lg:col-span-6 space-y-6">
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-[#17352D] leading-[1.12]">
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-[#1F1B14] leading-[1.12]">
               Precision Service for Every Ride.
             </h1>
-            <p className="text-base sm:text-lg text-[#6E706B] leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg text-[#6E6B65] leading-relaxed max-w-xl">
               Professional motorcycle servicing, diagnostics and repairs performed by experienced technicians who understand what your machine demands.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               <Link
                 href="/book"
-                className="px-7 py-3.5 bg-[#17352D] text-[#FAF8F2] hover:bg-[#23443A] text-xs font-semibold uppercase tracking-widest transition-all inline-flex items-center justify-center space-x-2 group shadow-sm border border-[#17352D]"
+                className="px-7 py-3.5 bg-[#1F1B14] text-[#FAF8F5] hover:bg-[#2C2316] text-xs font-semibold uppercase tracking-widest transition-all inline-flex items-center justify-center space-x-2 group shadow-sm border border-[#1F1B14]"
               >
                 <span>Book a Service</span>
-                <ArrowRight className="w-4 h-4 text-[#A96F43] group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-[#C5A059] group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/services"
-                className="px-7 py-3.5 bg-[#FAF8F2] text-[#17352D] hover:bg-white text-xs font-semibold uppercase tracking-widest transition-all inline-flex items-center justify-center space-x-2 border border-[#D8D1C5]"
+                className="px-7 py-3.5 bg-[#FAF8F5] text-[#1F1B14] hover:bg-white text-xs font-semibold uppercase tracking-widest transition-all inline-flex items-center justify-center space-x-2 border border-[#E6D7BC]"
               >
                 <span>Explore Services</span>
               </Link>
             </div>
 
             {/* Quick metrics */}
-            <div className="pt-8 border-t border-[#D8D1C5] grid grid-cols-3 gap-4 text-left">
+            <div className="pt-8 border-t border-[#E6D7BC] grid grid-cols-3 gap-4 text-left">
               <div>
-                <span className="block font-serif text-2xl lg:text-3xl font-semibold text-[#17352D]">
+                <span className="block font-serif text-2xl lg:text-3xl font-semibold text-[#1F1B14]">
                   10+
                 </span>
-                <span className="text-xs text-[#6E706B]">Years Motorcycle Expertise</span>
+                <span className="text-xs text-[#6E6B65]">Years Motorcycle Expertise</span>
               </div>
               <div>
-                <span className="block font-serif text-2xl lg:text-3xl font-semibold text-[#17352D]">
+                <span className="block font-serif text-2xl lg:text-3xl font-semibold text-[#1F1B14]">
                   15,000+
                 </span>
-                <span className="text-xs text-[#6E706B]">Bikes Serviced</span>
+                <span className="text-xs text-[#6E6B65]">Bikes Serviced</span>
               </div>
               <div>
-                <span className="block font-serif text-2xl lg:text-3xl font-semibold text-[#17352D]">
+                <span className="block font-serif text-2xl lg:text-3xl font-semibold text-[#1F1B14]">
                   25+
                 </span>
-                <span className="text-xs text-[#6E706B]">Master Bike Technicians</span>
+                <span className="text-xs text-[#6E6B65]">Master Bike Technicians</span>
               </div>
             </div>
           </div>
@@ -73,16 +73,16 @@ export default function HomePage() {
                 alt="Premium Motorcycle inside Road Crafters Workshop"
                 className="w-full h-[420px] sm:h-[500px] object-cover"
               />
-              <div className="absolute bottom-4 left-4 right-4 bg-[#17352D]/90 backdrop-blur-sm text-white p-4 flex items-center justify-between border border-stone-700/50">
+              <div className="absolute bottom-4 left-4 right-4 bg-[#1F1B14]/90 backdrop-blur-sm text-white p-4 flex items-center justify-between border border-[#2C2316]">
                 <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
                   <span className="text-xs font-medium tracking-wide">
-                    Live Workshop Status: <span className="text-[#A96F43]">Lift Bay 02 Open</span>
+                    Live Workshop Status: <span className="text-[#C5A059]">Lift Bay 02 Open</span>
                   </span>
                 </div>
                 <Link
                   href="/workshop"
-                  className="text-[11px] uppercase tracking-wider text-stone-300 hover:text-white underline"
+                  className="text-[11px] uppercase tracking-wider text-[#D4C4A8] hover:text-white underline"
                 >
                   View Facility
                 </Link>
@@ -92,26 +92,26 @@ export default function HomePage() {
         </div>
 
         {/* Subtle Trust Bar */}
-        <div className="mt-16 bg-[#FAF8F2] border border-[#D8D1C5] py-6 px-6 sm:px-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-[#D8D1C5]">
+        <div className="mt-16 bg-white border border-[#E6D7BC] py-6 px-6 sm:px-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-[#E6D7BC] shadow-sm">
           <div className="flex flex-col items-center justify-center p-2">
-            <Award className="w-5 h-5 text-[#A96F43] mb-1" />
-            <span className="font-semibold text-xs text-[#17352D]">5.0 ★ Rated Garage</span>
-            <span className="text-[11px] text-[#6E706B]">55 Verified Reviews</span>
+            <Award className="w-5 h-5 text-[#C5A059] mb-1" />
+            <span className="font-semibold text-xs text-[#1F1B14]">5.0 ★ Rated Garage</span>
+            <span className="text-[11px] text-[#6E6B65]">55 Verified Reviews</span>
           </div>
           <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
-            <Shield className="w-5 h-5 text-[#A96F43] mb-1" />
-            <span className="font-semibold text-xs text-[#17352D]">12-Month Warranty</span>
-            <span className="text-[11px] text-[#6E706B]">Parts & Labor Guarantee</span>
+            <Shield className="w-5 h-5 text-[#C5A059] mb-1" />
+            <span className="font-semibold text-xs text-[#1F1B14]">12-Month Warranty</span>
+            <span className="text-[11px] text-[#6E6B65]">Parts & Labor Guarantee</span>
           </div>
           <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
-            <Wrench className="w-5 h-5 text-[#A96F43] mb-1" />
-            <span className="font-semibold text-xs text-[#17352D]">LGBTQ+ Friendly</span>
-            <span className="text-[11px] text-[#6E706B]">Inclusive Rider Community</span>
+            <Wrench className="w-5 h-5 text-[#C5A059] mb-1" />
+            <span className="font-semibold text-xs text-[#1F1B14]">LGBTQ+ Friendly</span>
+            <span className="text-[11px] text-[#6E6B65]">Inclusive Rider Community</span>
           </div>
           <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
-            <Clock className="w-5 h-5 text-[#A96F43] mb-1" />
-            <span className="font-semibold text-xs text-[#17352D]">Open — Closes 10:00 PM</span>
-            <span className="text-[11px] text-[#6E706B]">Daily Operations</span>
+            <Clock className="w-5 h-5 text-[#C5A059] mb-1" />
+            <span className="font-semibold text-xs text-[#1F1B14]">Open — Closes 10:00 PM</span>
+            <span className="text-[11px] text-[#6E6B65]">Daily Operations</span>
           </div>
         </div>
       </section>
@@ -120,19 +120,19 @@ export default function HomePage() {
       <HomeServicesSection />
 
       {/* 3. FEATURED SERVICE - ENGINE DIAGNOSTICS */}
-      <section className="bg-[#17352D] text-[#FAF8F2] py-20">
+      <section className="bg-[#1F1B14] text-[#FAF8F5] py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Image side */}
             <div className="lg:col-span-6 relative">
-              <div className="border border-[#23443A] p-2 bg-[#23443A]/30">
+              <div className="border border-[#2C2316] p-2 bg-[#2C2316]/30">
                 <img
                   src={classNamesImages.diagnostics}
                   alt="Motorcycle Diagnostics Scan"
                   className="w-full h-[400px] object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-[#A96F43] text-white p-6 hidden sm:block max-w-xs shadow-lg">
+              <div className="absolute -bottom-6 -right-6 bg-[#C5A059] text-white p-6 hidden sm:block max-w-xs shadow-lg">
                 <span className="block text-xs uppercase tracking-widest font-semibold mb-1">
                   MOTORCYCLE OBD SCANNER
                 </span>
@@ -147,7 +147,7 @@ export default function HomePage() {
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-white leading-tight">
                 Motorcycle Engine Diagnostics
               </h2>
-              <p className="text-base text-stone-300 leading-relaxed">
+              <p className="text-base text-[#D4C4A8] leading-relaxed">
                 Find the problem before it becomes an expensive breakdown. Our motorcycle technicians correlate fault codes with live sensor telemetry and fuel injection parameters.
               </p>
 
@@ -158,8 +158,8 @@ export default function HomePage() {
                   "Transparent digital inspection report sent to your phone",
                   "Clear itemized recommendations prior to any work"
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-start space-x-3 text-sm text-stone-200">
-                    <Check className="w-4 h-4 text-[#A96F43] flex-shrink-0 mt-1" />
+                  <div key={idx} className="flex items-start space-x-3 text-sm text-[#D4C4A8]">
+                    <Check className="w-4 h-4 text-[#C5A059] flex-shrink-0 mt-1" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -168,7 +168,7 @@ export default function HomePage() {
               <div className="pt-4">
                 <Link
                   href="/book?service=engine-diagnostics"
-                  className="inline-flex items-center px-7 py-3.5 bg-[#A96F43] hover:bg-[#8C572E] text-white text-xs font-semibold uppercase tracking-widest transition-colors"
+                  className="inline-flex items-center px-7 py-3.5 bg-[#C5A059] hover:bg-[#D4AF37] text-white text-xs font-semibold uppercase tracking-widest transition-colors"
                 >
                   Book Motorcycle Diagnostics
                   <ArrowRight className="w-4 h-4 ml-2" />
@@ -187,7 +187,7 @@ export default function HomePage() {
           subtitle="Care that goes beyond the service checklist. Because your ride deserves meticulous attention."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-10 border-t border-[#D8D1C5] pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-10 border-t border-[#E6D7BC] pt-12">
           {[
             {
               num: "01",
@@ -221,13 +221,13 @@ export default function HomePage() {
             }
           ].map((item) => (
             <div key={item.num} className="space-y-3">
-              <span className="font-serif text-3xl font-semibold text-[#A96F43] block">
+              <span className="font-serif text-3xl font-semibold text-[#C5A059] block">
                 {item.num}
               </span>
-              <h3 className="font-serif text-xl font-medium text-[#17352D]">
+              <h3 className="font-serif text-xl font-medium text-[#1F1B14]">
                 {item.title}
               </h3>
-              <p className="text-sm text-[#6E706B] leading-relaxed">
+              <p className="text-sm text-[#6E6B65] leading-relaxed">
                 {item.desc}
               </p>
             </div>
@@ -236,17 +236,17 @@ export default function HomePage() {
       </section>
 
       {/* 5. WORKSHOP SHOWCASE */}
-      <section className="bg-[#FAF8F2] border-y border-[#D8D1C5] py-20">
+      <section className="bg-[#FAF8F5] border-y border-[#E6D7BC] py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
-              <h2 className="font-serif text-3xl sm:text-4xl font-medium text-[#17352D]">
+              <h2 className="font-serif text-3xl sm:text-4xl font-medium text-[#1F1B14]">
                 Professional Equipment. Meticulous Workmanship.
               </h2>
             </div>
             <Link
               href="/workshop"
-              className="mt-4 md:mt-0 text-xs font-semibold uppercase tracking-wider text-[#17352D] hover:text-[#A96F43] inline-flex items-center gap-1.5"
+              className="mt-4 md:mt-0 text-xs font-semibold uppercase tracking-wider text-[#1F1B14] hover:text-[#C5A059] inline-flex items-center gap-1.5"
             >
               Explore Full Workshop →
             </Link>
@@ -254,7 +254,7 @@ export default function HomePage() {
 
           {/* Grid of Workshop Photos */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="relative h-72 group overflow-hidden bg-stone-200 border border-[#D8D1C5]">
+            <div className="relative h-72 group overflow-hidden bg-stone-200 border border-[#E6D7BC]">
               <img
                 src={classNamesImages.workshopMain}
                 alt="Motorcycle on hydraulic lift"
@@ -266,7 +266,7 @@ export default function HomePage() {
                 </span>
               </div>
             </div>
-            <div className="relative h-72 group overflow-hidden bg-stone-200 border border-[#D8D1C5]">
+            <div className="relative h-72 group overflow-hidden bg-stone-200 border border-[#E6D7BC]">
               <img
                 src={classNamesImages.chainSprocket}
                 alt="Chain maintenance station"
@@ -278,7 +278,7 @@ export default function HomePage() {
                 </span>
               </div>
             </div>
-            <div className="relative h-72 group overflow-hidden bg-stone-200 border border-[#D8D1C5]">
+            <div className="relative h-72 group overflow-hidden bg-stone-200 border border-[#E6D7BC]">
               <img
                 src={classNamesImages.detailing}
                 alt="Motorcycle detailing studio"
@@ -302,7 +302,7 @@ export default function HomePage() {
           subtitle="A structured 5-step workflow designed to keep you fully informed from drop-off to final handover."
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 border-t border-[#D8D1C5] pt-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 border-t border-[#E6D7BC] pt-12">
           {[
             { step: "01", title: "Book", desc: "Select your preferred motorcycle service date online or by phone." },
             { step: "02", title: "Inspect", desc: "Complete 32-point rider safety audit and computer OBD scan." },
@@ -310,14 +310,14 @@ export default function HomePage() {
             { step: "04", title: "Service", desc: "Factory specs applied using JASO MA2 synthetic oils and OEM parts." },
             { step: "05", title: "Deliver", desc: "Road test by master rider, wash, and key handover with digital ledger." }
           ].map((item) => (
-            <div key={item.step} className="bg-[#FAF8F2] border border-[#D8D1C5] p-6 space-y-3">
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#A96F43] bg-[#17352D] px-2 py-0.5 inline-block">
+            <div key={item.step} className="bg-white border border-[#E6D7BC] p-6 space-y-3 shadow-sm">
+              <span className="text-xs font-semibold uppercase tracking-widest text-[#C5A059] bg-[#1F1B14] px-2 py-0.5 inline-block">
                 Step {item.step}
               </span>
-              <h3 className="font-serif text-xl font-medium text-[#17352D]">
+              <h3 className="font-serif text-xl font-medium text-[#1F1B14]">
                 {item.title}
               </h3>
-              <p className="text-xs text-[#6E706B] leading-relaxed">
+              <p className="text-xs text-[#6E6B65] leading-relaxed">
                 {item.desc}
               </p>
             </div>
@@ -336,7 +336,7 @@ export default function HomePage() {
         <ConvexClientProvider>
           <PricingClient />
         </ConvexClientProvider>
-        <p className="text-center text-xs text-[#6E706B] mt-6">
+        <p className="text-center text-xs text-[#6E6B65] mt-6">
           * Prices vary depending on engine displacement (cc) and synthetic oil capacity requirements.
         </p>
       </section>
@@ -359,7 +359,7 @@ export default function HomePage() {
         <div className="mt-8 text-center">
           <Link
             href="/faq"
-            className="text-xs font-semibold uppercase tracking-wider text-[#17352D] hover:text-[#A96F43] border-b border-[#17352D] pb-0.5"
+            className="text-xs font-semibold uppercase tracking-wider text-[#1F1B14] hover:text-[#C5A059] border-b border-[#1F1B14] pb-0.5"
           >
             View All Rider Questions →
           </Link>
@@ -368,25 +368,25 @@ export default function HomePage() {
 
       {/* 9. BOTTOM CTA */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#17352D] text-[#FAF8F2] p-10 sm:p-16 border border-[#23443A] flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="bg-[#1F1B14] text-[#FAF8F5] p-10 sm:p-16 border border-[#2C2316] flex flex-col md:flex-row items-center justify-between gap-8 shadow-md">
           <div className="space-y-3 max-w-2xl">
             <h2 className="font-serif text-3xl sm:text-4xl text-white font-medium">
               Schedule Your Motorcycle Service Today.
             </h2>
-            <p className="text-sm text-stone-300">
+            <p className="text-sm text-[#D4C4A8]">
               Speak directly with a Road Crafters Technical Advisor or submit an online request for prioritized lift bay allocation.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
             <Link
               href="/book"
-              className="px-8 py-4 bg-[#A96F43] hover:bg-[#8C572E] text-white text-xs font-semibold uppercase tracking-widest text-center transition-colors shadow-sm"
+              className="px-8 py-4 bg-[#C5A059] hover:bg-[#D4AF37] text-white text-xs font-semibold uppercase tracking-widest text-center transition-colors shadow-sm"
             >
               Book Service Online
             </Link>
             <a
               href="tel:+918668412375"
-              className="px-8 py-4 bg-transparent border border-stone-400 hover:border-white text-white text-xs font-semibold uppercase tracking-widest text-center transition-colors"
+              className="px-8 py-4 bg-transparent border border-[#D4C4A8] hover:border-white text-white text-xs font-semibold uppercase tracking-widest text-center transition-colors"
             >
               Call +91 86684 12375
             </a>

@@ -37,8 +37,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   if (authenticated === null) {
     return (
-      <div className="min-h-screen bg-[#17352D] flex items-center justify-center text-white">
-        <div className="animate-pulse flex items-center gap-2 text-sm text-[#A96F43]">
+      <div className="min-h-screen bg-[#1F1B14] flex items-center justify-center text-[#FAF8F5]">
+        <div className="animate-pulse flex items-center gap-2 text-sm text-[#C5A059]">
           <ShieldCheck className="w-5 h-5" />
           <span>Verifying Admin Permissions...</span>
         </div>
@@ -56,13 +56,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <ConvexClientProvider>
-      <div className="min-h-screen bg-[#F5F2EB] flex flex-col font-sans">
+      <div className="min-h-screen bg-[#FAF8F5] flex flex-col font-sans">
         {/* Admin Header Microbar */}
-        <header className="bg-[#17352D] text-white border-b border-[#2B463D] sticky top-0 z-50">
+        <header className="bg-[#1F1B14] text-white border-b border-[#2C2316] sticky top-0 z-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div className="flex items-center space-x-6">
               <Link href="/admin" className="flex items-center space-x-2.5">
-                <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-[#A96F43] shadow-md bg-white flex items-center justify-center">
+                <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-[#C5A059] shadow-md bg-white flex items-center justify-center">
                   <img
                     src="/road-crafters logo.jpg"
                     alt="Road Crafters Logo"
@@ -73,14 +73,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   <span className="font-serif text-sm font-bold tracking-tight text-white leading-tight">
                     ROAD CRAFTERS
                   </span>
-                  <span className="text-[8px] uppercase tracking-[0.25em] text-[#A96F43] font-semibold">
+                  <span className="text-[8px] uppercase tracking-[0.25em] text-[#C5A059] font-semibold">
                     ADMIN CMS
                   </span>
                 </div>
               </Link>
 
               {/* Nav links */}
-              <nav className="hidden md:flex items-center space-x-1 pl-6 border-l border-[#2B463D]">
+              <nav className="hidden md:flex items-center space-x-1 pl-6 border-l border-[#2C2316]">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = pathname === item.href || (item.href !== "/admin" && pathname.startsWith(item.href));
@@ -90,8 +90,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                       href={item.href}
                       className={`px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors flex items-center gap-1.5 ${
                         isActive
-                          ? "bg-[#23443A] text-[#A96F43]"
-                          : "text-stone-300 hover:text-white hover:bg-[#1C3E35]"
+                          ? "bg-[#2C2316] text-[#C5A059]"
+                          : "text-[#D4C4A8] hover:text-white hover:bg-[#2C2316]"
                       }`}
                     >
                       <Icon className="w-3.5 h-3.5" />
@@ -106,7 +106,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <Link
                 href="/"
                 target="_blank"
-                className="text-xs text-stone-300 hover:text-[#A96F43] flex items-center gap-1 transition-colors"
+                className="text-xs text-[#D4C4A8] hover:text-[#C5A059] flex items-center gap-1 transition-colors"
               >
                 <span>Live Website</span>
                 <ExternalLink className="w-3 h-3" />
@@ -123,7 +123,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </header>
 
         {/* Mobile Navigation */}
-        <div className="md:hidden bg-[#1C3E35] border-b border-[#2B463D] px-4 py-2 flex items-center space-x-2 overflow-x-auto">
+        <div className="md:hidden bg-[#1F1B14] border-b border-[#2C2316] px-4 py-2 flex items-center space-x-2 overflow-x-auto">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href || (item.href !== "/admin" && pathname.startsWith(item.href));
@@ -132,7 +132,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 key={item.name}
                 href={item.href}
                 className={`px-3 py-1.5 text-xs font-semibold uppercase tracking-wider whitespace-nowrap flex items-center gap-1.5 ${
-                  isActive ? "bg-[#23443A] text-[#A96F43]" : "text-stone-300"
+                  isActive ? "bg-[#2C2316] text-[#C5A059]" : "text-[#D4C4A8]"
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />

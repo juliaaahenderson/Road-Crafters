@@ -13,11 +13,11 @@ export default function AboutPage() {
   return (
     <div className="py-12 space-y-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Hero */}
-      <div className="border-b border-[#D8D1C5] pb-12">
-        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-[#17352D] leading-tight">
+      <div className="border-b border-[#E6D7BC] pb-12">
+        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-[#1F1B14] leading-tight">
           Built on Craftsmanship. Driven by Trust.
         </h1>
-        <p className="mt-6 text-lg text-[#6E706B] max-w-3xl leading-relaxed">
+        <p className="mt-6 text-lg text-[#6E6B65] max-w-3xl leading-relaxed">
           Established as a rider-first alternative to main dealer workshops, RoadCrafters Garage (रोडक्राफ्टर्स गैरेज) was built with a clear mandate: deliver uncompromising mechanical craftsmanship, factory-grade motorcycle OBD diagnostics, and transparent pricing without corporate inflation.
         </p>
       </div>
@@ -29,27 +29,27 @@ export default function AboutPage() {
             eyebrow="OUR PHILOSOPHY"
             title="No Shortcuts. No Guesswork."
           />
-          <p className="text-sm text-[#6E706B] leading-relaxed">
+          <p className="text-sm text-[#6E6B65] leading-relaxed">
             Modern motorcycles are complex integrations of mechanical, hydraulic, and software systems. We believe that proper motorcycle care requires both traditional mechanical empathy and cutting-edge electronic diagnosis.
           </p>
-          <p className="text-sm text-[#6E706B] leading-relaxed">
+          <p className="text-sm text-[#6E6B65] leading-relaxed">
             Every technician in our workshop undergoes continuous training on factory service bulletins, electrical architecture, and precision tool calibration. When you trust us with your motorcycle, you receive clear communication, photographic evidence of all findings, and fixed quotes.
           </p>
 
-          <div className="pt-4 grid grid-cols-2 gap-6 border-t border-[#E2DDD5]">
+          <div className="pt-4 grid grid-cols-2 gap-6 border-t border-[#E6D7BC]">
             <div>
-              <span className="block font-serif text-3xl font-semibold text-[#18352D]">100%</span>
-              <span className="text-xs text-[#6E706B]">OEM Parts & Fluid Guarantee</span>
+              <span className="block font-serif text-3xl font-semibold text-[#1F1B14]">100%</span>
+              <span className="text-xs text-[#6E6B65]">OEM Parts & Fluid Guarantee</span>
             </div>
             <div>
-              <span className="block font-serif text-3xl font-semibold text-[#18352D]">12 Mos</span>
-              <span className="text-xs text-[#6E706B]">Comprehensive Service Warranty</span>
+              <span className="block font-serif text-3xl font-semibold text-[#1F1B14]">12 Mos</span>
+              <span className="text-xs text-[#6E6B65]">Comprehensive Service Warranty</span>
             </div>
           </div>
         </div>
 
         <div className="lg:col-span-6">
-          <div className="border border-[#E2DDD5] bg-white p-2">
+          <div className="border border-[#E6D7BC] bg-white p-2">
             <img
               src={classNamesImages.electrical}
               alt="Master Technician at RoadCrafters Garage"
@@ -60,14 +60,14 @@ export default function AboutPage() {
       </div>
 
       {/* Timeline */}
-      <div className="bg-[#FAF8F3] border border-[#E2DDD5] p-8 md:p-12">
+      <div className="bg-[#FAF8F5] border border-[#E6D7BC] p-8 md:p-12">
         <SectionHeading
           eyebrow="MILESTONES"
           title="Dedicated Motorcycle Service Excellence"
           subtitle="Our journey building a rider-first motorcycle service center in Porvorim, Goa."
         />
 
-        <div className="mt-12 space-y-8 relative before:absolute before:inset-0 before:left-3 md:before:left-1/2 before:w-0.5 before:bg-[#E2DDD5]">
+        <div className="mt-12 space-y-8 relative before:absolute before:inset-0 before:left-3 md:before:left-1/2 before:w-0.5 before:bg-[#E6D7BC]">
           {[
             {
               year: "2010",
@@ -101,14 +101,14 @@ export default function AboutPage() {
                 idx % 2 === 0 ? "md:flex-row-reverse text-left" : "text-left"
               }`}
             >
-              <div className="w-full md:w-1/2 px-6 py-4 bg-white border border-[#E2DDD5] z-10">
-                <span className="text-xs font-bold text-[#B47A4A] bg-[#18352D] px-2 py-0.5 inline-block mb-2">
+              <div className="w-full md:w-1/2 px-6 py-4 bg-white border border-[#E6D7BC] z-10">
+                <span className="text-xs font-bold text-[#FAF8F5] bg-[#1F1B14] border border-[#C5A059] px-2 py-0.5 inline-block mb-2">
                   {item.year}
                 </span>
-                <h3 className="font-serif text-xl font-medium text-[#18352D]">
+                <h3 className="font-serif text-xl font-medium text-[#1F1B14]">
                   {item.title}
                 </h3>
-                <p className="text-xs text-[#6E706B] mt-1 leading-relaxed">
+                <p className="text-xs text-[#6E6B65] mt-1 leading-relaxed">
                   {item.desc}
                 </p>
               </div>

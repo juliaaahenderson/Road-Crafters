@@ -58,10 +58,10 @@ export default function LatestArticlesSection() {
       <div className="mt-10 text-center">
         <Link
           href="/blog"
-          className="inline-flex items-center text-xs font-semibold uppercase tracking-widest text-[#17352D] hover:text-[#A96F43] border-b border-[#17352D] pb-1 transition-colors"
+          className="inline-flex items-center text-xs font-semibold uppercase tracking-widest text-[#1F1B14] hover:text-[#C5A059] border-b border-[#1F1B14] pb-1 transition-colors"
         >
           <span>Explore All Motorcycle Technical Guides</span>
-          <ArrowRight className="w-4 h-4 ml-2 text-[#A96F43]" />
+          <ArrowRight className="w-4 h-4 ml-2 text-[#C5A059]" />
         </Link>
       </div>
     </section>

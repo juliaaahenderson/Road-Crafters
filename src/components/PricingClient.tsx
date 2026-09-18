@@ -31,38 +31,38 @@ export default function PricingClient() {
         return (
           <div
             key={pkgId}
-            className={`bg-[#FAF8F3] border p-8 flex flex-col justify-between relative transition-all ${
-              pkg.popular ? "border-[#B47A4A] shadow-md ring-1 ring-[#B47A4A]/20" : "border-[#E2DDD5] shadow-sm hover:border-[#B47A4A]/50"
+            className={`bg-white border p-8 flex flex-col justify-between relative transition-all ${
+              pkg.popular ? "border-[#C5A059] shadow-md ring-1 ring-[#C5A059]/30" : "border-[#E6D7BC] shadow-sm hover:border-[#C5A059]"
             }`}
           >
             {pkg.popular && (
-              <span className="absolute top-0 right-8 transform -translate-y-1/2 bg-[#B47A4A] text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 shadow-sm flex items-center gap-1">
+              <span className="absolute top-0 right-8 transform -translate-y-1/2 bg-[#C5A059] text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 shadow-sm flex items-center gap-1">
                 <Sparkles className="w-3 h-3" />
                 <span>Most Popular</span>
               </span>
             )}
 
             <div>
-              <span className="text-[10px] uppercase font-semibold text-[#B47A4A] tracking-wider block mb-1">
+              <span className="text-[10px] uppercase font-semibold text-[#C5A059] tracking-wider block mb-1">
                 {pkg.recommendedFor || "Motorcycle Service"}
               </span>
-              <h2 className="font-serif text-2xl font-semibold text-[#18352D]">
+              <h2 className="font-serif text-2xl font-semibold text-[#1F1B14]">
                 {pkg.name}
               </h2>
               <div className="mt-4 mb-2 flex items-baseline space-x-2">
-                <span className="font-serif text-4xl font-bold text-[#18352D]">
+                <span className="font-serif text-4xl font-bold text-[#1F1B14]">
                   {pkg.price}
                 </span>
-                <span className="text-xs text-[#6E706B]">/ service visit</span>
+                <span className="text-xs text-[#6E6B65]">/ service visit</span>
               </div>
-              <p className="text-xs text-[#6E706B] mb-6 border-b border-[#E2DDD5] pb-4 min-h-[36px]">
+              <p className="text-xs text-[#6E6B65] mb-6 border-b border-[#E6D7BC] pb-4 min-h-[36px]">
                 {pkg.subtitle}
               </p>
 
               <ul className="space-y-3 mb-8">
                 {(pkg.features || []).map((feat: string, fIdx: number) => (
-                  <li key={fIdx} className="flex items-start text-xs text-[#202522]">
-                    <Check className="w-3.5 h-3.5 text-[#B47A4A] flex-shrink-0 mr-2.5 mt-0.5" />
+                  <li key={fIdx} className="flex items-start text-xs text-[#1F1E1B]">
+                    <Check className="w-3.5 h-3.5 text-[#C5A059] flex-shrink-0 mr-2.5 mt-0.5" />
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -73,8 +73,8 @@ export default function PricingClient() {
               href={`/book?package=${encodeURIComponent(pkgId)}`}
               className={`w-full py-3 text-center text-xs font-semibold uppercase tracking-wider transition-all ${
                 pkg.popular
-                  ? "bg-[#18352D] text-white hover:bg-[#2B463D] shadow-md"
-                  : "bg-[#F4F0E8] text-[#18352D] hover:bg-[#E2DDD5] border border-[#E2DDD5]"
+                  ? "bg-[#1F1B14] text-white hover:bg-[#2C2316] shadow-md"
+                  : "bg-[#FAF8F5] text-[#1F1B14] hover:bg-[#E6D7BC] border border-[#E6D7BC]"
               }`}
             >
               Book {pkg.name}

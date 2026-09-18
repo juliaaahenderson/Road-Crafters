@@ -31,23 +31,23 @@ export default function FAQAccordion({ items }: { items: FAQItem[] }) {
         return (
           <div
             key={idx}
-            className="bg-[#FAF8F3] border border-[#E2DDD5] transition-colors"
+            className="bg-white border border-[#E6D7BC] transition-colors shadow-sm"
           >
             <button
               onClick={() => toggle(idx)}
               className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
             >
-              <span className="font-serif text-lg font-medium text-[#18352D] pr-4">
+              <span className="font-serif text-lg font-medium text-[#1F1B14] pr-4">
                 {item.question}
               </span>
               <ChevronDown
-                className={`w-5 h-5 text-[#B47A4A] transition-transform duration-300 flex-shrink-0 ${
+                className={`w-5 h-5 text-[#C5A059] transition-transform duration-300 flex-shrink-0 ${
                   isOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
             {isOpen && (
-              <div className="px-6 pb-6 text-sm text-[#6E706B] leading-relaxed border-t border-[#E2DDD5]/50 pt-4">
+              <div className="px-6 pb-6 text-sm text-[#6E6B65] leading-relaxed border-t border-[#E6D7BC]/50 pt-4">
                 {item.answer}
               </div>
             )}

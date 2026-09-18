@@ -60,8 +60,8 @@ export default function BlogDetailClient({ slug }: { slug: string }) {
   if (convexPost === undefined && !staticPost) {
     return (
       <div className="py-24 max-w-4xl mx-auto px-4 text-center space-y-4 font-sans">
-        <div className="w-12 h-12 border-4 border-[#17352D] border-t-[#A96F43] rounded-full animate-spin mx-auto" />
-        <p className="text-sm font-medium text-[#17352D]">
+        <div className="w-12 h-12 border-4 border-[#1F1B14] border-t-[#C5A059] rounded-full animate-spin mx-auto" />
+        <p className="text-sm font-medium text-[#1F1B14]">
           Loading article from RoadCrafters database...
         </p>
       </div>
@@ -72,20 +72,20 @@ export default function BlogDetailClient({ slug }: { slug: string }) {
   if (!post) {
     return (
       <div className="py-24 max-w-2xl mx-auto px-4 text-center space-y-6">
-        <div className="w-16 h-16 bg-[#17352D] text-[#A96F43] flex items-center justify-center mx-auto shadow-md">
+        <div className="w-16 h-16 bg-[#1F1B14] text-[#C5A059] flex items-center justify-center mx-auto shadow-md">
           <BookOpen className="w-8 h-8" />
         </div>
-        <h1 className="font-serif text-3xl font-bold text-[#17352D]">
+        <h1 className="font-serif text-3xl font-bold text-[#1F1B14]">
           Article Not Found
         </h1>
-        <p className="text-sm text-[#6E706B] leading-relaxed">
-          The technical article you requested (<code className="text-[#A96F43] font-mono">/blog/{cleanSlug}</code>) could not be located in our published archive.
+        <p className="text-sm text-[#6E6B65] leading-relaxed">
+          The technical article you requested (<code className="text-[#C5A059] font-mono">/blog/{cleanSlug}</code>) could not be located in our published archive.
         </p>
         <Link
           href="/blog"
-          className="inline-flex items-center space-x-2 px-6 py-3 bg-[#17352D] text-white text-xs font-semibold uppercase tracking-widest hover:bg-[#23443A] transition-colors"
+          className="inline-flex items-center space-x-2 px-6 py-3 bg-[#1F1B14] text-[#FAF8F5] text-xs font-semibold uppercase tracking-widest hover:bg-[#2C2316] transition-colors"
         >
-          <ArrowLeft className="w-4 h-4 text-[#A96F43]" />
+          <ArrowLeft className="w-4 h-4 text-[#C5A059]" />
           <span>Back to All Articles</span>
         </Link>
       </div>
@@ -106,12 +106,12 @@ export default function BlogDetailClient({ slug }: { slug: string }) {
   return (
     <article className="py-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
       {/* Navigation Breadcrumb */}
-      <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs text-[#6E706B] font-medium">
-        <Link href="/" className="hover:text-[#17352D] transition-colors">Home</Link>
-        <ChevronRight className="w-3 h-3 text-[#A96F43]" />
-        <Link href="/blog" className="hover:text-[#17352D] transition-colors">Technical Journal</Link>
-        <ChevronRight className="w-3 h-3 text-[#A96F43]" />
-        <span className="text-[#17352D] font-semibold truncate max-w-[200px] sm:max-w-none">
+      <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs text-[#6E6B65] font-medium">
+        <Link href="/" className="hover:text-[#C5A059] transition-colors">Home</Link>
+        <ChevronRight className="w-3 h-3 text-[#C5A059]" />
+        <Link href="/blog" className="hover:text-[#C5A059] transition-colors">Technical Journal</Link>
+        <ChevronRight className="w-3 h-3 text-[#C5A059]" />
+        <span className="text-[#1F1B14] font-semibold truncate max-w-[200px] sm:max-w-none">
           {post.title}
         </span>
       </nav>
@@ -119,48 +119,48 @@ export default function BlogDetailClient({ slug }: { slug: string }) {
       {/* Article Header */}
       <header className="space-y-6">
         <div className="flex items-center space-x-3">
-          <span className="text-[10px] uppercase font-semibold tracking-widest text-white bg-[#17352D] px-3 py-1 inline-block border border-[#A96F43]">
+          <span className="text-[10px] uppercase font-semibold tracking-widest text-[#FAF8F5] bg-[#1F1B14] px-3 py-1 inline-block border border-[#C5A059]">
             {post.category}
           </span>
-          <span className="text-xs text-[#6E706B] flex items-center gap-1 font-medium">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#A96F43]" />
+          <span className="text-xs text-[#6E6B65] flex items-center gap-1 font-medium">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" />
             Verified Technical Article
           </span>
         </div>
 
-        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#17352D] leading-[1.18]">
+        <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1F1B14] leading-[1.18]">
           {post.title}
         </h1>
 
         {post.excerpt && (
-          <p className="text-base sm:text-lg text-[#6E706B] leading-relaxed border-l-2 border-[#A96F43] pl-4 italic">
+          <p className="text-base sm:text-lg text-[#6E6B65] leading-relaxed border-l-2 border-[#C5A059] pl-4 italic">
             {post.excerpt}
           </p>
         )}
 
         {/* Author Metadata Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-4 border-y border-[#E2DDD5] py-4">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-y border-[#E6D7BC] py-4">
           <div className="flex items-center space-x-3">
             <img
               src={post.author.avatar || "/media__1788797887061.png"}
               alt={post.author.name}
-              className="w-10 h-10 rounded-full object-cover border-2 border-[#A96F43]"
+              className="w-10 h-10 rounded-full object-cover border-2 border-[#C5A059]"
             />
             <div>
-              <p className="text-xs font-semibold text-[#17352D]">
+              <p className="text-xs font-semibold text-[#1F1B14]">
                 {post.author.name}
               </p>
-              <p className="text-[10px] text-[#6E706B]">
+              <p className="text-[10px] text-[#6E6B65]">
                 {post.author.role || "Technical Advisor"}
               </p>
             </div>
           </div>
 
-          <div className="flex items-center space-x-4 text-xs text-[#6E706B]">
+          <div className="flex items-center space-x-4 text-xs text-[#6E6B65]">
             <span>{post.publishedAt}</span>
             <span>•</span>
             <span className="flex items-center gap-1 font-medium">
-              <Clock className="w-3.5 h-3.5 text-[#A96F43]" />
+              <Clock className="w-3.5 h-3.5 text-[#C5A059]" />
               {post.readTime}
             </span>
           </div>
@@ -169,17 +169,17 @@ export default function BlogDetailClient({ slug }: { slug: string }) {
           <div className="flex items-center space-x-2">
             <button
               onClick={handleCopyLink}
-              className="px-3 py-1.5 bg-[#FAF8F2] hover:bg-white border border-[#D8D1C5] text-xs font-semibold text-[#17352D] flex items-center gap-1.5 transition-colors"
+              className="px-3 py-1.5 bg-[#FAF8F5] hover:bg-white border border-[#E6D7BC] text-xs font-semibold text-[#1F1B14] flex items-center gap-1.5 transition-colors"
               title="Copy link to clipboard"
             >
               {copied ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-emerald-600" />
-                  <span className="text-emerald-700">Copied!</span>
+                  <Check className="w-3.5 h-3.5 text-[#C5A059]" />
+                  <span className="text-[#C5A059]">Copied!</span>
                 </>
               ) : (
                 <>
-                  <Share2 className="w-3.5 h-3.5 text-[#A96F43]" />
+                  <Share2 className="w-3.5 h-3.5 text-[#C5A059]" />
                   <span>Share</span>
                 </>
               )}
@@ -199,7 +199,7 @@ export default function BlogDetailClient({ slug }: { slug: string }) {
       </header>
 
       {/* Main Cover Image */}
-      <div className="border border-[#E2DDD5] bg-white p-2 shadow-sm">
+      <div className="border border-[#E6D7BC] bg-white p-2 shadow-sm">
         <img
           src={post.heroImage}
           alt={post.title}
@@ -208,9 +208,9 @@ export default function BlogDetailClient({ slug }: { slug: string }) {
       </div>
 
       {/* Markdown Body Content Renderer */}
-      <div className="prose max-w-none text-[#202522] space-y-6 text-base leading-relaxed font-sans border-b border-[#E2DDD5] pb-12">
+      <div className="prose max-w-none text-[#1F1B14] space-y-6 text-base leading-relaxed font-sans border-b border-[#E6D7BC] pb-12">
         {contentParagraphs.length === 0 ? (
-          <p className="text-[#202522] text-base leading-relaxed italic border-l-2 border-[#A96F43] pl-4 bg-[#FAF8F2] py-3">
+          <p className="text-[#1F1B14] text-base leading-relaxed italic border-l-2 border-[#C5A059] pl-4 bg-[#FAF8F5] py-3">
             {post.excerpt || "This technical article was published with overview details. Check back for full workshop diagnostic notes."}
           </p>
         ) : (
@@ -219,28 +219,28 @@ export default function BlogDetailClient({ slug }: { slug: string }) {
 
             if (trimmed.startsWith("# ")) {
               return (
-                <h1 key={idx} className="font-serif text-3xl font-bold text-[#17352D] pt-6 mb-3 border-b border-[#E2DDD5] pb-2">
+                <h1 key={idx} className="font-serif text-3xl font-bold text-[#1F1B14] pt-6 mb-3 border-b border-[#E6D7BC] pb-2">
                   {trimmed.slice(2)}
                 </h1>
               );
             }
             if (trimmed.startsWith("## ")) {
               return (
-                <h2 key={idx} className="font-serif text-2xl font-bold text-[#17352D] pt-5 mb-2">
+                <h2 key={idx} className="font-serif text-2xl font-bold text-[#1F1B14] pt-5 mb-2">
                   {trimmed.slice(3)}
                 </h2>
               );
             }
             if (trimmed.startsWith("### ")) {
               return (
-                <h3 key={idx} className="font-serif text-xl font-semibold text-[#17352D] pt-4 mb-2">
+                <h3 key={idx} className="font-serif text-xl font-semibold text-[#1F1B14] pt-4 mb-2">
                   {trimmed.slice(4)}
                 </h3>
               );
             }
             if (trimmed.startsWith("> ")) {
               return (
-                <blockquote key={idx} className="border-l-4 border-[#A96F43] pl-4 py-3 italic text-stone-700 bg-[#FAF8F2] my-4 text-sm sm:text-base">
+                <blockquote key={idx} className="border-l-4 border-[#C5A059] pl-4 py-3 italic text-stone-700 bg-[#FAF8F5] my-4 text-sm sm:text-base">
                   {trimmed.slice(2)}
                 </blockquote>
               );
@@ -250,8 +250,8 @@ export default function BlogDetailClient({ slug }: { slug: string }) {
               return (
                 <ul key={idx} className="space-y-2 my-4 pl-4">
                   {listItems.map((item, i) => (
-                    <li key={i} className="flex items-start text-sm sm:text-base text-stone-800">
-                      <span className="w-2 h-2 rounded-full bg-[#A96F43] mt-2 mr-3 flex-shrink-0" />
+                    <li key={i} className="flex items-start text-sm sm:text-base text-[#1F1B14]">
+                      <span className="w-2 h-2 rounded-full bg-[#C5A059] mt-2 mr-3 flex-shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -260,7 +260,7 @@ export default function BlogDetailClient({ slug }: { slug: string }) {
             }
 
             return (
-              <p key={idx} className="text-[#202522] leading-relaxed text-base">
+              <p key={idx} className="text-[#1F1B14] leading-relaxed text-base">
                 {trimmed}
               </p>
             );
@@ -269,18 +269,18 @@ export default function BlogDetailClient({ slug }: { slug: string }) {
       </div>
 
       {/* Workshop Booking Banner */}
-      <div className="bg-[#17352D] text-white p-8 border border-[#23443A] flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div className="bg-[#1F1B14] text-[#FAF8F5] p-8 border border-[#2C2316] flex flex-col sm:flex-row items-center justify-between gap-6">
         <div className="space-y-2">
           <h3 className="font-serif text-2xl font-semibold">
             Need Expert Diagnostics for Your Bike?
           </h3>
-          <p className="text-xs text-stone-300">
+          <p className="text-xs text-[#E6D7BC]">
             Book a service bay at RoadCrafters Garage in Porvorim, Goa. Full OBD scan, synthetic oil flush, and 32-point inspection.
           </p>
         </div>
         <Link
           href="/book"
-          className="px-6 py-3 bg-[#A96F43] hover:bg-[#8C572E] text-white text-xs font-semibold uppercase tracking-widest whitespace-nowrap transition-colors"
+          className="px-6 py-3 bg-[#C5A059] hover:bg-[#B38E47] text-[#1F1B14] font-semibold text-xs uppercase tracking-widest whitespace-nowrap transition-colors"
         >
           Book Appointment →
         </Link>
@@ -289,7 +289,7 @@ export default function BlogDetailClient({ slug }: { slug: string }) {
       {/* Related Technical Guides */}
       {relatedPosts.length > 0 && (
         <section className="pt-8 space-y-6">
-          <h3 className="font-serif text-2xl font-bold text-[#17352D] border-b border-[#E2DDD5] pb-3">
+          <h3 className="font-serif text-2xl font-bold text-[#1F1B14] border-b border-[#E6D7BC] pb-3">
             Related Technical Articles
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

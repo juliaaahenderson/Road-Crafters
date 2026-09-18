@@ -25,7 +25,7 @@ export default function SectionHeading({
     <div className={`mb-12 ${alignClasses[align]}`}>
       <h2
         className={`font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight ${
-          dark ? "text-white" : "text-[#18352D]"
+          dark ? "text-white" : "text-[#1F1B14]"
         }`}
       >
         {title}
