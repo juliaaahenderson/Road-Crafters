@@ -56,15 +56,15 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="group flex items-center space-x-3.5">
-          <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#C5A059] shadow-md group-hover:border-[#1F1B14] transition-all duration-300 bg-white flex items-center justify-center">
+          <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-[#C5A059] shadow-md group-hover:border-[#1F1B14] transition-all duration-300 bg-[#1F1B14] flex items-center justify-center">
             <img
-              src="/road-crafters logo.jpg"
-              alt="Road Crafters Logo"
+              src="/logo-19th.png"
+              alt="RoadCrafters Garage Logo"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>
           <div className="flex flex-col">
-            <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-[#1F1B14] group-hover:text-[#C5A059] transition-colors leading-tight">
+            <span className="font-sans text-xl sm:text-2xl font-bold tracking-tight text-[#1F1B14] group-hover:text-[#C5A059] transition-colors leading-tight">
               ROAD CRAFTERS
             </span>
             <span className="text-[9px] uppercase tracking-[0.32em] font-semibold text-[#C5A059]">

@@ -38,11 +38,11 @@ export default function BlogDetailClient({ slug }: { slug: string }) {
           year: "numeric",
         }),
         readTime: `${Math.max(3, Math.ceil((activeConvexPost.content || "").length / 500))} min read`,
-        heroImage: activeConvexPost.coverImageUrl || "/hero_bike_workshop.png",
+        heroImage: activeConvexPost.coverImageUrl || "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.47(2).jpeg",
         author: {
           name: activeConvexPost.author || "RoadCrafters Master Technician",
           role: "Lead Diagnostic Engineer",
-          avatar: "/media__1788797887061.png",
+          avatar: "/logo-19th.png",
         },
         content: activeConvexPost.content,
       }
@@ -142,7 +142,7 @@ export default function BlogDetailClient({ slug }: { slug: string }) {
         <div className="flex flex-wrap items-center justify-between gap-4 border-y border-[#E6D7BC] py-4">
           <div className="flex items-center space-x-3">
             <img
-              src={post.author.avatar || "/media__1788797887061.png"}
+              src={post.author.avatar || "/logo-19th.png"}
               alt={post.author.name}
               className="w-10 h-10 rounded-full object-cover border-2 border-[#C5A059]"
             />

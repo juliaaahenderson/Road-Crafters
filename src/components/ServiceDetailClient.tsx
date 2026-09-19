@@ -104,7 +104,7 @@ export default function ServiceDetailClient({ slug }: { slug: string }) {
         <div className="lg:col-span-5">
           <div className="border border-[#E6D7BC] bg-white p-2">
             <img
-              src={service.image || "/hero_bike_workshop.png"}
+              src={service.image || "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.45(1).jpeg"}
               alt={service.title}
               className="w-full h-[400px] object-cover"
             />

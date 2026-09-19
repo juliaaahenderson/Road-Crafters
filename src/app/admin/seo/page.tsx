@@ -277,7 +277,7 @@ export default function AdminSeoPage() {
                 type="text"
                 value={form.ogImageUrl}
                 onChange={(e) => setForm({ ...form, ogImageUrl: e.target.value })}
-                placeholder="https://roadcraftersgarage.com/hero_bike_workshop.png"
+                placeholder="https://roadcraftersgarage.com/garage_photos/WhatsApp%20Image%202026-09-18%20at%2011.25.46.jpeg"
                 className="w-full px-4 py-2.5 bg-white border border-[#E2DDD5] text-sm font-mono text-[#202522] focus:outline-none focus:border-[#A96F43]"
               />
             </div>

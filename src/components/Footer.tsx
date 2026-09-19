@@ -33,16 +33,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center space-x-3">
-              <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#C5A059] shadow-md bg-white flex items-center justify-center">
+            <div className="flex items-center space-x-3.5">
+              <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-[#C5A059] shadow-md bg-[#1F1B14] flex items-center justify-center">
                 <img
-                  src="/road-crafters logo.jpg"
-                  alt="Road Crafters Logo"
+                  src="/logo-19th.png"
+                  alt="RoadCrafters Garage Logo"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-2xl font-bold tracking-tight text-white uppercase">
+                <span className="font-sans text-2xl font-bold tracking-tight text-white uppercase">
                   {name}
                 </span>
                 <span className="text-[10px] uppercase tracking-[0.28em] font-medium text-[#C5A059]">

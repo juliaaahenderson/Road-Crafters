@@ -33,11 +33,11 @@ export function BlogDetailContent({ slug }: { slug: string }) {
     category: "Technical Guide",
     publishedAt: new Date(convexPost.publishedAt).toLocaleDateString(),
     readTime: `${Math.max(3, Math.ceil(convexPost.content.length / 500))} min read`,
-    heroImage: convexPost.coverImageUrl || "/hero_bike_workshop.png",
+    heroImage: convexPost.coverImageUrl || "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.47(2).jpeg",
     author: {
       name: convexPost.author || "RoadCrafters Master Technician",
       role: "Technical Advisor",
-      avatar: "/media__1788797887061.png",
+      avatar: "/logo-19th.png",
     },
     content: convexPost.content,
   } : defaultPost);

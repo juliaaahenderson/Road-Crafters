@@ -4,14 +4,14 @@ import { ArrowRight, Clock } from "lucide-react";
 import { BlogPost } from "@/data/content";
 
 export default function BlogCard({ post }: { post: BlogPost }) {
-  const heroImage = post.heroImage || "/hero_bike_workshop.png";
+  const heroImage = post.heroImage || "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.47(2).jpeg";
   const category = post.category || "Technical Guide";
   const publishedAt = post.publishedAt || "Recently";
   const readTime = post.readTime || "3 min read";
   const title = post.title || "Untitled Article";
   const excerpt = post.excerpt || "";
   const authorName = post.author?.name || "RoadCrafters Master Technician";
-  const authorAvatar = post.author?.avatar || "/media__1788797887061.png";
+  const authorAvatar = post.author?.avatar || "/logo-19th.png";
 
   return (
     <article className="bg-white border border-[#E6D7BC] group hover:border-[#C5A059] transition-all flex flex-col justify-between overflow-hidden shadow-sm">
