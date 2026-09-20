@@ -67,8 +67,8 @@ export default function Header() {
             <span className="font-sans text-xl sm:text-2xl font-bold tracking-tight text-[#1F1B14] group-hover:text-[#C5A059] transition-colors leading-tight">
               ROAD CRAFTERS
             </span>
-            <span className="text-[9px] uppercase tracking-[0.32em] font-semibold text-[#C5A059]">
-              MOTORCYCLE GARAGE & DIAGNOSTICS
+            <span className="text-[9px] uppercase tracking-[0.22em] font-semibold text-[#C5A059]">
+              YOU SAY IT AND WE DO IT
             </span>
           </div>
         </Link>

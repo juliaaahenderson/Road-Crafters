@@ -72,7 +72,7 @@ export default function LocationsPage() {
               <p className="text-xs text-[#FAF8F5]">
                 Rating: <strong className="text-[#C5A059]">5.0 ★ (55 reviews)</strong>
               </p>
-              <span className="text-[11px] text-[#E6D7BC] block bg-[#2C2316] px-2 py-0.5 w-fit mt-1">LGBTQ+ friendly</span>
+              <span className="text-[11px] text-[#E6D7BC] block bg-[#2C2316] px-2 py-0.5 w-fit mt-1">Rider friendly</span>
             </div>
           </div>
 

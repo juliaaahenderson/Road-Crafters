@@ -45,8 +45,8 @@ export default function Footer() {
                 <span className="font-sans text-2xl font-bold tracking-tight text-white uppercase">
                   {name}
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.28em] font-medium text-[#C5A059]">
-                  MOTORCYCLE GARAGE & DIAGNOSTICS
+                <span className="text-[10px] uppercase tracking-[0.22em] font-semibold text-[#C5A059]">
+                  YOU SAY IT AND WE DO IT
                 </span>
               </div>
             </div>
@@ -85,7 +85,7 @@ export default function Footer() {
               </p>
               <div className="pt-1 flex items-center gap-3 text-[11px] text-[#D4C4A8]">
                 <span className="bg-[#2C2316] px-2 py-0.5 text-[#C5A059] font-semibold">★ 5.0 (55 reviews)</span>
-                <span className="bg-[#2C2316] px-2 py-0.5 text-[#FAF8F5]">LGBTQ+ friendly</span>
+                <span className="bg-[#2C2316] px-2 py-0.5 text-[#FAF8F5]">Rider Friendly</span>
               </div>
             </div>
           </div>

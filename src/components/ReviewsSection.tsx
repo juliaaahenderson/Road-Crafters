@@ -42,7 +42,7 @@ export default function ReviewsSection() {
           </div>
           <div className="bg-[#1F1B14] text-[#FAF8F5] p-5 border border-[#2C2316] flex items-center space-x-4 flex-shrink-0 shadow-md">
             <div className="text-center">
-              <span className="font-serif text-3xl font-bold text-[#C5A059] block leading-none">
+              <span className="font-sans text-3xl font-bold text-[#C5A059] block leading-none">
                 5.0
               </span>
               <div className="flex items-center text-[#C5A059] mt-1 space-x-0.5">
@@ -69,7 +69,7 @@ export default function ReviewsSection() {
                 {/* Header: Author & Stars */}
                 <div className="flex items-start justify-between gap-3 border-b border-[#FAF8F5] pb-3">
                   <div>
-                    <h3 className="font-serif text-lg font-semibold text-[#1F1B14] group-hover:text-[#C5A059] transition-colors">
+                    <h3 className="font-sans text-lg font-bold text-[#1F1B14] group-hover:text-[#C5A059] transition-colors">
                       {review.author}
                     </h3>
                     <div className="flex items-center gap-2 mt-0.5">
@@ -89,7 +89,7 @@ export default function ReviewsSection() {
                 </div>
 
                 {/* Comment */}
-                <p className="text-xs text-[#1F1E1B] leading-relaxed italic">
+                <p className="font-sans text-xs text-[#1F1E1B] leading-relaxed">
                   "{review.comment}"
                 </p>
               </div>

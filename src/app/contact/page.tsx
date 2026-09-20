@@ -229,7 +229,7 @@ Please get back to me. Thank you!`;
                 <p><strong className="text-white">Business Category:</strong> Motorcycle Repair Shop</p>
                 <p><strong className="text-white">Rating:</strong> <span className="text-[#C5A059] font-bold">5.0 ★</span> (55 reviews)</p>
                 <p><strong className="text-white">Business Hours:</strong> <span className="text-[#C5A059]">{hours}</span></p>
-                <p><strong className="text-white">Features:</strong> LGBTQ+ friendly</p>
+                <p><strong className="text-white">Features:</strong> Rider Friendly Service</p>
               </div>
             </div>
           </div>

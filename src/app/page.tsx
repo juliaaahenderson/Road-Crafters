@@ -14,77 +14,86 @@ import { SERVICES_DATA, PACKAGES_DATA, FAQ_DATA, classNamesImages } from "@/data
 export default function HomePage() {
   return (
     <div className="space-y-24 pb-20">
-      {/* 1. HERO SECTION */}
-      <section className="pt-10 lg:pt-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column Text */}
-          <div className="lg:col-span-6 space-y-6">
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-[#1F1B14] leading-[1.12]">
-              Precision Service for Every Ride.
+      {/* 1. HERO SECTION: LEFT TEXTS + RIGHT 100% UNCROPPED GARAGE IMAGE */}
+      <section className="pt-1 lg:pt-3 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Left Column: Texts & CTAs (Shifted towards navbar) */}
+          <div className="lg:col-span-6 space-y-5 text-left -mt-4 lg:-mt-8">
+            {/* Main H1 Headline: Official Tagline */}
+            <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[#1F1B14] leading-[1.12]">
+              You Say It and We Do It.
             </h1>
-            <p className="text-base sm:text-lg text-[#6E6B65] leading-relaxed max-w-xl">
-              Professional motorcycle servicing, diagnostics and repairs performed by experienced technicians who understand what your machine demands.
+
+            {/* Subtitle Left */}
+            <p className="text-base sm:text-lg text-[#6E6B65] leading-relaxed max-w-xl font-sans">
+              Precision motorcycle servicing, diagnostics, engine overhauls & genuine OEM spare parts performed by master technicians at our official Goa workshop.
             </p>
 
+            {/* Action Buttons Left */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               <Link
                 href="/book"
-                className="px-7 py-3.5 bg-[#1F1B14] text-[#FAF8F5] hover:bg-[#2C2316] text-xs font-semibold uppercase tracking-widest transition-all inline-flex items-center justify-center space-x-2 group shadow-sm border border-[#1F1B14]"
+                className="px-8 py-4 bg-[#1F1B14] text-[#FAF8F5] hover:bg-[#2C2316] text-xs font-bold uppercase tracking-widest transition-all inline-flex items-center justify-center space-x-2 group shadow-md border border-[#1F1B14]"
               >
                 <span>Book a Service</span>
                 <ArrowRight className="w-4 h-4 text-[#C5A059] group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/services"
-                className="px-7 py-3.5 bg-[#FAF8F5] text-[#1F1B14] hover:bg-white text-xs font-semibold uppercase tracking-widest transition-all inline-flex items-center justify-center space-x-2 border border-[#E6D7BC]"
+                className="px-8 py-4 bg-[#FAF8F5] text-[#1F1B14] hover:bg-white text-xs font-bold uppercase tracking-widest transition-all inline-flex items-center justify-center space-x-2 border border-[#E6D7BC] shadow-sm"
               >
                 <span>Explore Services</span>
               </Link>
             </div>
 
-            {/* Quick metrics */}
-            <div className="pt-8 border-t border-[#E6D7BC] grid grid-cols-3 gap-4 text-left">
+            {/* Key Metrics Left */}
+            <div className="pt-8 border-t border-[#E6D7BC] grid grid-cols-3 gap-4 text-left divide-x divide-[#E6D7BC]">
               <div>
-                <span className="block font-serif text-2xl lg:text-3xl font-semibold text-[#1F1B14]">
+                <span className="block font-sans text-2xl lg:text-3xl font-bold text-[#1F1B14]">
                   10+
                 </span>
-                <span className="text-xs text-[#6E6B65]">Years Motorcycle Expertise</span>
+                <span className="text-xs text-[#6E6B65]">Years Expertise</span>
               </div>
-              <div>
-                <span className="block font-serif text-2xl lg:text-3xl font-semibold text-[#1F1B14]">
+              <div className="pl-4">
+                <span className="block font-sans text-2xl lg:text-3xl font-bold text-[#1F1B14]">
                   15,000+
                 </span>
                 <span className="text-xs text-[#6E6B65]">Bikes Serviced</span>
               </div>
-              <div>
-                <span className="block font-serif text-2xl lg:text-3xl font-semibold text-[#1F1B14]">
+              <div className="pl-4">
+                <span className="block font-sans text-2xl lg:text-3xl font-bold text-[#1F1B14]">
                   25+
                 </span>
-                <span className="text-xs text-[#6E6B65]">Master Bike Technicians</span>
+                <span className="text-xs text-[#6E6B65]">Master Technicians</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column Image Frame */}
+          {/* Right Column: 100% Uncropped Full Garage Storefront Photo */}
           <div className="lg:col-span-6">
-            <div className="relative border-8 border-white shadow-xl overflow-hidden bg-stone-200">
-              <img
-                src={classNamesImages.hero}
-                alt="Premium Motorcycle inside Road Crafters Workshop"
-                className="w-full h-[420px] sm:h-[500px] object-cover"
-              />
-              <div className="absolute bottom-4 left-4 right-4 bg-[#1F1B14]/90 backdrop-blur-sm text-white p-4 flex items-center justify-between border border-[#2C2316]">
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                  <span className="text-xs font-medium tracking-wide">
-                    Live Workshop Status: <span className="text-[#C5A059]">Lift Bay 02 Open</span>
+            <div className="relative border-4 border-[#C5A059] bg-[#1F1B14] p-2 shadow-2xl rounded-sm overflow-hidden group">
+              {/* 100% Uncropped Garage Storefront Image */}
+              <div className="w-full bg-[#1F1B14] flex items-center justify-center overflow-hidden">
+                <img
+                  src={classNamesImages.exteriorFront}
+                  alt="Road Crafters Garage Official Front Storefront Signboard & Entrance"
+                  className="w-full max-h-[620px] object-contain rounded-sm"
+                />
+              </div>
+
+              {/* Workshop Location Banner at Bottom Right */}
+              <div className="mt-2 bg-[#1F1B14] text-[#FAF8F5] p-3.5 flex items-center justify-between border border-[#2C2316] text-xs">
+                <div className="flex items-center space-x-2">
+                  <span className="w-2 h-2 rounded-full bg-[#C5A059] animate-pulse" />
+                  <span className="font-medium text-[#FAF8F5]">
+                    Storefront: <span className="text-[#C5A059] font-bold">Shop - 9, Alcon Regency, Porvorim</span>
                   </span>
                 </div>
                 <Link
                   href="/workshop"
-                  className="text-[11px] uppercase tracking-wider text-[#D4C4A8] hover:text-white underline"
+                  className="text-[11px] uppercase tracking-wider text-[#C5A059] hover:underline font-semibold"
                 >
-                  View Facility
+                  View Facility →
                 </Link>
               </div>
             </div>
@@ -92,7 +101,7 @@ export default function HomePage() {
         </div>
 
         {/* Subtle Trust Bar */}
-        <div className="mt-16 bg-white border border-[#E6D7BC] py-6 px-6 sm:px-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-[#E6D7BC] shadow-sm">
+        <div className="bg-[#FAF8F5] border border-[#E6D7BC] py-6 px-6 sm:px-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-[#E6D7BC] shadow-md">
           <div className="flex flex-col items-center justify-center p-2">
             <Award className="w-5 h-5 text-[#C5A059] mb-1" />
             <span className="font-semibold text-xs text-[#1F1B14]">5.0 ★ Rated Garage</span>
@@ -105,8 +114,34 @@ export default function HomePage() {
           </div>
           <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
             <Wrench className="w-5 h-5 text-[#C5A059] mb-1" />
-            <span className="font-semibold text-xs text-[#1F1B14]">LGBTQ+ Friendly</span>
-            <span className="text-[11px] text-[#6E6B65]">Inclusive Rider Community</span>
+            <span className="font-semibold text-xs text-[#1F1B14]">Rider Friendly</span>
+            <span className="text-[11px] text-[#6E6B65]">Welcoming Garage Environment</span>
+          </div>
+          <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
+            <Clock className="w-5 h-5 text-[#C5A059] mb-1" />
+            <span className="font-semibold text-xs text-[#1F1B14]">Open — Closes 10:00 PM</span>
+            <span className="text-[11px] text-[#6E6B65]">Daily Operations</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Subtle Trust Bar */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-30">
+        <div className="bg-[#FAF8F5] border border-[#E6D7BC] py-6 px-6 sm:px-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-[#E6D7BC] shadow-xl">
+          <div className="flex flex-col items-center justify-center p-2">
+            <Award className="w-5 h-5 text-[#C5A059] mb-1" />
+            <span className="font-semibold text-xs text-[#1F1B14]">5.0 ★ Rated Garage</span>
+            <span className="text-[11px] text-[#6E6B65]">55 Verified Reviews</span>
+          </div>
+          <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
+            <Shield className="w-5 h-5 text-[#C5A059] mb-1" />
+            <span className="font-semibold text-xs text-[#1F1B14]">12-Month Warranty</span>
+            <span className="text-[11px] text-[#6E6B65]">Parts & Labor Guarantee</span>
+          </div>
+          <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
+            <Wrench className="w-5 h-5 text-[#C5A059] mb-1" />
+            <span className="font-semibold text-xs text-[#1F1B14]">Rider Friendly</span>
+            <span className="text-[11px] text-[#6E6B65]">Welcoming Garage Environment</span>
           </div>
           <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
             <Clock className="w-5 h-5 text-[#C5A059] mb-1" />

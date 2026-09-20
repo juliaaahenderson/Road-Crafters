@@ -70,7 +70,7 @@ const jsonLdSchema = {
   "amenityFeature": [
     {
       "@type": "LocationFeatureSpecification",
-      "name": "LGBTQ+ friendly",
+      "name": "Rider friendly",
       "value": true
     }
   ]

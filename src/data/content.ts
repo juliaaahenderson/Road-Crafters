@@ -66,7 +66,7 @@ export interface FAQItem {
 
 // 100% Authentic Component-Focused Motorcycle & Technical Repair Photography
 export const classNamesImages = {
-  hero: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.45(1).jpeg", // Authentic RoadCrafters Workshop & Servicing Bays
+  hero: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.46.jpeg", // Official Front Storefront & Signboard Photo
   workshopMain: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.45.jpeg", // Customer Reception & Billing Counter
   diagnostics: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.44(1).jpeg", // Workshop Bay Maintenance
   brakeService: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.44(2).jpeg", // Motorcycle Mechanics at Work
@@ -382,7 +382,7 @@ export const LOCATIONS_DATA: LocationItem[] = [
     facilities: [
       "Motorcycle Repair Shop",
       "OBD Diagnostic Scans",
-      "LGBTQ+ friendly",
+      "Customer First Service",
       "Hydraulic Lifts & Tuning",
       "OEM Parts & Synthetic Fluids",
       "Doorstep Pickup & Drop"
