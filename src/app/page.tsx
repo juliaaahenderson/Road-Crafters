@@ -125,31 +125,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Subtle Trust Bar */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-30">
-        <div className="bg-[#FAF8F5] border border-[#E6D7BC] py-6 px-6 sm:px-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-[#E6D7BC] shadow-xl">
-          <div className="flex flex-col items-center justify-center p-2">
-            <Award className="w-5 h-5 text-[#C5A059] mb-1" />
-            <span className="font-semibold text-xs text-[#1F1B14]">5.0 ★ Rated Garage</span>
-            <span className="text-[11px] text-[#6E6B65]">55 Verified Reviews</span>
-          </div>
-          <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
-            <Shield className="w-5 h-5 text-[#C5A059] mb-1" />
-            <span className="font-semibold text-xs text-[#1F1B14]">12-Month Warranty</span>
-            <span className="text-[11px] text-[#6E6B65]">Parts & Labor Guarantee</span>
-          </div>
-          <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
-            <Wrench className="w-5 h-5 text-[#C5A059] mb-1" />
-            <span className="font-semibold text-xs text-[#1F1B14]">Rider Friendly</span>
-            <span className="text-[11px] text-[#6E6B65]">Welcoming Garage Environment</span>
-          </div>
-          <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
-            <Clock className="w-5 h-5 text-[#C5A059] mb-1" />
-            <span className="font-semibold text-xs text-[#1F1B14]">Open — Closes 10:00 PM</span>
-            <span className="text-[11px] text-[#6E6B65]">Daily Operations</span>
-          </div>
-        </div>
-      </section>
 
       {/* 2. SERVICES SECTION */}
       <HomeServicesSection />
