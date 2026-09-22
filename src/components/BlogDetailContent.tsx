@@ -33,7 +33,7 @@ export function BlogDetailContent({ slug }: { slug: string }) {
     category: "Technical Guide",
     publishedAt: new Date(convexPost.publishedAt).toLocaleDateString(),
     readTime: `${Math.max(3, Math.ceil(convexPost.content.length / 500))} min read`,
-    heroImage: convexPost.coverImageUrl || "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.47(2).jpeg",
+    heroImage: convexPost.coverImageUrl || "/garage_photos/blog-cover-journal.jpg",
     author: {
       name: convexPost.author || "RoadCrafters Master Technician",
       role: "Technical Advisor",

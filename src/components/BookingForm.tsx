@@ -209,7 +209,7 @@ Please confirm my lift bay allocation. Thank you!`;
         >
           {serviceOptions.map((srv) => (
             <option key={srv.slug} value={srv.slug}>
-              {srv.title} — (From {srv.startingPrice})
+              {srv.title} (Call for Quote)
             </option>
           ))}
           <option value="unspecified-repair">General Diagnostic & Inspection</option>

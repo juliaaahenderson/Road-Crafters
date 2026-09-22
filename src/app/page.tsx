@@ -14,113 +14,123 @@ import { SERVICES_DATA, PACKAGES_DATA, FAQ_DATA, classNamesImages } from "@/data
 export default function HomePage() {
   return (
     <div className="space-y-24 pb-20">
-      {/* 1. HERO SECTION: LEFT TEXTS + RIGHT 100% UNCROPPED GARAGE IMAGE */}
-      <section className="pt-1 lg:pt-3 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
+      {/* 1. HERO SECTION: PREMIUM DUAL-COLUMN WITH LUXURY FLOATING BADGES & PHOTO PRESENTATION */}
+      <section className="pt-2 lg:pt-6 pb-4 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          {/* Left Column: Texts & CTAs (Shifted towards navbar) */}
-          <div className="lg:col-span-6 space-y-5 text-left -mt-4 lg:-mt-8">
+          {/* Left Column: Bold Tagline, Subtitle, Modern CTAs & Key Metrics */}
+          <div className="lg:col-span-6 space-y-6 text-left">
             {/* Main H1 Headline: Official Tagline */}
-            <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[#1F1B14] leading-[1.12]">
-              You Say It and We Do It.
+            <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#1F1B14] leading-[1.1] max-w-xl">
+              You Say It and <br className="hidden sm:inline" />
+              <span className="text-[#C5A059] relative inline-block">
+                We Do It.
+                <svg className="absolute -bottom-1 left-0 w-full h-2 text-[#C5A059]/30" viewBox="0 0 100 20" preserveAspectRatio="none">
+                  <path d="M0 15 Q 50 0, 100 15" stroke="currentColor" strokeWidth="4" fill="none" />
+                </svg>
+              </span>
             </h1>
 
             {/* Subtitle Left */}
-            <p className="text-base sm:text-lg text-[#6E6B65] leading-relaxed max-w-xl font-sans">
-              Precision motorcycle servicing, diagnostics, engine overhauls & genuine OEM spare parts performed by master technicians at our official Goa workshop.
+            <p className="text-base sm:text-lg text-[#524F4A] leading-relaxed max-w-xl font-sans">
+              Precision motorcycle servicing, diagnostics, engine overhauls & genuine OEM spare parts performed by master technicians at our flagship Porvorim garage.
             </p>
 
             {/* Action Buttons Left */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               <Link
                 href="/book"
-                className="px-8 py-4 bg-[#1F1B14] text-[#FAF8F5] hover:bg-[#2C2316] text-xs font-bold uppercase tracking-widest transition-all inline-flex items-center justify-center space-x-2 group shadow-md border border-[#1F1B14]"
+                className="px-8 py-4 bg-[#1F1B14] text-[#FAF8F5] hover:bg-[#C5A059] hover:text-[#1F1B14] text-xs font-bold uppercase tracking-widest transition-all duration-300 inline-flex items-center justify-center space-x-2.5 group shadow-lg rounded-md"
               >
                 <span>Book a Service</span>
-                <ArrowRight className="w-4 h-4 text-[#C5A059] group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-[#C5A059] group-hover:text-[#1F1B14] group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link
-                href="/services"
-                className="px-8 py-4 bg-[#FAF8F5] text-[#1F1B14] hover:bg-white text-xs font-bold uppercase tracking-widest transition-all inline-flex items-center justify-center space-x-2 border border-[#E6D7BC] shadow-sm"
+              <a
+                href="tel:+918668412375"
+                className="px-8 py-4 bg-[#FAF8F5] text-[#1F1B14] hover:bg-white text-xs font-bold uppercase tracking-widest transition-all duration-300 inline-flex items-center justify-center space-x-2 border border-[#E6D7BC] shadow-sm hover:shadow-md rounded-md"
               >
-                <span>Explore Services</span>
-              </Link>
+                <span>Call Workshop</span>
+              </a>
             </div>
 
             {/* Key Metrics Left */}
-            <div className="pt-8 border-t border-[#E6D7BC] grid grid-cols-3 gap-4 text-left divide-x divide-[#E6D7BC]">
+            <div className="pt-6 border-t border-[#E6D7BC] grid grid-cols-3 gap-4 text-left divide-x divide-[#E6D7BC]">
               <div>
-                <span className="block font-sans text-2xl lg:text-3xl font-bold text-[#1F1B14]">
+                <span className="block font-sans text-2xl lg:text-3xl font-extrabold text-[#1F1B14]">
                   10+
                 </span>
-                <span className="text-xs text-[#6E6B65]">Years Expertise</span>
+                <span className="text-xs font-medium text-[#6E6B65]">Years Expertise</span>
               </div>
               <div className="pl-4">
-                <span className="block font-sans text-2xl lg:text-3xl font-bold text-[#1F1B14]">
+                <span className="block font-sans text-2xl lg:text-3xl font-extrabold text-[#1F1B14]">
                   15,000+
                 </span>
-                <span className="text-xs text-[#6E6B65]">Bikes Serviced</span>
+                <span className="text-xs font-medium text-[#6E6B65]">Bikes Serviced</span>
               </div>
               <div className="pl-4">
-                <span className="block font-sans text-2xl lg:text-3xl font-bold text-[#1F1B14]">
+                <span className="block font-sans text-2xl lg:text-3xl font-extrabold text-[#1F1B14]">
                   25+
                 </span>
-                <span className="text-xs text-[#6E6B65]">Master Technicians</span>
+                <span className="text-xs font-medium text-[#6E6B65]">Master Techs</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: 100% Uncropped Full Garage Storefront Photo */}
+          {/* Right Column: Dynamic Garage Storefront Card with Modern Floating Badges */}
           <div className="lg:col-span-6">
-            <div className="relative border-4 border-[#C5A059] bg-[#1F1B14] p-2 shadow-2xl rounded-sm overflow-hidden group">
-              {/* 100% Uncropped Garage Storefront Image */}
-              <div className="w-full bg-[#1F1B14] flex items-center justify-center overflow-hidden">
+            <div className="relative rounded-2xl bg-gradient-to-b from-[#FAF8F5] to-[#E6D7BC]/40 p-2.5 sm:p-3.5 border border-[#E6D7BC] shadow-2xl overflow-hidden group">
+              {/* Photo Frame Container - Display Full Image (Including Top Banner Signboard) */}
+              <div className="relative rounded-xl overflow-hidden bg-[#1F1B14] shadow-inner border border-[#2C2316]">
                 <img
                   src={classNamesImages.exteriorFront}
                   alt="Road Crafters Garage Official Front Storefront Signboard & Entrance"
-                  className="w-full max-h-[620px] object-contain rounded-sm"
+                  className="w-full h-auto max-h-[520px] object-contain mx-auto group-hover:scale-[1.02] transition-transform duration-500 ease-out"
                 />
-              </div>
 
-              {/* Workshop Location Banner at Bottom Right */}
-              <div className="mt-2 bg-[#1F1B14] text-[#FAF8F5] p-3.5 flex items-center justify-between border border-[#2C2316] text-xs">
-                <div className="flex items-center space-x-2">
+                {/* Top Badge Overlay */}
+                <div className="absolute top-3 right-3 bg-[#1F1B14]/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#C5A059]/40 flex items-center space-x-2 text-[11px] font-semibold text-[#FAF8F5] shadow-lg">
                   <span className="w-2 h-2 rounded-full bg-[#C5A059] animate-pulse" />
-                  <span className="font-medium text-[#FAF8F5]">
-                    Storefront: <span className="text-[#C5A059] font-bold">Shop - 9, Alcon Regency, Porvorim</span>
-                  </span>
+                  <span>Official Porvorim Garage</span>
                 </div>
-                <Link
-                  href="/workshop"
-                  className="text-[11px] uppercase tracking-wider text-[#C5A059] hover:underline font-semibold"
-                >
-                  View Facility →
-                </Link>
+
+                {/* Bottom Floating Bar */}
+                <div className="bg-[#1F1B14] p-3.5 border-t border-[#2C2316] flex items-center justify-between text-xs text-[#FAF8F5]">
+                  <div>
+                    <p className="font-bold text-[#FAF8F5] tracking-wide">Road Crafters Garage</p>
+                    <p className="text-[11px] text-[#C5A059]">Shop No. 9, Alcon Regency, Porvorim</p>
+                  </div>
+                  <Link
+                    href="/workshop"
+                    className="px-3 py-1.5 bg-[#C5A059] text-[#1F1B14] hover:bg-white text-[11px] font-bold rounded uppercase tracking-wider transition-colors"
+                  >
+                    View Facility
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Subtle Trust Bar */}
-        <div className="bg-[#FAF8F5] border border-[#E6D7BC] py-6 px-6 sm:px-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-[#E6D7BC] shadow-md">
+        <div className="bg-[#FAF8F5] border border-[#E6D7BC] rounded-xl py-5 px-6 sm:px-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-[#E6D7BC] shadow-sm">
           <div className="flex flex-col items-center justify-center p-2">
             <Award className="w-5 h-5 text-[#C5A059] mb-1" />
             <span className="font-semibold text-xs text-[#1F1B14]">5.0 ★ Rated Garage</span>
-            <span className="text-[11px] text-[#6E6B65]">55 Verified Reviews</span>
+            <span className="text-[11px] text-[#6E6B65]">Verified Customer Reviews</span>
           </div>
           <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
             <Shield className="w-5 h-5 text-[#C5A059] mb-1" />
-            <span className="font-semibold text-xs text-[#1F1B14]">12-Month Warranty</span>
-            <span className="text-[11px] text-[#6E6B65]">Parts & Labor Guarantee</span>
+            <span className="font-semibold text-xs text-[#1F1B14]">12-Month Guarantee</span>
+            <span className="text-[11px] text-[#6E6B65]">Parts & Workmanship</span>
           </div>
           <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
             <Wrench className="w-5 h-5 text-[#C5A059] mb-1" />
-            <span className="font-semibold text-xs text-[#1F1B14]">Rider Friendly</span>
-            <span className="text-[11px] text-[#6E6B65]">Welcoming Garage Environment</span>
+            <span className="font-semibold text-xs text-[#1F1B14]">Rider Focused</span>
+            <span className="text-[11px] text-[#6E6B65]">Master Two-Wheeler Techs</span>
           </div>
           <div className="flex flex-col items-center justify-center p-2 pt-4 md:pt-2">
             <Clock className="w-5 h-5 text-[#C5A059] mb-1" />
-            <span className="font-semibold text-xs text-[#1F1B14]">Open — Closes 10:00 PM</span>
-            <span className="text-[11px] text-[#6E6B65]">Daily Operations</span>
+            <span className="font-semibold text-xs text-[#1F1B14]">Open Daily</span>
+            <span className="text-[11px] text-[#6E6B65]">Quick Turnaround Service</span>
           </div>
         </div>
       </section>

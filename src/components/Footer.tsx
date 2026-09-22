@@ -146,6 +146,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/spare-parts" className="hover:text-[#C5A059] transition-colors">
+                  Spare Parts
+                </Link>
+              </li>
+              <li>
                 <Link href="/workshop" className="hover:text-[#C5A059] transition-colors">
                   Workshop
                 </Link>

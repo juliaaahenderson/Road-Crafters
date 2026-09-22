@@ -38,7 +38,7 @@ export default function BlogDetailClient({ slug }: { slug: string }) {
           year: "numeric",
         }),
         readTime: `${Math.max(3, Math.ceil((activeConvexPost.content || "").length / 500))} min read`,
-        heroImage: activeConvexPost.coverImageUrl || "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.47(2).jpeg",
+        heroImage: activeConvexPost.coverImageUrl || "/garage_photos/blog-cover-journal.jpg",
         author: {
           name: activeConvexPost.author || "RoadCrafters Master Technician",
           role: "Lead Diagnostic Engineer",

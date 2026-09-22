@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Check, Sparkles } from "lucide-react";
+import { Check, Sparkles, Phone } from "lucide-react";
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { PACKAGES_DATA } from "@/data/content";
@@ -49,11 +49,14 @@ export default function PricingClient() {
               <h2 className="font-serif text-2xl font-semibold text-[#1F1B14]">
                 {pkg.name}
               </h2>
-              <div className="mt-4 mb-2 flex items-baseline space-x-2">
-                <span className="font-serif text-4xl font-bold text-[#1F1B14]">
-                  {pkg.price}
-                </span>
-                <span className="text-xs text-[#6E6B65]">/ service visit</span>
+              <div className="mt-4 mb-2">
+                <a
+                  href="tel:+918668412375"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#C5A059]/10 text-[#C5A059] border border-[#C5A059]/30 rounded-none text-xs font-semibold hover:bg-[#C5A059] hover:text-white transition-colors"
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  <span>Call for Quote</span>
+                </a>
               </div>
               <p className="text-xs text-[#6E6B65] mb-6 border-b border-[#E6D7BC] pb-4 min-h-[36px]">
                 {pkg.subtitle}
@@ -69,16 +72,17 @@ export default function PricingClient() {
               </ul>
             </div>
 
-            <Link
-              href={`/book?package=${encodeURIComponent(pkgId)}`}
-              className={`w-full py-3 text-center text-xs font-semibold uppercase tracking-wider transition-all ${
+            <a
+              href="tel:+918668412375"
+              className={`w-full py-3 text-center text-xs font-semibold uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
                 pkg.popular
                   ? "bg-[#1F1B14] text-white hover:bg-[#2C2316] shadow-md"
                   : "bg-[#FAF8F5] text-[#1F1B14] hover:bg-[#E6D7BC] border border-[#E6D7BC]"
               }`}
             >
-              Book {pkg.name}
-            </Link>
+              <Phone className="w-3.5 h-3.5 text-[#C5A059]" />
+              <span>Call to Book {pkg.name}</span>
+            </a>
           </div>
         );
       })}

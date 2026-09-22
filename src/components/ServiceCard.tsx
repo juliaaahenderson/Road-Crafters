@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { ServiceItem } from "@/data/content";
 
 export default function ServiceCard({ service }: { service: ServiceItem }) {
@@ -34,9 +34,13 @@ export default function ServiceCard({ service }: { service: ServiceItem }) {
       </div>
 
       <div className="px-6 pb-6 pt-0 border-t border-[#E6D7BC]/40 mt-auto flex items-center justify-between">
-        <span className="text-xs font-semibold text-[#1F1E1B]">
-          From <span className="text-[#C5A059] font-bold">{service.startingPrice}</span>
-        </span>
+        <a
+          href="tel:+918668412375"
+          className="inline-flex items-center text-xs font-semibold text-[#C5A059] hover:underline gap-1"
+        >
+          <Phone className="w-3 h-3" />
+          <span>Call for Quote</span>
+        </a>
         <Link
           href={`/services/${service.slug}`}
           className="inline-flex items-center text-xs font-semibold uppercase tracking-wider text-[#1F1B14] group-hover:text-[#C5A059] transition-colors"

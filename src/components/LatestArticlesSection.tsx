@@ -27,7 +27,7 @@ export default function LatestArticlesSection() {
         year: "numeric",
       }),
       readTime: `${Math.max(3, Math.ceil((post.content || "").length / 500))} min read`,
-      heroImage: post.coverImageUrl || "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.47(2).jpeg",
+      heroImage: post.coverImageUrl || "/garage_photos/blog-cover-journal.jpg",
       author: {
         name: post.author || "RoadCrafters Master Technician",
         role: "Technical Advisor",

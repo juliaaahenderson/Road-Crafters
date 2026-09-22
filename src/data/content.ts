@@ -66,17 +66,17 @@ export interface FAQItem {
 
 // 100% Authentic Component-Focused Motorcycle & Technical Repair Photography
 export const classNamesImages = {
-  hero: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.46.jpeg", // Official Front Storefront & Signboard Photo
-  workshopMain: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.45.jpeg", // Customer Reception & Billing Counter
-  diagnostics: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.44(1).jpeg", // Workshop Bay Maintenance
-  brakeService: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.44(2).jpeg", // Motorcycle Mechanics at Work
-  chainSprocket: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.44.jpeg", // Drive Chain & Gear Servicing
-  suspension: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.46(1).jpeg", // Suspension & Alignment Station
-  tyresWheels: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.43.jpeg", // Spare Parts & Tyre Inventory
-  detailing: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.47(1).jpeg", // Detailing & Washing Area
-  electrical: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.44.jpeg", // Battery & Electrical Testing Bay
-  toolsGrid: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.43.jpeg", // OEM Parts & Calibrated Hand Tools
-  exteriorFront: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.46.jpeg", // Official Storefront & Signboard
+  hero: "/garage_photos/storefront-exterior.jpg", // Official Front Storefront & Signboard Photo
+  workshopMain: "/garage_photos/reception-counter.jpg", // Customer Reception & Billing Counter
+  diagnostics: "/garage_photos/engine-diagnostics-bay.jpg", // Workshop Bay Maintenance
+  brakeService: "/garage_photos/hydraulic-lift-bays.jpg", // Motorcycle Mechanics at Work
+  chainSprocket: "/garage_photos/chain-alignment-station.jpg", // Drive Chain & Gear Servicing
+  suspension: "/garage_photos/suspension-overhaul-bay.jpg", // Suspension & Alignment Station
+  tyresWheels: "/garage_photos/tyre-wheel-balancing.jpg", // Spare Parts & Tyre Inventory
+  detailing: "/garage_photos/detailing-washing-bay.jpg", // Detailing & Washing Area
+  electrical: "/garage_photos/electrical-testing-station.jpg", // Battery & Electrical Testing Bay
+  toolsGrid: "/garage_photos/calibrated-hand-tools.jpg", // OEM Parts & Calibrated Hand Tools
+  exteriorFront: "/garage_photos/storefront-exterior.jpg", // Official Storefront & Signboard
 };
 
 export const SERVICES_DATA: ServiceItem[] = [
@@ -89,7 +89,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     category: "motorcycle",
     estimatedTime: "2 - 3 Hours",
     startingPrice: "₹1,800",
-    image: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.44(1).jpeg",
+    image: "/garage_photos/engine-diagnostics-bay.jpg",
     features: [
       "Motul / Castrol 100% Synthetic Engine Oil refresh",
       "OEM High-flow Oil Filter replacement",
@@ -114,7 +114,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     category: "motorcycle",
     estimatedTime: "1 - 1.5 Hours",
     startingPrice: "₹1,200",
-    image: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.45(1).jpeg",
+    image: "/garage_photos/engine-diagnostics-bay.jpg",
     features: [
       "Factory ECU software scan (Ducati, BMW Motorrad, Triumph, Japanese OEM)",
       "Live EFI throttle position & O2 sensor data logging",
@@ -139,7 +139,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     category: "motorcycle",
     estimatedTime: "1.5 Hours",
     startingPrice: "₹1,500",
-    image: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.44(2).jpeg",
+    image: "/garage_photos/hydraulic-lift-bays.jpg",
     features: [
       "Brake rotor runout & micrometer thickness measurement",
       "Sintered / Ceramic high-friction brake pad installation",
@@ -164,7 +164,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     category: "motorcycle",
     estimatedTime: "45 Mins",
     startingPrice: "₹800",
-    image: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.44.jpeg",
+    image: "/garage_photos/chain-alignment-station.jpg",
     features: [
       "Kerosene / Ultrasonic solvent deep chain bath",
       "Laser rear wheel alignment check",
@@ -189,7 +189,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     category: "specialist",
     estimatedTime: "3 Hours",
     startingPrice: "₹2,800",
-    image: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.46(1).jpeg",
+    image: "/garage_photos/suspension-overhaul-bay.jpg",
 
     features: [
       "Front fork oil evacuation & flush",
@@ -215,7 +215,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     category: "motorcycle",
     estimatedTime: "1 Hour",
     startingPrice: "₹900",
-    image: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.43.jpeg",
+    image: "/garage_photos/tyre-wheel-balancing.jpg",
     features: [
       "Scratch-free tyre mounting on motorcycle tyre machine",
       "Dynamic wheel balancing on precision motorcycle spindle",
@@ -240,7 +240,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     category: "motorcycle",
     estimatedTime: "1 Hour",
     startingPrice: "₹700",
-    image: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.45.jpeg",
+    image: "/garage_photos/reception-counter.jpg",
     features: [
       "Conductance battery CCA load test",
       "Stator AC output & regulator/rectifier DC voltage test",
@@ -265,7 +265,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     category: "specialist",
     estimatedTime: "1 Day",
     startingPrice: "₹3,500",
-    image: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.47(1).jpeg",
+    image: "/garage_photos/detailing-washing-bay.jpg",
     features: [
       "pH-neutral snow foam wash & degreaser treatment",
       "Engine fin & spoke brush deep cleaning",
@@ -345,28 +345,28 @@ export const WORKSHOP_FEATURES: WorkshopFeature[] = [
     title: "Heavy-Duty Hydraulic Motorcycle Lifts",
     subtitle: "Safe clamp stations for all bike categories",
     description: "Our workshop is equipped with pneumatic motorcycle lifts featuring rubber-lined wheel chocks, ensuring your bike is raised to comfortable working height without scratching rims or exhausts.",
-    image: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.44(2).jpeg"
+    image: "/garage_photos/hydraulic-lift-bays.jpg"
   },
   {
     id: "diagnostics",
     title: "Dedicated Motorcycle OBD Diagnostic Rig",
     subtitle: "Official OEM software for European & Global Bikes",
     description: "We utilize specialized motorcycle diagnostic software to interface directly with ECU electronics on Ducati, BMW Motorrad, Triumph, KTM, Royal Enfield, and Japanese brands.",
-    image: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.46(1).jpeg"
+    image: "/garage_photos/suspension-overhaul-bay.jpg"
   },
   {
     id: "chain-station",
     title: "Ultrasonic Cleaning & Laser Alignment Station",
     subtitle: "Precision chain bath & laser wheel tracking",
     description: "Dedicated chain maintenance bay with ultrasonic solvent tanks and laser alignment gear to ensure zero rear wheel misalignment and minimal drag.",
-    image: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.44.jpeg"
+    image: "/garage_photos/chain-alignment-station.jpg"
   },
   {
     id: "tools",
     title: "Calibrated Motorcycle Hand Tools",
     subtitle: "Hazet & Motion Pro specialized bike tools",
     description: "Every axle nut, triple clamp bolt, and engine case fastener is torqued using calibrated digital torque wrenches to exact factory Nm limits.",
-    image: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.43.jpeg"
+    image: "/garage_photos/calibrated-hand-tools.jpg"
   }
 ];
 
@@ -404,7 +404,7 @@ export const BLOG_POSTS: BlogPost[] = [
     },
     publishedAt: "August 28, 2026",
     readTime: "5 min read",
-    heroImage: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.47(2).jpeg",
+    heroImage: "/garage_photos/blog-cover-journal.jpg",
     content: [
       "Your motorcycle's drive chain transfers all your engine's horsepower and torque directly to the rear tire contact patch. Yet, chain maintenance is often neglected until noise or binding occurs.",
       "1. Understanding Chain Slack: Every motorcycle has a specified chain slack measurement (typically 25mm to 35mm) measured midway between the front and rear sprockets. Too tight, and you risk snapping the chain or damaging output shaft bearings when the swingarm compresses. Too loose, and the chain can derail or lash violently against the swingarm guard.",
@@ -426,7 +426,7 @@ export const BLOG_POSTS: BlogPost[] = [
     },
     publishedAt: "August 15, 2026",
     readTime: "6 min read",
-    heroImage: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.47.jpeg",
+    heroImage: "/garage_photos/electrical-testing-station.jpg",
     content: [
       "A common misconception among new riders is that high-grade automotive engine oil can be used in motorcycles. However, automotive oils contain friction-modifying additives designed purely to maximize fuel economy.",
       "In a motorcycle, the engine oil also bathes the wet clutch plates and transmission gears. Energy-conserving car oils cause the clutch friction plates to slip under acceleration, destroying the clutch pack in short order.",
@@ -446,7 +446,7 @@ export const BLOG_POSTS: BlogPost[] = [
     },
     publishedAt: "July 30, 2026",
     readTime: "5 min read",
-    heroImage: "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.48.jpeg",
+    heroImage: "/garage_photos/tyre-wheel-balancing.jpg",
     content: [
       "Motorcycle braking systems operate under intense thermal stress. Because you rely primarily on your front brake lever for up to 80% of your stopping power, maintaining hydraulic integrity is vital.",
       "1. Soft or Spongy Lever Feel: If pulling the front brake lever feels mushy or touches the handlebar grip, moisture has boiled inside the brake line or air bubbles have entered the hydraulic circuit.",

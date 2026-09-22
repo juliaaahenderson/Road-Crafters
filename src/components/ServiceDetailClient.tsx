@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Check, Clock, ShieldCheck } from "lucide-react";
+import { ArrowRight, Check, Clock, ShieldCheck, Wrench, Phone } from "lucide-react";
 import { SERVICES_DATA } from "@/data/content";
 import SectionHeading from "@/components/SectionHeading";
 import { useQuery } from "convex/react";
@@ -83,10 +83,14 @@ export default function ServiceDetailClient({ slug }: { slug: string }) {
               </span>
             </div>
             <div>
-              <span className="text-xs text-[#6E6B65] block">Starting Investment</span>
-              <span className="font-serif text-xl font-semibold text-[#C5A059] mt-1 block">
-                {service.startingPrice}
-              </span>
+              <span className="text-xs text-[#6E6B65] block">Pricing & Estimate</span>
+              <a
+                href="tel:+918668412375"
+                className="font-serif text-base font-semibold text-[#C5A059] hover:underline flex items-center gap-1.5 mt-1"
+              >
+                <Phone className="w-4 h-4 text-[#C5A059]" />
+                <span>Call for Quote (+91 86684 12375)</span>
+              </a>
             </div>
           </div>
 
@@ -104,7 +108,7 @@ export default function ServiceDetailClient({ slug }: { slug: string }) {
         <div className="lg:col-span-5">
           <div className="border border-[#E6D7BC] bg-white p-2">
             <img
-              src={service.image || "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.45(1).jpeg"}
+              src={service.image || "/garage_photos/engine-diagnostics-bay.jpg"}
               alt={service.title}
               className="w-full h-[400px] object-cover"
             />

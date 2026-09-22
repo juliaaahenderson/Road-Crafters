@@ -28,13 +28,9 @@ export const metadata: Metadata = {
     "Aradi Socorro Goa",
   ],
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
-      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
-    ],
-    apple: "/apple-touch-icon.png",
+    icon: "/favicon.png?v=3",
+    shortcut: "/favicon.png?v=3",
+    apple: "/favicon.png?v=3",
   },
 };
 

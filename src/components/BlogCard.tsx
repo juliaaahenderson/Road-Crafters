@@ -4,7 +4,7 @@ import { ArrowRight, Clock } from "lucide-react";
 import { BlogPost } from "@/data/content";
 
 export default function BlogCard({ post }: { post: BlogPost }) {
-  const heroImage = post.heroImage || "/garage_photos/WhatsApp Image 2026-09-18 at 11.25.47(2).jpeg";
+  const heroImage = post.heroImage || "/garage_photos/blog-cover-journal.jpg";
   const category = post.category || "Technical Guide";
   const publishedAt = post.publishedAt || "Recently";
   const readTime = post.readTime || "3 min read";
