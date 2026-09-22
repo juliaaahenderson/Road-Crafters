@@ -592,3 +592,63 @@ export const REVIEWS_DATA: ReviewItem[] = [
     comment: "This two wheeler service center is Very good. And employee behavior is also good"
   }
 ];
+
+export interface SparePartCategory {
+  id: string;
+  title: string;
+  description: string;
+  badge: string;
+  items: string[];
+  image: string;
+}
+
+export const SPARE_PARTS_DATA: SparePartCategory[] = [
+  {
+    id: "engine-fluids",
+    title: "Engine Oils & Lubricants",
+    description: "Motul, Castrol, and Liqui Moly 100% Synthetic Ester fluids, brake fluids, and fork oils.",
+    badge: "100% Genuine",
+    items: ["Motul 7100 10W-40 / 10W-50 4T", "Motul 300V Factory Line Synthetic", "Motul DOT 4 / 5.1 Brake Fluid", "Motul Fork Oil Expert (10W / 15W)"],
+    image: "/garage_photos/calibrated-hand-tools.jpg",
+  },
+  {
+    id: "brakes",
+    title: "Brake Components & Pads",
+    description: "Brembo, Nissin, and EBC sintered and ceramic friction pads, disc rotors, and master cylinders.",
+    badge: "OEM Grade",
+    items: ["Brembo Sintered Brake Pads", "Nissin High-Friction Pads", "Stainless Steel Braided Brake Lines", "OEM Disc Rotors & Caliper Seal Kits"],
+    image: "/garage_photos/hydraulic-lift-bays.jpg",
+  },
+  {
+    id: "drive-chain",
+    title: "Chain & Sprocket Kits",
+    description: "DID, RK, and Rolon heavy-duty O-Ring / X-Ring gold drive chains and hardened steel sprockets.",
+    badge: "Heavy Duty",
+    items: ["DID 520 / 525 VX3 X-Ring Chain", "Rolon Brass Coated Chain & Sprocket Kits", "Front & Rear Alloy/Steel Sprockets", "Ultrasonic Chain Cleaner & Lube Spray"],
+    image: "/garage_photos/chain-alignment-station.jpg",
+  },
+  {
+    id: "filters-plugs",
+    title: "Filters & Ignition Spark Plugs",
+    description: "Mahle, Mann, K&N high-flow air filters, OEM oil filters, and NGK Iridium spark plugs.",
+    badge: "High Flow",
+    items: ["NGK Laser Iridium Spark Plugs", "K&N High-Flow Air Filters", "OEM Paper & Sponge Air Filters", "Mahle High-Efficiency Oil Filters"],
+    image: "/garage_photos/engine-diagnostics-bay.jpg",
+  },
+  {
+    id: "suspension-seals",
+    title: "Suspension Seals & Bearings",
+    description: "SKF low-friction fork seals, dust wipers, steering head bearings, and swingarm bush kits.",
+    badge: "Precision Fit",
+    items: ["SKF Dual-Compound Fork Seals", "NTN / NBC Wheel Bearings", "All Balls Racing Steering Bearings", "Mono-Shock Linkage Bush Kits"],
+    image: "/garage_photos/suspension-overhaul-bay.jpg",
+  },
+  {
+    id: "electrical-battery",
+    title: "Batteries & Electrical Relays",
+    description: "Amaron, Exide, and Yuasa maintenance-free AGM gel batteries, stator coils, and relays.",
+    badge: "Warranty Covered",
+    items: ["Yuasa AGM Maintenance-Free Batteries", "Amaron Pro Bike Rider Gel Batteries", "OEM Stator Coils & Rectifiers", "Heavy-Duty Starter Relays & Fuses"],
+    image: "/garage_photos/electrical-testing-station.jpg",
+  },
+];

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Settings, Save, CheckCircle2, Wrench, Clock, Phone, MapPin, Star, HelpCircle, Plus, Trash2, Tag, ListPlus } from "lucide-react";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
-import { SERVICES_DATA, REVIEWS_DATA, PACKAGES_DATA } from "@/data/content";
+import { SERVICES_DATA, REVIEWS_DATA, PACKAGES_DATA, SPARE_PARTS_DATA } from "@/data/content";
 
 const DEFAULT_BUSINESS_INFO = {
   name: "RoadCrafters Garage (रोडक्राफ्टर्स गैरेज)",
@@ -30,7 +30,7 @@ const DEFAULT_FAQ_ITEMS = [
 ];
 
 export default function AdminContentPage() {
-  const [activeTab, setActiveTab] = useState<"pricing" | "services" | "business" | "reviews" | "faqs">("pricing");
+  const [activeTab, setActiveTab] = useState<"pricing" | "services" | "business" | "reviews" | "faqs" | "spareParts">("spareParts");
   const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -42,6 +42,7 @@ export default function AdminContentPage() {
   const dbBusiness = useQuery(api.content.getByKey, { key: "businessDetails" });
   const dbReviews = useQuery(api.content.getByKey, { key: "reviews" });
   const dbFaqs = useQuery(api.content.getByKey, { key: "faqs" });
+  const dbSpareParts = useQuery(api.content.getByKey, { key: "sparePartsCategories" });
 
   // State
   const [pricingPackages, setPricingPackages] = useState<any[]>(PACKAGES_DATA);
@@ -49,6 +50,7 @@ export default function AdminContentPage() {
   const [business, setBusiness] = useState<any>(DEFAULT_BUSINESS_INFO);
   const [reviews, setReviews] = useState<any[]>(REVIEWS_DATA);
   const [faqs, setFaqs] = useState<any[]>(DEFAULT_FAQ_ITEMS);
+  const [spareParts, setSpareParts] = useState<any[]>(SPARE_PARTS_DATA);
 
   useEffect(() => {
     if (dbPricing?.value) {
@@ -66,7 +68,10 @@ export default function AdminContentPage() {
     if (dbFaqs?.value) {
       try { setFaqs(JSON.parse(dbFaqs.value)); } catch (e) {}
     }
-  }, [dbPricing, dbServices, dbBusiness, dbReviews, dbFaqs]);
+    if (dbSpareParts?.value) {
+      try { setSpareParts(JSON.parse(dbSpareParts.value)); } catch (e) {}
+    }
+  }, [dbPricing, dbServices, dbBusiness, dbReviews, dbFaqs, dbSpareParts]);
 
   const handleSave = async (key: string, data: any) => {
     setSaving(true);
@@ -107,6 +112,7 @@ export default function AdminContentPage() {
             if (activeTab === "business") handleSave("businessDetails", business);
             if (activeTab === "reviews") handleSave("reviews", reviews);
             if (activeTab === "faqs") handleSave("faqs", faqs);
+            if (activeTab === "spareParts") handleSave("sparePartsCategories", spareParts);
           }}
           disabled={saving}
           className="px-6 py-2.5 bg-[#17352D] hover:bg-[#23443A] text-white text-xs font-semibold uppercase tracking-widest transition-all flex items-center space-x-2 shadow-sm self-start sm:self-auto disabled:opacity-50"
@@ -125,6 +131,15 @@ export default function AdminContentPage() {
 
       {/* Tabs */}
       <div className="bg-white border border-[#E2DDD5] p-1 flex items-center space-x-1 shadow-sm overflow-x-auto">
+        <button
+          onClick={() => setActiveTab("spareParts")}
+          className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider flex items-center gap-2 transition-colors whitespace-nowrap ${
+            activeTab === "spareParts" ? "bg-[#17352D] text-[#A96F43]" : "text-stone-600 hover:bg-stone-100"
+          }`}
+        >
+          <ListPlus className="w-4 h-4" />
+          <span>Spare Parts CMS</span>
+        </button>
         <button
           onClick={() => setActiveTab("pricing")}
           className={`px-4 py-2 text-xs font-semibold uppercase tracking-wider flex items-center gap-2 transition-colors whitespace-nowrap ${
@@ -640,6 +655,140 @@ export default function AdminContentPage() {
                   }}
                   className="w-full px-3 py-1.5 bg-white border text-xs text-stone-700"
                 />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Tab 5: Spare Parts CMS */}
+      {activeTab === "spareParts" && (
+        <div className="bg-white border border-[#E2DDD5] p-6 shadow-sm space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E2DDD5] pb-4">
+            <div>
+              <h2 className="font-serif text-xl font-medium text-[#17352D]">
+                Motorcycle Spare Parts Inventory Categories ({spareParts.length})
+              </h2>
+              <p className="text-xs text-[#6E706B] mt-0.5">
+                Manage spare part categories, descriptions, quality badges, available items, and photo assets.
+              </p>
+            </div>
+            <button
+              onClick={() =>
+                setSpareParts([
+                  ...spareParts,
+                  {
+                    id: `part-${Date.now()}`,
+                    title: "New Spare Part Category",
+                    description: "Category description and brand details.",
+                    badge: "100% Genuine",
+                    items: ["OEM Part Item 1", "OEM Part Item 2"],
+                    image: "/garage_photos/calibrated-hand-tools.jpg",
+                  },
+                ])
+              }
+              className="px-3.5 py-2 bg-[#17352D] text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-1.5 self-start sm:self-auto"
+            >
+              <Plus className="w-4 h-4 text-[#A96F43]" />
+              <span>Add Category</span>
+            </button>
+          </div>
+
+          <div className="space-y-6">
+            {spareParts.map((cat, idx) => (
+              <div key={cat.id || idx} className="p-5 bg-stone-50 border border-[#E2DDD5] space-y-4 rounded-sm">
+                <div className="flex items-center justify-between border-b border-[#E2DDD5] pb-3">
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xs font-bold text-[#A96F43]">#{idx + 1}</span>
+                    <input
+                      type="text"
+                      value={cat.title}
+                      onChange={(e) => {
+                        const updated = [...spareParts];
+                        updated[idx].title = e.target.value;
+                        setSpareParts(updated);
+                      }}
+                      className="font-bold text-sm px-2.5 py-1 bg-white border border-[#E2DDD5] text-[#17352D] w-64 sm:w-80"
+                      placeholder="Category Title"
+                    />
+                  </div>
+                  <button
+                    onClick={() => setSpareParts(spareParts.filter((_, i) => i !== idx))}
+                    className="p-1 text-stone-400 hover:text-red-600 transition-colors"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                  <div>
+                    <label className="block text-[11px] font-semibold text-stone-600 uppercase mb-1">
+                      Badge Tag
+                    </label>
+                    <input
+                      type="text"
+                      value={cat.badge}
+                      onChange={(e) => {
+                        const updated = [...spareParts];
+                        updated[idx].badge = e.target.value;
+                        setSpareParts(updated);
+                      }}
+                      className="w-full px-3 py-1.5 bg-white border border-[#E2DDD5]"
+                      placeholder="e.g. 100% Genuine / OEM Grade"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[11px] font-semibold text-stone-600 uppercase mb-1">
+                      Category Image Path
+                    </label>
+                    <input
+                      type="text"
+                      value={cat.image}
+                      onChange={(e) => {
+                        const updated = [...spareParts];
+                        updated[idx].image = e.target.value;
+                        setSpareParts(updated);
+                      }}
+                      className="w-full px-3 py-1.5 bg-white border border-[#E2DDD5]"
+                      placeholder="/garage_photos/..."
+                    />
+                  </div>
+
+                  <div className="md:col-span-2">
+                    <label className="block text-[11px] font-semibold text-stone-600 uppercase mb-1">
+                      Description
+                    </label>
+                    <textarea
+                      rows={2}
+                      value={cat.description}
+                      onChange={(e) => {
+                        const updated = [...spareParts];
+                        updated[idx].description = e.target.value;
+                        setSpareParts(updated);
+                      }}
+                      className="w-full px-3 py-1.5 bg-white border border-[#E2DDD5] text-stone-700"
+                    />
+                  </div>
+
+                  <div className="md:col-span-2 space-y-2">
+                    <label className="block text-[11px] font-semibold text-stone-600 uppercase">
+                      Stocked Items / Models (Comma separated or editable list)
+                    </label>
+                    <textarea
+                      rows={3}
+                      value={Array.isArray(cat.items) ? cat.items.join("\n") : cat.items}
+                      onChange={(e) => {
+                        const updated = [...spareParts];
+                        updated[idx].items = e.target.value.split("\n").filter((i: string) => i.trim().length > 0);
+                        setSpareParts(updated);
+                      }}
+                      className="w-full px-3 py-1.5 bg-white border border-[#E2DDD5] text-stone-700 font-mono text-[11px]"
+                      placeholder="Enter 1 item per line"
+                    />
+                    <span className="text-[10px] text-stone-500">Enter each part item or model on a new line.</span>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
