@@ -86,12 +86,6 @@ export default function HomePage() {
                   className="w-full h-auto max-h-[520px] object-contain mx-auto group-hover:scale-[1.02] transition-transform duration-500 ease-out"
                 />
 
-                {/* Top Badge Overlay */}
-                <div className="absolute top-3 right-3 bg-[#1F1B14]/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#C5A059]/40 flex items-center space-x-2 text-[11px] font-semibold text-[#FAF8F5] shadow-lg">
-                  <span className="w-2 h-2 rounded-full bg-[#C5A059] animate-pulse" />
-                  <span>Official Porvorim Garage</span>
-                </div>
-
                 {/* Bottom Floating Bar */}
                 <div className="bg-[#1F1B14] p-3.5 border-t border-[#2C2316] flex items-center justify-between text-xs text-[#FAF8F5]">
                   <div>
